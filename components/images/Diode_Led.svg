@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1"
+	 id="svg2" sodipodi:docname="Voltage_Source.svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50"
+	 style="enable-background:new 0 0 50 50;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#000000;stroke-linecap:round;}
+	.st1{fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:round;}
+</style>
+<g>
+	<line class="st0" x1="0" y1="25" x2="13.6" y2="25"/>
+	<line class="st0" x1="36.8" y1="25" x2="50" y2="25"/>
+	<polygon class="st0" points="36.8,25 13.6,11.2 13.6,38.8 	"/>
+	<line class="st0" x1="36.8" y1="10.7" x2="36.8" y2="39.3"/>
+	<g>
+		<g>
+			<line class="st1" x1="32.4" y1="4.4" x2="24.7" y2="12.1"/>
+			<line class="st1" x1="31.6" y1="6.5" x2="32.4" y2="4.4"/>
+			<line class="st1" x1="32.4" y1="4.4" x2="30.4" y2="5.2"/>
+		</g>
+		<g>
+			<line class="st1" x1="36.2" y1="6.2" x2="28.5" y2="13.9"/>
+			<line class="st1" x1="35.4" y1="8.3" x2="36.2" y2="6.2"/>
+			<line class="st1" x1="36.2" y1="6.2" x2="34.2" y2="7"/>
+		</g>
+	</g>
+</g>
+</svg>

@@ -1,0 +1,63 @@
+<group name="Basic">
+[Select]{pins=0}{img=path}{latex=None}
+[Wire]{pins=2}{img=path}{latex=short}
+</group>
+<group name="Sources">
+[Battery]{pins=2}{img=components/images/Battery.svg}{latex=battery}
+[Battery 1]{pins=2}{img=components/images/Battery_1.svg}{latex=battery1}
+[Battery 2]{pins=2}{img=components/images/Battery_2.svg}{latex=battery2}
+[DC Voltage]{pins=2}{img=components/images/Voltage_Source.svg}{latex=V}
+[DC Current]{pins=2}{img=components/images/Current_Source.svg}{latex=I}
+[AC Voltage]{pins=2}{img=components/images/SinusoidalVoltage.svg}{latex=sV}
+[AC Current]{pins=2}{img=components/images/SinusoidalCurrent.svg}{latex=sI}
+[DC Controlled Voltage]{pins=2}{img=components/images/ControlledVoltage.svg}{latex=controlled voltage source}
+[DC Controlled Current]{pins=2}{img=components/images/ControlledCurrent.svg}{latex=controlled current source}
+[AC Controlled Voltage]{pins=2}{img=components/images/ControlledSinusoidalVoltage.svg}{latex=csV}
+[AC Controlled Current]{pins=2}{img=components/images/ControlledSinusoidalCurrent.svg}{latex=csI}
+[Square Voltage]{pins=2}{img=components/images/Square_Voltage.svg}{latex=sqV}
+[Triangle Voltage]{pins=2}{img=components/images/}{latex=tV}
+</group>
+<group name="Resistors">
+[Resistor]{pins=2}{img=components/images/Resistor.svg}{latex=R}
+[Variable Resistor]{pins=4}{img=components/images/}{latex=vR}
+[Potentiometer]{pins=3}{img=components/images/}{latex=pR}
+[Light Dependent Resistor]{pins=2}{img=components/images/}{latex=ldR}
+</group>
+<group name="Inductors">
+[Inductor]{pins=2}{img=components/images/Inductor.svg}{latex=L}
+[Variable Inductor]{pins=4}{img=components/images/}{latex=vL}
+[Inductive Sensor]{pins=4}{img=components/images/}{latex=sL}
+</group>
+<group name="Capacitors">
+[Capacitor]{pins=2}{img=components/images/Capacitor.svg}{latex=C}
+[Polarized Capacitor]{pins=2}{img=components/images/Capacitor_Polarized.svg}{latex=cC}
+[Electrolytic capacitor]{pins=2}{img=components/images/Capacitor_Electrolytic.svg}{latex=eC}
+[Piezoelectric]{pins=2}{img=components/images/Capacitor_Piezoelectric.svg}{latex=PZ}
+[Variable Capacitor]{pins=4}{img=components/images/}{latex=vC}
+[Capacitive Sensor]{pins=2}{img=components/images/}{latex=cC}
+</group>
+<group name="Diodes">
+[Diode]{pins=2}{img=components/images/Diode.svg}{latex=D}
+[Schottky Diode]{pins=2}{img=components/images/Diode_Schottky.svg}{latex=sD}
+[Zener Diode]{pins=2}{img=components/images/Diode_Zener.svg}{latex=zD}
+[ZZener Diode]{pins=2}{img=components/images/Diode_ZZener.svg}{latex=zzD}
+[Tunnel Diode]{pins=2}{img=components/images/Diode_Tunnel.svg}{latex=tD}
+[Photodiode]{pins=2}{img=components/images/Diode_Photo.svg}{latex=pD}
+[Led]{pins=2}{img=components/images/Diode_Led.svg}{latex=pD}
+[Laser Diode]{pins=2}{img=components/images/Diode_Laser.svg}{latex=lasD}
+[Varcap]{pins=2}{img=components/images/Diode_Varcap.svg}{latex=VC}
+[TVS Diode]{pins=2}{img=components/images/Diode_TVS.svg}{latex=vsD}
+[Shockley Diode]{pins=2}{img=components/images/Diode_Shockley.svg}{latex=shD}
+[Bidirectional Diode]{pins=2}{img=components/images/Diode_Bidirectional.svg}{latex=biD}
+</group>
+<group name="Switches">
+[Switch]{pins=2}{img=components/images/OpenSwitch.svg}{latex=nos}
+</group>
+<group name="Grounds">
+[Ground]{pins=1}{img=components/images/}{latex=node[ground]{}}
+</group>
+<group name="Instruments">
+[Ammeter]{pins=2}{img=components/images/Ammeter.svg}{latex=ammeter}
+[Voltmeter]{pins=2}{img=components/images/Voltmeter.svg}{latex=voltmeter}
+[Ohmmeter]{pins=2}{img=components/images/Ohmmeter.svg}{latex=ohmmeter}
+</group>

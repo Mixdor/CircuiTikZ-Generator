@@ -1,0 +1,2 @@
+wrap_in_figure=1
+american_style_components=1
