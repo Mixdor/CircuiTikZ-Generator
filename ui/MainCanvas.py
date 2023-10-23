@@ -99,39 +99,52 @@ class Canvas(QGraphicsView):
 
         if self.dragMode() == QGraphicsView.NoDrag:
 
-            number_pins = self.tool.number_pins
-            path_svg = self.tool.image
+            real_pos = self.mapToScene(event.pos())
+            self.end_point = QPoint(
+                round(real_pos.x() / self.cell_size) * self.cell_size,
+                round(real_pos.y() / self.cell_size) * self.cell_size)
 
+            number_pins = self.tool.number_pins
 
             if number_pins == 0:
-                print(number_pins)
+                print("Select Tool")
 
             if number_pins == 1:
-                print(number_pins)
-                print(self.tool.latex)
-
-            if number_pins == 2:
-
-                real_pos = self.mapToScene(event.pos())
-
-                self.end_point = QPoint(
-                    round(real_pos.x() / self.cell_size) * self.cell_size,
-                    round(real_pos.y() / self.cell_size) * self.cell_size)
-
+                path_svg = self.tool.image
                 if os.path.exists(path_svg):
-
-                    comp = self.drawable.draw_line_with_image(
+                    comp = self.drawable.canvas_one_pins(
                         self.scene, self.devicePixelRatio(),
-                        self.start_point,
-                        self.end_point,
-                        path_svg,
+                        self.start_point, self.end_point,
+                        self.tool,
                         self.current_label.toPlainText()
                     )
                 else:
                     comp = self.drawable.draw_line(self.scene, self.start_point, self.end_point)
                 self.update()
 
-                draw = self.latex_gen.getDraw(
+                draw = self.latex_gen.getDrawOnePin(
+                    self.start_point / self.cell_size,
+                    self.end_point / self.cell_size,
+                    self.tool.latex,
+                    self.current_label.toPlainText())
+
+                self.draw_added.append(draw)
+                self.components_added.append(comp)
+
+            if number_pins == 2:
+                path_svg = self.tool.image
+
+                if os.path.exists(path_svg):
+                    comp = self.drawable.canvas_two_pins(
+                        self.scene, self.devicePixelRatio(),
+                        self.start_point, self.end_point,
+                        path_svg, self.current_label.toPlainText()
+                    )
+                else:
+                    comp = self.drawable.draw_line(self.scene, self.start_point, self.end_point)
+                self.update()
+
+                draw = self.latex_gen.getDrawTwoPin(
                     self.start_point/self.cell_size,
                     self.end_point/self.cell_size,
                     self.tool.latex,

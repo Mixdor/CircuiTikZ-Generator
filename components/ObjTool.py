@@ -1,7 +1,8 @@
 class ObjTool:
 
-    def __init__(self, name, number_pins, image_path, latex):
+    def __init__(self, name, name_class, number_pins, image_path, latex):
         self.name = name
+        self.name_class = name_class
         self.number_pins = number_pins
         self.image = image_path
         self.latex = latex
@@ -10,6 +11,12 @@ class ObjTool:
         return self.name
 
     def set_name(self, new_name):
+        self.name = new_name
+
+    def get_name_class(self):
+        return self.name
+
+    def set_name_class(self, new_name):
         self.name = new_name
 
     def get_number_pins(self):

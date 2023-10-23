@@ -16,7 +16,7 @@ class MainWindow(QMainWindow):
 
         self.botones = []
         self.obj_tools = []
-        self.tool_selected = ObjTool("Select", 0, "", "")
+        self.tool_selected = ObjTool("Select", "Basic", 0, "", "")
         self.components_added = []
         self.components_deleted = []
         self.draw_added = []
@@ -50,7 +50,7 @@ class MainWindow(QMainWindow):
             label_name = QLabel(name)
             layout_scroll_area.addWidget(label_name)
 
-            current_tools = new_components.get_tools_for_group(group_str)
+            current_tools = new_components.get_tools_for_group(group_str, name)
 
             for k in range(current_tools.__len__()):
                 tool = current_tools[k]
@@ -137,7 +137,8 @@ class MainWindow(QMainWindow):
         if self.tool_selected != current_tool:
 
             self.tool_selected = ObjTool(
-                current_tool.name, current_tool.number_pins,
+                current_tool.name, current_tool.name_class,
+                current_tool.number_pins,
                 current_tool.image, current_tool.latex)
 
             self.canvas.set_tool(self.tool_selected)

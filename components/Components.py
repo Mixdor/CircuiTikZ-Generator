@@ -39,7 +39,7 @@ class Components:
 
         return match
 
-    def get_tools_for_group(self, group_str):
+    def get_tools_for_group(self, group_str, name_group):
         list_components = []
 
         lines = group_str.split("\n")
@@ -50,6 +50,7 @@ class Components:
             list_components.append(
                 ObjTool(
                     name=self.get_name(lines[i]),
+                    name_class=name_group,
                     number_pins=self.get_number_pins(lines[i]),
                     image_path=self.get_image(lines[i]),
                     latex=self.get_latex(lines[i])
@@ -60,7 +61,6 @@ class Components:
 
     def get_name(self, text_line):
 
-        print("-- "+text_line)
         name_tool = re.search(r'\[[a-zA-Z0-9\s]+]', text_line).group()
         name_tool = name_tool.replace("[", "")
         name_tool = name_tool.replace("]", "")
@@ -76,8 +76,6 @@ class Components:
         return int(text)
 
     def get_image(self, text_line):
-
-        print(text_line)
 
         text = re.search(r'(\{img=(.+)}\{)', text_line).group()
         text = re.search("(=(.+)})", text).group()

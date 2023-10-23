@@ -29,7 +29,50 @@ class Drawable:
 
         return point_mouse
 
-    def draw_line_with_image(self, scene, device_ratio, start_point, final_point, path_svg, label_component):
+    def canvas_one_pins(self, scene, device_ratio, start_point, final_point, tool, label_component):
+
+        items_added = []
+
+        item_line = self.get_line(
+            scene,
+            start_point.x(),
+            start_point.y(),
+            final_point.x(),
+            final_point.y()
+        )
+
+        item_img = self.get_image_1(
+            scene,
+            device_ratio,
+            tool.image,
+            start_point,
+            final_point,
+            90
+        )
+
+        if tool.name_class == "Power Supplies":
+            item_label = self.get_label1_center(
+                scene,
+                tool.name,
+                final_point,
+                label_component
+            )
+            items_added.append(item_label)
+        else:
+            item_label = self.get_label1(
+                scene,
+                final_point,
+                label_component
+            )
+            items_added.append(item_label)
+
+        items_added.append(item_line)
+        items_added.append(item_img)
+
+
+        return items_added
+
+    def canvas_two_pins(self, scene, device_ratio, start_point, final_point, path_svg, label_component):
 
         items_added = []
 
@@ -43,10 +86,17 @@ class Drawable:
         )
         angle = calculate_angle(start_point.x(), start_point.y(), final_point.x(), final_point.y())
 
-        component = QPointF(
-            (final_point.x() - start_point.x()) / magnitude,
-            (final_point.y() - start_point.y()) / magnitude
-        )
+        if magnitude == 0:
+            component = QPointF(
+                (final_point.x() - start_point.x()),
+                (final_point.y() - start_point.y())
+            )
+            angle = 90
+        else:
+            component = QPointF(
+                (final_point.x() - start_point.x()) / magnitude,
+                (final_point.y() - start_point.y()) / magnitude
+            )
 
         line_top = self.get_line(
             scene,
@@ -91,7 +141,7 @@ class Drawable:
         items_added = []
 
         item_line = self.get_line(
-            scene, 
+            scene,
             start_point.x(), start_point.y(),
             end_point.x(), end_point.y()
         )
@@ -106,18 +156,72 @@ class Drawable:
         return line
 
     def get_label(self, scene, middle_point, label, angle):
+        item_text = QGraphicsTextItem(str(label))
+
+        if 0 <= angle < 69 or 291 < angle:
+            item_text.setRotation(angle)
+            radius = 40
+            new_x = middle_point.x() + radius * math.cos(math.radians(angle - 90))
+            new_y = middle_point.y() + radius * math.sin(math.radians(angle - 90))
+
+            item_text.setPos(new_x, new_y)
+            item_text.setPos(
+                new_x - (item_text.boundingRect().width() / 2) * math.cos(math.radians(angle)),
+                new_y - (item_text.boundingRect().width() / 2) * math.sin(math.radians(angle))
+            )
+        elif 111 < angle < 249:
+            item_text.setRotation(angle + 180)
+            radius = 15
+            new_x = middle_point.x() + radius * math.cos(math.radians(angle-90))
+            new_y = middle_point.y() + radius * math.sin(math.radians(angle-90))
+
+            item_text.setPos(new_x, new_y)
+            item_text.setPos(
+                new_x + (item_text.boundingRect().width() / 2) * math.cos(math.radians(angle)),
+                new_y + (item_text.boundingRect().width() / 2) * math.sin(math.radians(angle))
+            )
+        elif 249 <= angle <= 291:
+            item_text.setRotation(0)
+            radius = 23
+            new_x = middle_point.x() + radius * math.cos(math.radians(angle - 55))
+            new_y = middle_point.y() + radius * math.sin(math.radians(angle - 55))
+
+            item_text.setPos(new_x, new_y)
+            item_text.setPos(
+                new_x - (item_text.boundingRect().width()) * math.cos(math.radians(angle + 90)),
+                new_y - (item_text.boundingRect().width()) * math.sin(math.radians(angle + 90))
+            )
+        else:
+            item_text.setRotation(angle - 90)
+            radius = 20
+            new_x = middle_point.x() + radius * math.cos(math.radians(angle-130))
+            new_y = middle_point.y() + radius * math.sin(math.radians(angle-130))
+
+            item_text.setPos(new_x, new_y)
+
+        scene.addItem(item_text)
+        return item_text
+
+    def get_label1(self, scene, pos_point, label):
         item_text = QGraphicsTextItem()
         item_text.setPlainText(label)
-        item_text.setRotation(angle)
-        radius = 40
-        new_x = middle_point.x() + radius * math.cos(math.radians(angle - 90))
-        new_y = middle_point.y() + radius * math.sin(math.radians(angle - 90))
-
+        new_x = pos_point.x()
+        new_y = pos_point.y() - (item_text.boundingRect().height()*0.7)
         item_text.setPos(new_x, new_y)
-        item_text.setPos(
-            new_x - (item_text.boundingRect().width() / 2) * math.cos(math.radians(angle)),
-            new_y - (item_text.boundingRect().width() / 2) * math.sin(math.radians(angle))
-        )
+
+        scene.addItem(item_text)
+        return item_text
+
+    def get_label1_center(self, scene, name_tool, pos_point, label):
+        item_text = QGraphicsTextItem()
+        item_text.setPlainText(label)
+        new_x = pos_point.x()-(item_text.boundingRect().width()/2)
+        if name_tool == "VCC":
+            new_y = pos_point.y() - 50
+        else:
+            new_y = pos_point.y() + 25
+        item_text.setPos(new_x, new_y)
+
         scene.addItem(item_text)
         return item_text
 
@@ -140,6 +244,31 @@ class Drawable:
         item_img = QGraphicsPixmapItem(pixmap)
         item_img.setPos((point_start.x() + point_final.x() - pixmap.width()) / 2,
                         (point_start.y() + point_final.y() - pixmap.height()) / 2)
+        item_img.setTransformOriginPoint(item_img.boundingRect().center())
+        item_img.setRotation(angle)
+        item_img.setTransformationMode(Qt.SmoothTransformation)
+        scene.addItem(item_img)
+
+        return item_img
+
+    def get_image_1(self, scene, device_ratio, path_svg, point_start, point_final, angle):
+        renderer = QSvgRenderer(path_svg)
+        image_width = 50
+        aspect_ratio = renderer.defaultSize().width() / renderer.defaultSize().height()
+        image_height = int(image_width / aspect_ratio)
+        image = QImage(image_width, image_height, QImage.Format_ARGB32)
+        image.fill(Qt.TransparentMode)
+
+        painter = QPainter(image)
+        painter.setRenderHint(QPainter.Antialiasing, True)
+        renderer.render(painter)
+        painter.end()
+
+        pixmap = QPixmap.fromImage(image)
+        pixmap.setDevicePixelRatio(device_ratio)
+
+        item_img = QGraphicsPixmapItem(pixmap)
+        item_img.setPos(point_final.x() - (pixmap.width()/2), point_final.y() - (pixmap.height()/2))
         item_img.setTransformOriginPoint(item_img.boundingRect().center())
         item_img.setRotation(angle)
         item_img.setTransformationMode(Qt.SmoothTransformation)

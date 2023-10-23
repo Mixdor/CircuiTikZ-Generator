@@ -1,12 +1,22 @@
 class LatexGenerator:
 
-    def getDraw(self, point_initial, point_final, latex, text_aux):
-        x1 = str(point_initial.x())
-        y1 = str(point_initial.y())
-        x2 = str(point_final.x())
-        y2 = str(point_final.y())
+    def getDrawOnePin(self, start_point, final_point, latex, label):
+        x1 = str(start_point.x())
+        y1 = str(start_point.y())
+        x2 = str(final_point.x())
+        y2 = str(final_point.y())
 
-        draw_text = '\\draw (' + x1 + ",-" + y1 + ')to[' + latex + '=' + text_aux + '] (' + x2 + ',-' + y2 + ');'
+        draw_text = '\\draw (' + x1 + ",-" + y1 + ')to(' + x2 + ',-' + y2 + ') ' + latex + '{' + label + '}' + ';'
+
+        return draw_text
+
+    def getDrawTwoPin(self, start_point, final_point, latex, label):
+        x1 = str(start_point.x())
+        y1 = str(start_point.y())
+        x2 = str(final_point.x())
+        y2 = str(final_point.y())
+
+        draw_text = '\\draw (' + x1 + ",-" + y1 + ')to[' + latex + '=' + label + '] (' + x2 + ',-' + y2 + ');'
 
         return draw_text
 

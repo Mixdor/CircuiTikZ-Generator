@@ -54,7 +54,17 @@
 [Switch]{pins=2}{img=components/images/OpenSwitch.svg}{latex=nos}
 </group>
 <group name="Grounds">
-[Ground]{pins=1}{img=components/images/}{latex=node[ground]{}}
+[Ground]{pins=1}{img=components/images/Ground_Earth.svg}{latex=node[ground]}
+[Tailless]{pins=1}{img=components/images/Ground_Tailless.svg}{latex=node[tlground]}
+[Reference]{pins=1}{img=components/images/Ground_Reference.svg}{latex=node[rground]}
+[Signal]{pins=1}{img=components/images/Ground_Signal.svg}{latex=node[sground]}
+[Noiseless]{pins=1}{img=components/images/Ground_Noiseles.svg}{latex=node[nground]}
+[Protective]{pins=1}{img=components/images/Ground_Protective.svg}{latex=node[pground]}
+[Chassis]{pins=1}{img=components/images/Ground_Chassis.svg}{latex=node[cground]}
+</group>
+<group name="Power Supplies">
+[VCC]{pins=1}{img=components/images/Supplies_VCC.svg}{latex=node[vcc]}
+[VEE]{pins=1}{img=components/images/Supplies_VEE.svg}{latex=node[vee]}
 </group>
 <group name="Instruments">
 [Ammeter]{pins=2}{img=components/images/Ammeter.svg}{latex=ammeter}
