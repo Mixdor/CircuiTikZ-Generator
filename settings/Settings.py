@@ -1,13 +1,18 @@
+import os
 import re
 
 
 class Settings:
 
+    def __init__(self, base_path):
+        self.base_path = base_path
+
     def get_settings(self):
 
+        path = os.path.join(self.base_path, 'settings.txt')
         dictionary_settings = {}
 
-        with open('settings.txt', 'r') as archivo:
+        with open(path, 'r') as archivo:
             lines = archivo.readlines()
             for line in lines:
                 name_setting = re.search(r'.+=', line).group().replace('=', "")
@@ -19,7 +24,9 @@ class Settings:
 
     def save_Settings(self, keys, values):
 
-        with open('settings.txt', 'w') as file:
+        path = os.path.join(self.base_path, 'settings.txt')
+
+        with open(path, 'w') as file:
 
             for i in range(keys.__len__()):
                 file.write(keys[i]+"="+str(values[i])+"\n")

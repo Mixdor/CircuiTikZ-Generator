@@ -1,0 +1,73 @@
+<group name="Basic">
+[Select]{pins=0}{img=path}{latex=None}
+[Wire]{pins=2}{img=path}{latex=short}
+</group>
+<group name="Sources">
+[Battery]{pins=2}{img=images/Battery.svg}{latex=battery}
+[Battery 1]{pins=2}{img=images/Battery_1.svg}{latex=battery1}
+[Battery 2]{pins=2}{img=images/Battery_2.svg}{latex=battery2}
+[DC Voltage]{pins=2}{img=images/Voltage_Source.svg}{latex=V}
+[DC Current]{pins=2}{img=images/Current_Source.svg}{latex=I}
+[AC Voltage]{pins=2}{img=images/SinusoidalVoltage.svg}{latex=sV}
+[AC Current]{pins=2}{img=images/SinusoidalCurrent.svg}{latex=sI}
+[DC Controlled Voltage]{pins=2}{img=images/ControlledVoltage.svg}{latex=controlled voltage source}
+[DC Controlled Current]{pins=2}{img=images/ControlledCurrent.svg}{latex=controlled current source}
+[AC Controlled Voltage]{pins=2}{img=images/ControlledSinusoidalVoltage.svg}{latex=csV}
+[AC Controlled Current]{pins=2}{img=images/ControlledSinusoidalCurrent.svg}{latex=csI}
+[Square Voltage]{pins=2}{img=images/Square_Voltage.svg}{latex=sqV}
+[Triangle Voltage]{pins=2}{img=images/}{latex=tV}
+</group>
+<group name="Resistors">
+[Resistor]{pins=2}{img=images/Resistor.svg}{latex=R}
+[Variable Resistor]{pins=4}{img=images/}{latex=vR}
+[Potentiometer]{pins=3}{img=images/}{latex=pR}
+[Light Dependent Resistor]{pins=2}{img=images/}{latex=ldR}
+</group>
+<group name="Inductors">
+[Inductor]{pins=2}{img=images/Inductor.svg}{latex=L}
+[Variable Inductor]{pins=4}{img=images/}{latex=vL}
+[Inductive Sensor]{pins=4}{img=images/}{latex=sL}
+</group>
+<group name="Capacitors">
+[Capacitor]{pins=2}{img=images/Capacitor.svg}{latex=C}
+[Polarized Capacitor]{pins=2}{img=images/Capacitor_Polarized.svg}{latex=cC}
+[Electrolytic capacitor]{pins=2}{img=images/Capacitor_Electrolytic.svg}{latex=eC}
+[Piezoelectric]{pins=2}{img=images/Capacitor_Piezoelectric.svg}{latex=PZ}
+[Variable Capacitor]{pins=4}{img=images/}{latex=vC}
+[Capacitive Sensor]{pins=2}{img=images/}{latex=cC}
+</group>
+<group name="Diodes">
+[Diode]{pins=2}{img=images/Diode.svg}{latex=D}
+[Schottky Diode]{pins=2}{img=images/Diode_Schottky.svg}{latex=sD}
+[Zener Diode]{pins=2}{img=images/Diode_Zener.svg}{latex=zD}
+[ZZener Diode]{pins=2}{img=images/Diode_ZZener.svg}{latex=zzD}
+[Tunnel Diode]{pins=2}{img=images/Diode_Tunnel.svg}{latex=tD}
+[Photodiode]{pins=2}{img=images/Diode_Photo.svg}{latex=pD}
+[Led]{pins=2}{img=images/Diode_Led.svg}{latex=pD}
+[Laser Diode]{pins=2}{img=images/Diode_Laser.svg}{latex=lasD}
+[Varcap]{pins=2}{img=images/Diode_Varcap.svg}{latex=VC}
+[TVS Diode]{pins=2}{img=images/Diode_TVS.svg}{latex=vsD}
+[Shockley Diode]{pins=2}{img=images/Diode_Shockley.svg}{latex=shD}
+[Bidirectional Diode]{pins=2}{img=images/Diode_Bidirectional.svg}{latex=biD}
+</group>
+<group name="Switches">
+[Switch]{pins=2}{img=images/OpenSwitch.svg}{latex=nos}
+</group>
+<group name="Grounds">
+[Ground]{pins=1}{img=images/Ground_Earth.svg}{latex=node[ground]}
+[Tailless]{pins=1}{img=images/Ground_Tailless.svg}{latex=node[tlground]}
+[Reference]{pins=1}{img=images/Ground_Reference.svg}{latex=node[rground]}
+[Signal]{pins=1}{img=images/Ground_Signal.svg}{latex=node[sground]}
+[Noiseless]{pins=1}{img=images/Ground_Noiseles.svg}{latex=node[nground]}
+[Protective]{pins=1}{img=images/Ground_Protective.svg}{latex=node[pground]}
+[Chassis]{pins=1}{img=images/Ground_Chassis.svg}{latex=node[cground]}
+</group>
+<group name="Power Supplies">
+[VCC]{pins=1}{img=images/Supplies_VCC.svg}{latex=node[vcc]}
+[VEE]{pins=1}{img=images/Supplies_VEE.svg}{latex=node[vee]}
+</group>
+<group name="Instruments">
+[Ammeter]{pins=2}{img=images/Ammeter.svg}{latex=ammeter}
+[Voltmeter]{pins=2}{img=images/Voltmeter.svg}{latex=voltmeter}
+[Ohmmeter]{pins=2}{img=images/Ohmmeter.svg}{latex=ohmmeter}
+</group>

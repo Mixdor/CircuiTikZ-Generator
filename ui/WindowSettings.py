@@ -3,14 +3,14 @@ from settings.Settings import Settings
 
 
 class WindowSettings(QWidget):
-    def __init__(self):
+    def __init__(self, base_path):
         super().__init__()
         self.setWindowTitle("settings")
         self.setGeometry(150, 150, 270, 100)
         self.layout = QVBoxLayout()
         self.setLayout(self.layout)
 
-        self.aux_settings = Settings()
+        self.aux_settings = Settings(base_path)
 
         check_figure = QCheckBox("Wrap in Figure")
         check_figure.stateChanged.connect(self.figure_change)

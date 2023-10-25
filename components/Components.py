@@ -1,12 +1,17 @@
+import os
 import re
+import sys
 
 from components.ObjTool import ObjTool
 
 
 class Components:
+    def __init__(self, base_path):
+        self.base_path = base_path
 
     def get_groups(self):
-        with open('components/list_components.txt', 'r') as file:
+        path = os.path.join(self.base_path, 'list_components.txt')
+        with open(path, 'r') as file:
             content = file.read()
 
             list_groups = content.split("</group>")
@@ -83,7 +88,9 @@ class Components:
         text = text.replace("}", "")
         text = text.replace("{", "")
 
-        return text
+        path = os.path.join(self.base_path, text)
+
+        return path
 
     def get_latex(self, text_line):
 

@@ -5,12 +5,12 @@ from settings.Settings import Settings
 
 
 class WindowExport(QWidget):
-    def __init__(self, draws_list):
+    def __init__(self, draws_list, base_path):
         super().__init__()
         self.setWindowTitle('Generated')
         self.setGeometry(150, 150, 350, 500)
         self.latexGen = LatexGenerator()
-        self.aux_settings = Settings()
+        self.aux_settings = Settings(base_path)
 
         self.draw_list = draws_list
         self.dic_settings = self.aux_settings.get_settings()

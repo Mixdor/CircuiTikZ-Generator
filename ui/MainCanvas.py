@@ -7,7 +7,6 @@ from components.Drawable import Drawable
 from components.LatexGenerator import LatexGenerator
 
 
-
 def remove_point_cursor(self):
     if self.mouse_point:
         self.scene.removeItem(self.mouse_point)

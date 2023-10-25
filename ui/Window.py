@@ -10,8 +10,9 @@ from ui.WindowSettings import WindowSettings
 
 
 class MainWindow(QMainWindow):
-    def __init__(self):
+    def __init__(self, base_path):
         super().__init__()
+        self.base_path = base_path
         self.setMouseTracking(True)
 
         self.botones = []
@@ -38,7 +39,7 @@ class MainWindow(QMainWindow):
         layout_scroll_area = QVBoxLayout()
         layout_scroll_area.setAlignment(Qt.AlignTop)
 
-        new_components = Components()
+        new_components = Components(self.base_path)
 
         list_groups_components = new_components.get_groups()
 
@@ -147,11 +148,11 @@ class MainWindow(QMainWindow):
             button.setStyleSheet("background-color: lightblue; color: black;")
 
     def show_export(self):
-        self.window_export = WindowExport(self.draw_added)
+        self.window_export = WindowExport(self.draw_added, self.base_path)
         self.window_export.show()
 
     def show_setting(self):
-        self.window_setting = WindowSettings()
+        self.window_setting = WindowSettings(self.base_path)
         self.window_setting.show()
 
     def on_undo(self):
