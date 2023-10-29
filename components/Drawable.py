@@ -23,7 +23,7 @@ class Drawable:
 
     def get_point(self, x, y):
 
-        point_radio = 5
+        point_radio = 4
         point_mouse = QGraphicsEllipseItem(x - point_radio, y - point_radio, 2 * point_radio, 2 * point_radio)
         point_mouse.setBrush(Qt.red)
 
@@ -45,7 +45,7 @@ class Drawable:
             scene,
             device_ratio,
             tool.image,
-            start_point,
+            50,
             final_point,
             90
         )
@@ -137,6 +137,104 @@ class Drawable:
 
         return items_added
 
+    def canvas_two_pins_no_img(self, scene, start_point, final_point, label_component):
+
+        items_added = []
+
+        middle_point = QPointF(
+            (start_point.x() + final_point.x()) / 2,
+            (start_point.y() + final_point.y()) / 2
+        )
+        magnitude = math.sqrt(
+            math.pow((final_point.x() - start_point.x()), 2) +
+            math.pow(final_point.y() - start_point.y(), 2)
+        )
+        angle = calculate_angle(start_point.x(), start_point.y(), final_point.x(), final_point.y())
+
+        if magnitude == 0:
+            angle = 90
+
+        item_line = self.get_line(
+            scene,
+            start_point.x(),
+            start_point.y(),
+            final_point.x(),
+            final_point.y()
+        )
+
+        item_label = self.get_label(
+            scene,
+            middle_point,
+            label_component,
+            angle
+        )
+
+        items_added.append(item_line)
+        items_added.append(item_label)
+
+        return items_added
+
+    def canvas_transistor(self, scene, device_ratio, final_point, path_svg, label_component):
+
+        items_added = []
+
+        item_img = self.get_image(
+            scene,
+            device_ratio,
+            path_svg,
+            final_point,
+            final_point,
+            0
+        )
+
+        line_top = self.get_line(
+            scene,
+            final_point.x(), final_point.y() - 50,
+            final_point.x(), final_point.y() - 25
+        )
+
+        line_button = self.get_line(
+            scene,
+            final_point.x(), final_point.y() + 50,
+            final_point.x(), final_point.y() + 25
+        )
+
+        line_middle = self.get_line(
+            scene,
+            final_point.x() - 50, final_point.y(),
+            final_point.x() - 25, final_point.y()
+        )
+
+        item_label = self.get_label3(scene, final_point, label_component)
+
+        items_added.append(item_img)
+        items_added.append(line_top)
+        items_added.append(line_middle)
+        items_added.append(line_button)
+        items_added.append(item_label)
+
+        return items_added
+
+    def canvas_transformer(self, scene, device_ratio, final_point, path_svg, label_component):
+
+        items_added = []
+
+        item_img = self.get_image_1(
+            scene,
+            device_ratio,
+            path_svg,
+            100,
+            final_point,
+            0
+        )
+
+        item_label = self.get_label4(scene, final_point, label_component)
+
+        items_added.append(item_img)
+        items_added.append(item_label)
+
+        return items_added
+
     def draw_line(self, scene, start_point, end_point):
         items_added = []
 
@@ -212,6 +310,26 @@ class Drawable:
         scene.addItem(item_text)
         return item_text
 
+    def get_label3(self, scene, pos_point, label):
+        item_text = QGraphicsTextItem()
+        item_text.setPlainText(label)
+        new_x = pos_point.x()
+        new_y = pos_point.y() - (item_text.boundingRect().height()/2)
+        item_text.setPos(new_x, new_y)
+
+        scene.addItem(item_text)
+        return item_text
+
+    def get_label4(self, scene, pos_point, label):
+        item_text = QGraphicsTextItem()
+        item_text.setPlainText(label)
+        new_x = pos_point.x() - (item_text.boundingRect().width()/2)
+        new_y = pos_point.y() - (50 + item_text.boundingRect().height())
+        item_text.setPos(new_x, new_y)
+
+        scene.addItem(item_text)
+        return item_text
+
     def get_label1_center(self, scene, name_tool, pos_point, label):
         item_text = QGraphicsTextItem()
         item_text.setPlainText(label)
@@ -251,9 +369,9 @@ class Drawable:
 
         return item_img
 
-    def get_image_1(self, scene, device_ratio, path_svg, point_start, point_final, angle):
+    def get_image_1(self, scene, device_ratio, path_svg, size, point_final, angle):
         renderer = QSvgRenderer(path_svg)
-        image_width = 50
+        image_width = size
         aspect_ratio = renderer.defaultSize().width() / renderer.defaultSize().height()
         image_height = int(image_width / aspect_ratio)
         image = QImage(image_width, image_height, QImage.Format_ARGB32)

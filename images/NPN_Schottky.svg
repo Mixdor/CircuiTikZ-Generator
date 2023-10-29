@@ -4,19 +4,19 @@
 <svg
    version="1.1"
    id="svg2"
-   sodipodi:docname="Battery.svg"
    x="0px"
    y="0px"
    viewBox="0 0 50 50"
    style="enable-background:new 0 0 50 50;"
    xml:space="preserve"
+   sodipodi:docname="NPN_Schottky.svg"
    inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"><defs
-   id="defs23" /><sodipodi:namedview
-   id="namedview21"
+   id="defs17" /><sodipodi:namedview
+   id="namedview15"
    pagecolor="#ffffff"
    bordercolor="#000000"
    borderopacity="0.25"
@@ -37,55 +37,33 @@
 <style
    type="text/css"
    id="style2">
-	.st0{fill:none;stroke:#000000;stroke-linecap:round;}
+	.st0{fill:#FFFFFF;stroke:#000000;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#000000;stroke-miterlimit:10;}
+	.st2{stroke:#000000;stroke-width:0.5;stroke-miterlimit:10;}
 </style>
-<g
-   id="g18"
-   transform="matrix(-1,0,0,1,50,0)">
-	<line
+<polyline
    class="st0"
+   points="25,0.1 25,12.9 15.3,20.2 "
+   id="polyline4"
+   style="fill:none" />
+<line
+   class="st1"
    x1="0"
    y1="25"
-   x2="16.6"
-   y2="25"
-   id="line4" />
-	<line
-   class="st0"
-   x1="33.400002"
-   y1="25"
-   x2="50"
+   x2="15.3"
    y2="25"
    id="line6" />
-	<g
-   id="g16">
-		<line
+<polyline
    class="st0"
-   x1="32.900002"
-   y1="10.7"
-   x2="32.900002"
-   y2="39.299999"
-   id="line8" />
-		<line
-   class="st0"
-   x1="22.1"
-   y1="10.7"
-   x2="22.1"
-   y2="39.299999"
-   id="line10" />
-		<line
-   class="st0"
-   x1="27.799999"
-   y1="17.9"
-   x2="27.799999"
-   y2="32.099998"
-   id="line12" />
-		<line
-   class="st0"
-   x1="17.1"
-   y1="17.9"
-   x2="17.1"
-   y2="32.099998"
-   id="line14" />
-	</g>
-</g>
+   points="25,50 25,37.2 15.3,29.9 "
+   id="polyline8"
+   style="fill:none" />
+<polygon
+   class="st2"
+   points="21,30.7 17.9,35.3 23.3,35.9 "
+   id="polygon10" />
+<polyline
+   class="st1"
+   points="17.9,13.1 17.9,10.6 15.3,10.6 15.3,39.4 12.9,39.4 12.9,36.8 "
+   id="polyline12" />
 </svg>

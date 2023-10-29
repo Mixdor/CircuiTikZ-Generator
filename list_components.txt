@@ -1,6 +1,16 @@
 <group name="Basic">
 [Select]{pins=0}{img=path}{latex=None}
 [Wire]{pins=2}{img=path}{latex=short}
+[Crossing Wire]{pins=2}{img=images/Crossings.svg}{latex=crossing}
+</group>
+<group name="Terminal Shapes">
+[Connected]{pins=1}{img=images/Circle.svg}{latex=node[circ]}
+[Unconnected]{pins=1}{img=images/Circle_Open.svg}{latex=node[ocirc]}
+[Diamond]{pins=1}{img=images/Diamond.svg}{latex=node[diamondpole]}
+[Open Diamond]{pins=1}{img=images/Diamond_Open.svg}{latex=node[odiamondpole]}
+[Square]{pins=1}{img=images/Square.svg}{latex=node[squarepole]}
+[Open Square]{pins=1}{img=images/Square_Open.svg}{latex=node[osquarepole]}
+[Arrow]{pins=1}{img=images/Arrow.svg}{latex=node[currarrow]}
 </group>
 <group name="Sources">
 [Battery]{pins=2}{img=images/Battery.svg}{latex=battery}
@@ -15,26 +25,20 @@
 [AC Controlled Voltage]{pins=2}{img=images/ControlledSinusoidalVoltage.svg}{latex=csV}
 [AC Controlled Current]{pins=2}{img=images/ControlledSinusoidalCurrent.svg}{latex=csI}
 [Square Voltage]{pins=2}{img=images/Square_Voltage.svg}{latex=sqV}
-[Triangle Voltage]{pins=2}{img=images/}{latex=tV}
+[Triangle Voltage]{pins=2}{img=images/Triangle_Voltage.svg}{latex=tV}
 </group>
 <group name="Resistors">
 [Resistor]{pins=2}{img=images/Resistor.svg}{latex=R}
-[Variable Resistor]{pins=4}{img=images/}{latex=vR}
 [Potentiometer]{pins=3}{img=images/}{latex=pR}
-[Light Dependent Resistor]{pins=2}{img=images/}{latex=ldR}
 </group>
 <group name="Inductors">
 [Inductor]{pins=2}{img=images/Inductor.svg}{latex=L}
-[Variable Inductor]{pins=4}{img=images/}{latex=vL}
-[Inductive Sensor]{pins=4}{img=images/}{latex=sL}
 </group>
 <group name="Capacitors">
 [Capacitor]{pins=2}{img=images/Capacitor.svg}{latex=C}
 [Polarized Capacitor]{pins=2}{img=images/Capacitor_Polarized.svg}{latex=cC}
 [Electrolytic capacitor]{pins=2}{img=images/Capacitor_Electrolytic.svg}{latex=eC}
 [Piezoelectric]{pins=2}{img=images/Capacitor_Piezoelectric.svg}{latex=PZ}
-[Variable Capacitor]{pins=4}{img=images/}{latex=vC}
-[Capacitive Sensor]{pins=2}{img=images/}{latex=cC}
 </group>
 <group name="Diodes">
 [Diode]{pins=2}{img=images/Diode.svg}{latex=D}
@@ -46,12 +50,38 @@
 [Led]{pins=2}{img=images/Diode_Led.svg}{latex=pD}
 [Laser Diode]{pins=2}{img=images/Diode_Laser.svg}{latex=lasD}
 [Varcap]{pins=2}{img=images/Diode_Varcap.svg}{latex=VC}
-[TVS Diode]{pins=2}{img=images/Diode_TVS.svg}{latex=vsD}
+[TVS Diode]{pins=2}{img=images/Diode_TVS.svg}{latex=tvsD}
 [Shockley Diode]{pins=2}{img=images/Diode_Shockley.svg}{latex=shD}
 [Bidirectional Diode]{pins=2}{img=images/Diode_Bidirectional.svg}{latex=biD}
 </group>
 <group name="Switches">
-[Switch]{pins=2}{img=images/OpenSwitch.svg}{latex=nos}
+[Switch]{pins=2}{img=images/Switch_Open.svg}{latex=nos}
+[Closing Switch]{pins=2}{img=images/Switch_Closing.svg}{latex=cspst}
+[Opening Switch]{pins=2}{img=images/Switch_Opening.svg}{latex=ospst}
+[Push Button]{pins=2}{img=images/Push.svg}{latex=nopb}
+[Push Closed]{pins=2}{img=images/Push_Closed.svg}{latex=nopbc}
+</group>
+<group name="Transistors">
+[NPN]{pins=3}{img=images/NPN.svg}{latex=node[npn]}
+[PNP]{pins=3}{img=images/PNP.svg}{latex=node[pnp]}
+[Schottky NPN]{pins=3}{img=images/NPN_Schottky.svg}{latex=node[npn,schottky base]}
+[Schottky PNP]{pins=3}{img=images/PNP_Schottky.svg}{latex=node[pnp,schottky base]}
+[Diode NPN]{pins=3}{img=images/NPN_Diode.svg}{latex=node[npn,bodydiode]}
+[Diode PNP]{pins=3}{img=images/PNP_Diode.svg}{latex=node[pnp,bodydiode]}
+[Photo NPN]{pins=3}{img=images/NPN_Photo.svg}{latex=node[npn,photo]}
+[Photo PNP]{pins=3}{img=images/PNP_Photo.svg}{latex=node[pnp,photo]}
+[Nigbt]{pins=3}{img=images/NPN_Nigbt.svg}{latex=node[nigbt]}
+[Pigbt]{pins=3}{img=images/PNP_Pigbt.svg}{latex=node[pigbt]}
+[NMOS]{pins=3}{img=images/Nmos.svg}{latex=node[nmos]}
+[PMOS]{pins=3}{img=images/Pmos.svg}{latex=node[pmos]}
+[NMOS Depletion]{pins=3}{img=images/Nmos_Depletion.svg}{latex=node[nmosd]}
+[PMOS Depletion]{pins=3}{img=images/Pmos_Depletion.svg}{latex=node[pmosd]}
+[Hemt]{pins=3}{img=images/Hemt.svg}{latex=node[hemt]}
+[Hemt NoBase]{pins=3}{img=images/Hemt_Nobase.svg}{latex=node[hemt,nobase]}
+[NFET]{pins=3}{img=images/Nfet.svg}{latex=node[nfet]}
+[PFET]{pins=3}{img=images/Pfet.svg}{latex=node[pfet]}
+[NFET Depletion]{pins=3}{img=images/Nfet_Depletion.svg}{latex=node[nfetd]}
+[PFET Depletion]{pins=3}{img=images/Pfet_Depletion.svg}{latex=node[pfetd]}
 </group>
 <group name="Grounds">
 [Ground]{pins=1}{img=images/Ground_Earth.svg}{latex=node[ground]}
@@ -65,6 +95,11 @@
 <group name="Power Supplies">
 [VCC]{pins=1}{img=images/Supplies_VCC.svg}{latex=node[vcc]}
 [VEE]{pins=1}{img=images/Supplies_VEE.svg}{latex=node[vee]}
+</group>
+<group name="Transformers">
+[Transformer]{pins=4}{img=images/Transformer.svg}{latex=node[transformer, scale=0.952]}
+[Gyrator]{pins=4}{img=images/Gyrator.svg}{latex=node[gyrator, scale=0.952]}
+[Transformer Core]{pins=4}{img=images/Transformer_Core.svg}{latex=node[transformer core, scale=0.952]}
 </group>
 <group name="Instruments">
 [Ammeter]{pins=2}{img=images/Ammeter.svg}{latex=ammeter}

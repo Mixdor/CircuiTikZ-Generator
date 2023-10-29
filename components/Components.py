@@ -96,7 +96,7 @@ class Components:
 
         text = re.search(r'(\{latex=(.+)})', text_line).group()
         text = re.search("(=(.+)})", text).group()
-        text = text.replace("=", "")
+        text = text[1:]
         text = text[:-1]
 
         return text

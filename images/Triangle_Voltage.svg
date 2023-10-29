@@ -12,7 +12,7 @@
 <g id="layer1" transform="matrix(0,-1.135436,-1.1316024,0,53.29006,53.3859)">
 	<path id="path2194" class="st0" d="M25,10V3"/>
 	<path id="path2196" class="st0" d="M25,40v7"/>
-	<polyline class="st1" points="32.4,25 32.4,18.1 25.4,18.1 25.4,32.9 17.4,32.9 17.4,25.5 	"/>
+	<polyline class="st1" points="32.4,25 28.9,18.1 21.9,32.9 17.4,25.5 	"/>
 	<path id="path2249" class="st2" d="M40,25c0,8.3-6.7,15-15,15s-15-6.7-15-15s6.7-15,15-15S40,16.7,40,25z"/>
 </g>
 </svg>

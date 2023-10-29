@@ -5,14 +5,7 @@
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50"
 	 style="enable-background:new 0 0 50 50;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;stroke:#000000;}
-	.st1{fill:none;stroke:#000000;stroke-miterlimit:10;}
-	.st2{fill:none;stroke:#000000;stroke-linecap:square;}
+	.st0{stroke:#000000;stroke-miterlimit:10;}
 </style>
-<g id="layer1" transform="matrix(0,-1.135436,-1.1316024,0,53.29006,53.3859)">
-	<path id="path2194" class="st0" d="M25,10V3"/>
-	<path id="path2196" class="st0" d="M25,40v7"/>
-	<polyline class="st1" points="32.4,25 32.4,18.1 25.4,18.1 25.4,32.9 17.4,32.9 17.4,25.5 	"/>
-	<path id="path2249" class="st2" d="M40,25c0,8.3-6.7,15-15,15s-15-6.7-15-15s6.7-15,15-15S40,16.7,40,25z"/>
-</g>
+<rect x="20.8" y="20.8" class="st0" width="8.4" height="8.4"/>
 </svg>

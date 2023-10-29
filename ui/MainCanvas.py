@@ -20,6 +20,7 @@ class Canvas(QGraphicsView):
         self.scene = QGraphicsScene(self)
         self.setScene(self.scene)
         self.setMouseTracking(True)
+        self.id_node = 0
 
         self.current_label = label_component
 
@@ -121,7 +122,7 @@ class Canvas(QGraphicsView):
                     comp = self.drawable.draw_line(self.scene, self.start_point, self.end_point)
                 self.update()
 
-                draw = self.latex_gen.getDrawOnePin(
+                draw = self.latex_gen.get_draw_one_pin(
                     self.start_point / self.cell_size,
                     self.end_point / self.cell_size,
                     self.tool.latex,
@@ -140,10 +141,14 @@ class Canvas(QGraphicsView):
                         path_svg, self.current_label.toPlainText()
                     )
                 else:
-                    comp = self.drawable.draw_line(self.scene, self.start_point, self.end_point)
+                    comp = self.drawable.canvas_two_pins_no_img(
+                        self.scene,
+                        self.start_point, self.end_point,
+                        self.current_label.toPlainText()
+                    )
                 self.update()
 
-                draw = self.latex_gen.getDrawTwoPin(
+                draw = self.latex_gen.get_draw_two_pin(
                     self.start_point/self.cell_size,
                     self.end_point/self.cell_size,
                     self.tool.latex,
@@ -153,7 +158,48 @@ class Canvas(QGraphicsView):
                 self.components_added.append(comp)
 
             if number_pins == 3:
-                print(number_pins)
+                path_svg = self.tool.image
+                if os.path.exists(path_svg):
+                    comp = self.drawable.canvas_transistor(
+                        self.scene, self.devicePixelRatio(), self.end_point,
+                        path_svg, self.current_label.toPlainText()
+                    )
+                    self.components_added.append(comp)
+                else:
+                    print("No found image")
+                self.update()
+
+                draws = self.latex_gen.get_draw_transistor(
+                    self.id_node,
+                    self.end_point / self.cell_size,
+                    self.tool.latex,
+                    self.current_label.toPlainText()
+                )
+                self.id_node += 1
+
+                self.draw_added.append(draws)
+
+            if number_pins == 4:
+                path_svg = self.tool.image
+                if os.path.exists(path_svg):
+                    comp = self.drawable.canvas_transformer(
+                        self.scene, self.devicePixelRatio(), self.end_point,
+                        path_svg, self.current_label.toPlainText()
+                    )
+                    self.components_added.append(comp)
+                else:
+                    print("No found image")
+                self.update()
+
+                draws = self.latex_gen.get_draw_transformer(
+                    self.id_node,
+                    self.end_point / self.cell_size,
+                    self.tool.latex,
+                    self.current_label.toPlainText()
+                )
+                self.id_node += 1
+
+                self.draw_added.append(draws)
 
         if self.dragMode() == QGraphicsView.ScrollHandDrag:
             self.setDragMode(QGraphicsView.NoDrag)
