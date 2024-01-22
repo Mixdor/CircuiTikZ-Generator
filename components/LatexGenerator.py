@@ -22,7 +22,7 @@ class LatexGenerator:
         x2 = str(final_point.x())
         y2 = str(final_point.y())
 
-        draw_text = '\\draw (' + x1 + ",-" + y1 + ')to[' + latex + '=' + label + '] (' + x2 + ',-' + y2 + ');'
+        draw_text = '\\draw (' + x1 + ",-" + y1 + ')to[' + latex + '={' + label + '}] (' + x2 + ',-' + y2 + ');'
         draws.append(draw_text)
 
         return draws
