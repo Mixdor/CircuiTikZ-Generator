@@ -1,3 +1,4 @@
+from PyQt5 import QtGui
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWidgets import *
@@ -12,6 +13,7 @@ from ui.WindowSettings import WindowSettings
 class MainWindow(QMainWindow):
     def __init__(self, base_path):
         super().__init__()
+        # self.setWindowIcon(QtGui.QIcon('images/araña2.png'))
         self.base_path = base_path
         self.setMouseTracking(True)
 
