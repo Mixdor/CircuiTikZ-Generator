@@ -1,4 +1,5 @@
-from PyQt5.QtWidgets import QWidget, QPushButton, QVBoxLayout, QCheckBox
+from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QWidget, QPushButton, QVBoxLayout, QCheckBox
 from settings.Settings import Settings
 
 
@@ -22,10 +23,10 @@ class WindowSettings(QWidget):
         american_style = self.settings['american_style_components']
 
         if wrap_in_figure == 1:
-            check_figure.setCheckState(2)
+            check_figure.setCheckState(Qt.CheckState.Checked)
 
         if american_style == 1:
-            check_style_american.setCheckState(2)
+            check_style_american.setCheckState(Qt.CheckState.Checked)
 
         done = QPushButton('Done', self)
         done.clicked.connect(self.on_button_done)

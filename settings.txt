@@ -1,2 +1,2 @@
-wrap_in_figure=1
-american_style_components=1
+wrap_in_figure=0
+american_style_components=0
