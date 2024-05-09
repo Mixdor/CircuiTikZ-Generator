@@ -1,16 +1,14 @@
 import pyperclip
 from PyQt6.QtWidgets import QWidget, QCheckBox, QVBoxLayout, QTextEdit, QPushButton, QDialog, QHBoxLayout
 from components.Latex import Latex
-from settings.Settings import Settings
 
 
 class WindowGenerate(QDialog):
-    def __init__(self, draws_list, base_path):
+    def __init__(self, draws_list):
         super().__init__()
         self.setWindowTitle('Generated')
         self.setGeometry(150, 150, 350, 500)
         self.latexGen = Latex()
-        self.aux_settings = Settings(base_path)
 
         self.draw_list = draws_list
         self.dic_settings = {
@@ -34,7 +32,7 @@ class WindowGenerate(QDialog):
         layout_settings1.addWidget(check_style_american)
 
         self.text_area = QTextEdit(self)
-        self.text_area.setReadOnly(False)
+        self.text_area.setReadOnly(True)
         self.text_area.setText(self.latexGen.full_generete(self.draw_list, self.dic_settings))
 
         self.copy = QPushButton("Copy")

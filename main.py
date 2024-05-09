@@ -1,11 +1,9 @@
-import os
 import sys
 
-from PyQt6 import QtGui
-from PyQt6.QtGui import QIcon, QPalette
 from PyQt6.QtWidgets import QApplication
-from ui.Window import MainWindow
+
 from ui.Resources import Resources
+from ui.Window import MainWindow
 
 if __name__ == '__main__':
 
@@ -19,6 +17,7 @@ if __name__ == '__main__':
 
     mainWindow = MainWindow(resources.main_path)
     mainWindow.setGeometry(100, 100, 800, 600)
+    mainWindow.showMaximized()
     mainWindow.setWindowTitle("CircuiTikZ Generator")
     mainWindow.show()
     app.exec()

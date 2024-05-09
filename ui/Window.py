@@ -20,9 +20,7 @@ from ui.WindowNewVersion import WindowNewVersion
 class MainWindow(QMainWindow):
     def __init__(self, base_path):
         super().__init__()
-        self.showMaximized()
 
-        # self.setWindowIcon(QtGui.QIcon('images/araña2.png'))
         self.resources = Resources()
 
         self.base_path = base_path
@@ -30,7 +28,7 @@ class MainWindow(QMainWindow):
 
         self.botones = []
         self.obj_tools = []
-        self.tool_selected = ObjTool("Select", "Basic", 0, 'images/components_svg/arrow_selector.svg', '')
+        self.tool_selected = ObjTool("Select", "Basic", 0, f'{self.resources.main_path}/images/components_svg/arrow_selector.svg', '')
         self.components_added = []
         self.components_deleted = []
         self.draw_added = []
@@ -222,7 +220,7 @@ class MainWindow(QMainWindow):
 
     def show_generate_latex(self):
         self.manager_components.unselected()
-        dialog = WindowGenerate(self.draw_added, self.base_path)
+        dialog = WindowGenerate(self.draw_added)
         dialog.move(self.frameGeometry().topLeft() + self.rect().center() - dialog.rect().center())
         dialog.exec()
 
