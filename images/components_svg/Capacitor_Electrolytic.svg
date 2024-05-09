@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 24.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="Capacitor_Electrolytic.svg"
+   sodipodi:version="0.32"
+   x="0px"
+   y="0px"
+   viewBox="0 0 50 50"
+   style="enable-background:new 0 0 50 50;"
+   xml:space="preserve"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs1240" /><sodipodi:namedview
+   id="namedview1238"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   showgrid="false"
+   inkscape:zoom="10.6"
+   inkscape:cx="14.339623"
+   inkscape:cy="25"
+   inkscape:window-width="1366"
+   inkscape:window-height="707"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg2" />
+<style
+   type="text/css"
+   id="style1223">
+	.st0{fill:none;stroke:#000000;stroke-miterlimit:5.3832;}
+	.st1{stroke:#000000;stroke-miterlimit:5.3832;}
+	.st2{fill:none;stroke:#000000;}
+</style>
+<g
+   id="layer1"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:2;stroke-dasharray:none">
+	<g
+   id="g228"
+   transform="matrix(1.3458115,0,0,1.3458115,-6.6046735,-1.1917191)"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:1.48609222;stroke-dasharray:none">
+		<path
+   id="path17482"
+   class="st0"
+   d="M 18.613908,19.5 H 5"
+   style="stroke:#000000;stroke-width:1.48609;stroke-dasharray:none;stroke-opacity:1"
+   sodipodi:nodetypes="cc" />
+		<path
+   id="path17484"
+   class="st0"
+   d="M26.8,19.4c0.7,0,15.1,0,15.1,0"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:1.48609222;stroke-dasharray:none" />
+		<g
+   id="g1229"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:1.48609222;stroke-dasharray:none">
+			<path
+   id="path17480_2_"
+   class="st1"
+   d="M 25,28 V 11 h 2.791911 v 17 z"
+   style="stroke:#000000;stroke-width:1.48609;stroke-dasharray:none;stroke-opacity:1"
+   sodipodi:nodetypes="ccccc" />
+			<path
+   id="path17480_1_"
+   class="st0"
+   d="M 18.985329,28 V 11 H 22 v 17 z"
+   style="stroke:#000000;stroke-width:1.48609;stroke-dasharray:none;stroke-opacity:1"
+   sodipodi:nodetypes="ccccc" />
+		</g>
+	</g>
+</g>
+<g
+   id="g1235"
+   style="stroke-width:2;stroke-dasharray:none;stroke:#000000;stroke-opacity:1"
+   transform="translate(-2.3,-2)">
+	<path
+   id="path2243"
+   class="st2"
+   d="M 18.7,17.6 H 12.8"
+   style="stroke-width:2;stroke-dasharray:none;stroke:#000000;stroke-opacity:1" />
+	<path
+   id="path2245"
+   class="st2"
+   d="m 15.7,14.6 v 5.9"
+   style="stroke-width:2;stroke-dasharray:none;stroke:#000000;stroke-opacity:1" />
+</g>
+</svg>

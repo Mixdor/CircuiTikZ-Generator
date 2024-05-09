@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 24.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   version="1.1"
+   id="svg2"
+   x="0px"
+   y="0px"
+   viewBox="0 0 50 50"
+   style="enable-background:new 0 0 50 50;"
+   xml:space="preserve"
+   sodipodi:docname="Pfet_Depletion.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs23" /><sodipodi:namedview
+   id="namedview21"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   showgrid="true"
+   inkscape:zoom="7.4953319"
+   inkscape:cx="19.078541"
+   inkscape:cy="28.551104"
+   inkscape:window-width="1366"
+   inkscape:window-height="707"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="g262"><inkscape:grid
+     type="xygrid"
+     id="grid252" /></sodipodi:namedview>
+<style
+   type="text/css"
+   id="style2">
+	.st0{fill:none;stroke:#000000;stroke-miterlimit:10;}
+</style>
+
+<g
+   id="g262"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:2;stroke-dasharray:none"><g
+     id="g16"
+     style="stroke:#000000;stroke-opacity:1;stroke-width:2;stroke-dasharray:none">
+	<polyline
+   class="st0"
+   points="25,50 25,31.9 11.9,31.9  "
+   id="polyline4"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:2;stroke-dasharray:none" />
+	<line
+   class="st0"
+   x1="11.9"
+   y1="34.8"
+   x2="11.9"
+   y2="14.8"
+   id="line6"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:2;stroke-dasharray:none" />
+	<polyline
+   class="st0"
+   points="25,0 25,17.6 11.9,17.6  "
+   id="polyline8"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:2;stroke-dasharray:none" />
+	<polyline
+   class="st0"
+   points="8.8,17.6 8.8,25 8.8,31.9  "
+   id="polyline10"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:2;stroke-dasharray:none" />
+	<line
+   class="st0"
+   x1="0"
+   y1="25"
+   x2="8.8"
+   y2="25"
+   id="line12"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:2;stroke-dasharray:none" />
+	<line
+   class="st0"
+   x1="11.9"
+   y1="25"
+   x2="23.7"
+   y2="25"
+   id="line14"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:2;stroke-dasharray:none" />
+</g><polygon
+     points="14.9,27.9 14.9,22.1 19.9,25 "
+     id="polygon18"
+     style="stroke:#000000;stroke-width:1;stroke-dasharray:none;stroke-opacity:1"
+     transform="translate(2)" /></g>
+</svg>

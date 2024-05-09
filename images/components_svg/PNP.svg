@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 24.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   version="1.1"
+   id="svg2"
+   x="0px"
+   y="0px"
+   viewBox="0 0 50 50"
+   style="enable-background:new 0 0 50 50;"
+   xml:space="preserve"
+   sodipodi:docname="PNP.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs17" /><sodipodi:namedview
+   id="namedview15"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   showgrid="false"
+   inkscape:zoom="7.4811897"
+   inkscape:cx="14.035201"
+   inkscape:cy="25.798036"
+   inkscape:window-width="1366"
+   inkscape:window-height="707"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="g797" />
+<style
+   type="text/css"
+   id="style2">
+	.st0{fill:#FFFFFF;stroke:#000000;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#000000;stroke-miterlimit:10;}
+	.st2{stroke:#000000;stroke-width:0.5;stroke-miterlimit:10;}
+</style>
+
+
+
+
+<g
+   id="g797"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:2;stroke-dasharray:none"><polyline
+     class="st0"
+     points="25,0.1 25,12.9 15.3,20.2 "
+     id="polyline4"
+     style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:2;stroke-dasharray:none" /><line
+     class="st1"
+     x1="15.3"
+     y1="12.5"
+     x2="15.3"
+     y2="37.5"
+     id="line6"
+     style="stroke:#000000;stroke-opacity:1;stroke-width:2;stroke-dasharray:none" /><line
+     class="st1"
+     x1="0"
+     y1="25"
+     x2="15.3"
+     y2="25"
+     id="line8"
+     style="stroke:#000000;stroke-opacity:1;stroke-width:2;stroke-dasharray:none" /><polyline
+     class="st0"
+     points="25,50 25,37.2 15.3,29.9 "
+     id="polyline10"
+     style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:2;stroke-dasharray:none" /><polygon
+     class="st2"
+     points="20.6,12.9 18.2,17.9 23.6,17.7 "
+     id="polygon12"
+     style="stroke:#000000;stroke-opacity:1;stroke-width:1;stroke-dasharray:none" /></g>
+</svg>

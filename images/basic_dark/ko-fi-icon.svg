@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="64"
+   height="64"
+   viewBox="0 0 64 64"
+   version="1.1"
+   id="svg15"
+   sodipodi:docname="ko-fi-icon.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <metadata
+     id="metadata21">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Artboard</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs19">
+    <mask
+       maskUnits="userSpaceOnUse"
+       id="mask5575">
+      <rect
+         style="fill:#385e63;fill-opacity:1;stroke-width:0.503632"
+         id="rect5577"
+         width="32.560001"
+         height="32.560001"
+         x="1.433005e-07"
+         y="3.0525001e-07" />
+    </mask>
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="707"
+     id="namedview17"
+     showgrid="false"
+     inkscape:zoom="3.8522727"
+     inkscape:cx="25.050148"
+     inkscape:cy="17.392331"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g5583"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
+  <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+  <title
+     id="title2">Artboard</title>
+  <desc
+     id="desc4">Created with Sketch.</desc>
+  <g
+     id="g856"
+     transform="matrix(1.9656019,0,0,1.9656019,-2.8167172e-7,-51.10565)">
+    <g
+       transform="translate(0,26)"
+       id="Group-4"
+       style="fill:none;fill-rule:nonzero;stroke:none;stroke-width:1" />
+    <g
+       id="g5583"
+       transform="translate(-0.03423451,0.10370685)">
+      <path
+         d="m 23.034648,5.735653 h 2.119261 c 4.087638,0 7.401323,3.3136854 7.401323,7.401323 v 0.435046 c 0,4.087638 -3.313685,7.401323 -7.401323,7.401323 h -2.119261 v 2.227595 c 0,1.886602 -1.529393,3.415995 -3.415996,3.415995 H 3.4892335 c -1.8866022,0 -3.41599539,-1.529393 -3.41599539,-3.415995 V 7.4436513 c 0,-0.9433016 0.76469661,-1.7079983 1.70799779,-1.7079983 z m 0,3.9505134 v 7.3366666 h 1.93201 c 2.025964,0 3.668334,-1.642369 3.668334,-3.668333 0,-2.025966 -1.64237,-3.6683336 -3.668334,-3.6683336 z"
+         id="Rectangle-2"
+         inkscape:connector-curvature="0"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.31827"
+         transform="translate(1.4330049e-7,26)" />
+      <g
+         id="Group"
+         transform="matrix(1.3182627,0,0,1.3182627,0.07323811,31.735653)"
+         style="fill:#ff5e5b;fill-rule:nonzero;stroke:none;stroke-width:1">
+        <path
+           d="M 8.36,5.2768458 C 8.7602942,4.1056152 9.7089414,3.52 11.205941,3.52 c 2.2455,0 3.077965,2.7936503 1.900934,4.62 C 12.322188,9.3575665 10.739896,10.897567 8.36,12.76 5.9801039,10.897567 4.3978123,9.3575665 3.613125,8.14 2.4360941,6.3136503 3.2685587,3.52 5.5140587,3.52 7.0110586,3.52 7.9597058,4.1056152 8.36,5.2768458 Z"
+           id="Path-2"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+  </g>
+</svg>
