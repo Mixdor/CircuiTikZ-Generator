@@ -1,5 +1,5 @@
-import pyperclip
-from PyQt6.QtWidgets import QWidget, QCheckBox, QVBoxLayout, QTextEdit, QPushButton, QDialog, QHBoxLayout
+from PyQt6.QtGui import QClipboard
+from PyQt6.QtWidgets import QWidget, QCheckBox, QVBoxLayout, QTextEdit, QPushButton, QDialog, QHBoxLayout, QApplication
 from components.Latex import Latex
 
 
@@ -45,7 +45,7 @@ class WindowGenerate(QDialog):
 
     def clipboard(self):
 
-        pyperclip.copy(self.text_area.toPlainText())
+        QApplication.clipboard().setText(self.text_area.toPlainText())
 
     def figure_change(self, state):
         if state:

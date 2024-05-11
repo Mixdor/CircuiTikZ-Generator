@@ -1,4 +1,5 @@
 import threading
+import webbrowser
 
 from PyQt6.QtCore import Qt, QUrl, QThread, pyqtSignal
 from PyQt6.QtGui import QKeySequence, QShortcut, QIcon, QDesktopServices
@@ -226,13 +227,11 @@ class MainWindow(QMainWindow):
 
     def show_web(self):
         self.manager_components.unselected()
-        url = QUrl('https://mixdor.github.io/circuitikz-generator.github.io/')
-        QDesktopServices.openUrl(url)
+        webbrowser.open('https://mixdor.github.io/circuitikz-generator.github.io/')
 
     def show_kofi(self):
         self.manager_components.unselected()
-        url = QUrl('https://ko-fi.com/mixdor')
-        QDesktopServices.openUrl(url)
+        webbrowser.open('https://ko-fi.com/mixdor')
 
     def show_winversion(self, version_available):
 
