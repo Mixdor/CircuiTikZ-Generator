@@ -75,7 +75,7 @@ class Resources:
 
     def get_icon_app(self):
 
-        path_icon = os.path.join(self.main_path, 'images/logo_app.png')
+        path_icon = os.path.join(self.main_path, 'images/logo_app.svg')
         return QtGui.QIcon(path_icon)
 
     def get_path(self):

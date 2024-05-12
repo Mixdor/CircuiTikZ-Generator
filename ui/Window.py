@@ -1,7 +1,8 @@
-import threading
+import os
+import subprocess
 import webbrowser
 
-from PyQt6.QtCore import Qt, QUrl, QThread, pyqtSignal
+from PyQt6.QtCore import Qt, QThread, pyqtSignal, QUrl
 from PyQt6.QtGui import QKeySequence, QShortcut, QIcon, QDesktopServices
 from PyQt6.QtSvgWidgets import QSvgWidget
 from PyQt6.QtWidgets import *
@@ -9,12 +10,12 @@ from PyQt6.QtWidgets import *
 from auxiliar.SourceForge import SourceForge
 from components.ComponentsManager import ComponentsManager
 from components.History import History
+from components.TxtToComponents import TxtToComponents
 from drawables.DrawComponent import DrawComponent
 from objects.ObjTool import ObjTool
-from components.TxtToComponents import TxtToComponents
 from ui.MainCanvas import Canvas
-from ui.WindowGenerate import WindowGenerate
 from ui.Resources import Resources
+from ui.WindowGenerate import WindowGenerate
 from ui.WindowNewVersion import WindowNewVersion
 
 
@@ -227,7 +228,11 @@ class MainWindow(QMainWindow):
 
     def show_web(self):
         self.manager_components.unselected()
-        webbrowser.open('https://mixdor.github.io/circuitikz-generator.github.io/')
+        url = 'https://mixdor.github.io/circuitikz-generator.github.io/'
+        try:
+            subprocess.run(['xdg-open', url], check=True)
+        except subprocess.CalledProcessError as e:
+            print("Error open to URL:", e)
 
     def show_kofi(self):
         self.manager_components.unselected()
