@@ -1,5 +1,4 @@
 import os
-import subprocess
 import webbrowser
 
 from PyQt6.QtCore import Qt, QThread, pyqtSignal, QUrl
@@ -49,7 +48,7 @@ class MainWindow(QMainWindow):
         widget_layout_tools.setFixedWidth(250)
         layout.addWidget(widget_layout_tools)
 
-        self.name_app = QLabel('CircuiTikZ Generator v0.5')
+        self.name_app = QLabel('CircuiTikZ Generator v0.6')
         self.name_app.setStyleSheet("font-size: 11pt; font-weight: bold")
         self.name_app.setContentsMargins(0, 0, 0, 11)
         layout_tools.addWidget(self.name_app)
@@ -62,7 +61,6 @@ class MainWindow(QMainWindow):
 
         list_groups_components = txt_to_components.get_groups()
 
-        # Agregar contenido al layout
         for i in range(list_groups_components.__len__()):
 
             group_str = list_groups_components[i]
@@ -228,15 +226,13 @@ class MainWindow(QMainWindow):
 
     def show_web(self):
         self.manager_components.unselected()
-        url = 'https://mixdor.github.io/circuitikz-generator.github.io/'
-        try:
-            subprocess.run(['xdg-open', url], check=True)
-        except subprocess.CalledProcessError as e:
-            print("Error open to URL:", e)
+        url = QUrl('https://mixdor.github.io/circuitikz-generator.github.io/')
+        QDesktopServices.openUrl(url)
 
     def show_kofi(self):
         self.manager_components.unselected()
-        webbrowser.open('https://ko-fi.com/mixdor')
+        url = QUrl('https://ko-fi.com/mixdor')
+        QDesktopServices.openUrl(url)
 
     def show_winversion(self, version_available):
 

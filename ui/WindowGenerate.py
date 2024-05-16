@@ -1,5 +1,5 @@
-from PyQt6.QtGui import QClipboard
 from PyQt6.QtWidgets import QWidget, QCheckBox, QVBoxLayout, QTextEdit, QPushButton, QDialog, QHBoxLayout, QApplication
+
 from components.Latex import Latex
 
 
