@@ -1,7 +1,4 @@
 
-<h1 align="center"><img width="24" src="new_icon.ico" alt="CircuiTikZ-Generator Icon"> CircuiTikZ-Generator <img width="24" style="transform: scaleX(-1);" src="new_icon.ico" alt="CircuiTikZ-Generator Icon"></h1>
+<h1 align="center"><img width="24" src="new_icon.ico" alt="CircuiTikZ-Generator Icon"> CircuiTikZ-Generator <img width="24" src="new_icon.ico" alt="CircuiTikZ-Generator Icon"></h1>
 <h3 align="center"> This software is a tool for designing electronic circuits using LaTeX. </h3>
-<h3 align="center"><a href="https://sourceforge.net/projects/circuitikz-generator/files/latest/download"><img alt="Download CircuiTikZ Generator" src="https://img.shields.io/sourceforge/dt/circuitikz-generator.svg" ></a></h3>
-<div style="text-align:center;">
-    <a href="https://sourceforge.net/projects/circuitikz-generator/files/latest/download"><img alt="Download CircuiTikZ Generator" src="https://img.shields.io/sourceforge/dt/circuitikz-generator.svg" ></a>
-</div>
+<h3 align="center"><img alt="GitHub Release" src="https://img.shields.io/github/v/release/Mixdor/CircuiTikZ-Generator?label=Last%20Release"> <img alt="SourceForge Platform" src="https://img.shields.io/sourceforge/platform/circuitikz-generator?label=Platform&color=%237B4907"> <img alt="SourceForge Downloads" src="https://img.shields.io/sourceforge/dt/circuitikz-generator?label=Downloads&color=%234D7A10"> <img alt="GitHub Sponsors" src="https://img.shields.io/github/sponsors/Mixdor?label=Sponsors&color=%23803E5D"></h3>
