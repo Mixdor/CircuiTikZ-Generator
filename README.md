@@ -5,7 +5,7 @@
 
 ### Download
 
-You can get a compiled, portable and ready to use file on [Sourceforge](https://sourceforge.net/projects/circuitikz-generator/), available for both Linux and Windows
+You can get a compiled, portable and ready to use file on [Sourceforge](https://sourceforge.net/projects/circuitikz-generator/), available for both Linux and Windows.
 
 ### Use
 On Linux remember to give execute permissions to the .AppImage file.
