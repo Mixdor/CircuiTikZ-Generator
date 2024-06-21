@@ -43,7 +43,7 @@ class ComponentsManager:
                 self.canvas.devicePixelRatio(),
                 self.canvas.start_point, self.canvas.end_point,
                 self.canvas.tool,
-                self.canvas.current_label.toPlainText()
+                self.canvas.current_label.text()
             )
         else:
             draw_comp = self.draw_component.line(self.canvas.start_point, self.canvas.end_point)
@@ -53,7 +53,7 @@ class ComponentsManager:
             self.canvas.start_point / self.canvas.cell_size,
             self.canvas.end_point / self.canvas.cell_size,
             self.canvas.tool.latex,
-            self.canvas.current_label.toPlainText())
+            self.canvas.current_label.text())
 
         self.canvas.draw_added.append(latex_comp)
         self.canvas.components_added.append(draw_comp)
@@ -69,13 +69,13 @@ class ComponentsManager:
                 draw_comp = self.draw_component.two_pins(
                     self.canvas.scene, self.canvas.devicePixelRatio(),
                     self.canvas.start_point, self.canvas.end_point,
-                    self.canvas.tool.image, self.canvas.current_label.toPlainText()
+                    self.canvas.tool.image, self.canvas.current_label.text()
                 )
             else:
                 draw_comp = self.draw_component.two_pins_no_img(
                     self.canvas.scene,
                     self.canvas.start_point, self.canvas.end_point,
-                    self.canvas.current_label.toPlainText()
+                    self.canvas.current_label.text()
                 )
             self.canvas.update()
 
@@ -83,7 +83,7 @@ class ComponentsManager:
                 self.canvas.start_point / self.canvas.cell_size,
                 self.canvas.end_point / self.canvas.cell_size,
                 self.canvas.tool.latex,
-                self.canvas.current_label.toPlainText())
+                self.canvas.current_label.text())
 
             self.canvas.draw_added.append(latex_comp)
             self.canvas.components_added.append(draw_comp)
@@ -95,7 +95,7 @@ class ComponentsManager:
         if os.path.exists(path_svg):
             draw_comp = self.draw_component.transistor(
                 self.canvas.scene, self.canvas.devicePixelRatio(), self.canvas.end_point,
-                path_svg, self.canvas.current_label.toPlainText()
+                path_svg, self.canvas.current_label.text()
             )
 
             self.canvas.update()
@@ -104,7 +104,7 @@ class ComponentsManager:
                 self.canvas.id_node,
                 self.canvas.end_point / self.canvas.cell_size,
                 self.canvas.tool.latex,
-                self.canvas.current_label.toPlainText()
+                self.canvas.current_label.text()
             )
             self.canvas.id_node += 1
 
@@ -121,7 +121,7 @@ class ComponentsManager:
         if os.path.exists(path_svg):
             draw_comp = self.draw_component.transformer(
                 self.canvas.scene, self.canvas.devicePixelRatio(), self.canvas.end_point,
-                path_svg, self.canvas.current_label.toPlainText()
+                path_svg, self.canvas.current_label.text()
             )
 
             self.canvas.update()
@@ -130,7 +130,7 @@ class ComponentsManager:
                 self.canvas.id_node,
                 self.canvas.end_point / self.canvas.cell_size,
                 self.canvas.tool.latex,
-                self.canvas.current_label.toPlainText()
+                self.canvas.current_label.text()
             )
             self.canvas.id_node += 1
 

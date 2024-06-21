@@ -28,6 +28,7 @@ class MainWindow(QMainWindow):
         self.setMouseTracking(True)
 
         self.botones = []
+        self.group_buttons = []
         self.obj_tools = []
         self.tool_selected = ObjTool("Select", "Basic", 0, f'{self.resources.main_path}/images/components_svg/arrow_selector.svg', '')
         self.components_added = []
@@ -48,17 +49,31 @@ class MainWindow(QMainWindow):
         widget_layout_tools.setFixedWidth(250)
         layout.addWidget(widget_layout_tools)
 
-        self.name_app = QLabel('CircuiTikZ Generator v0.6')
+        self.name_app = QLabel('CircuiTikZ Generator v0.7')
         self.name_app.setStyleSheet("font-size: 11pt; font-weight: bold")
         self.name_app.setContentsMargins(0, 0, 0, 11)
         layout_tools.addWidget(self.name_app)
         print(f'::: {self.name_app.text()} :::')
 
+        layout_search = QHBoxLayout()
+        layout_tools.addLayout(layout_search)
+
+        self.searchField = QLineEdit()
+        self.searchField.setPlaceholderText('Search tool...')
+        self.searchField.textChanged.connect(self.handle_search_changed)
+        layout_search.addWidget(self.searchField)
+
+        self.btn_clear_search = QPushButton("")
+        self.btn_clear_search.setIcon(QIcon(f'{self.resources.get_path()}/backspace.svg'))
+        self.btn_clear_search.setEnabled(False)
+        self.btn_clear_search.setFixedWidth(28)
+        self.btn_clear_search.clicked.connect(self.clear_search)
+        layout_search.addWidget(self.btn_clear_search)
+
         layout_scroll_area = QVBoxLayout()
         layout_scroll_area.setAlignment(Qt.AlignmentFlag.AlignTop)
 
         txt_to_components = TxtToComponents(self.base_path)
-
         list_groups_components = txt_to_components.get_groups()
 
         for i in range(list_groups_components.__len__()):
@@ -67,6 +82,7 @@ class MainWindow(QMainWindow):
             name = txt_to_components.get_name_group(group_str)
             label_name = QLabel(name)
             layout_scroll_area.addWidget(label_name)
+            self.group_buttons.append(label_name)
 
             current_tools = txt_to_components.get_tools_for_group(group_str, name)
 
@@ -105,7 +121,7 @@ class MainWindow(QMainWindow):
         widget_layout_properties.setLayout(layout_properties)
 
         layout_properties.addWidget(QLabel('Component label'))
-        self.label_component = QTextEdit()
+        self.label_component = QLineEdit()
         self.label_component.setFixedHeight(28)
 
         layout_properties.addWidget(self.label_component)
@@ -182,6 +198,38 @@ class MainWindow(QMainWindow):
         widget = QWidget(self)
         widget.setLayout(layout)
         self.setCentralWidget(widget)
+
+    def handle_search_changed(self, input_text):
+
+        if self.searchField.text() != '':
+            self.btn_clear_search.setEnabled(True)
+        else:
+            self.btn_clear_search.setEnabled(False)
+
+        for button in self.botones:
+            button.setVisible(True)
+        for group in self.group_buttons:
+            group.setVisible(False)
+
+        text = str(input_text).lower()
+
+        for button in self.botones:
+            if not button.text() == 'Select':
+                title = button.text().lower()
+                if not title.__contains__(text):
+                    button.setVisible(False)
+
+        for button in self.botones:
+            if button.isVisible():
+
+                for tool in self.obj_tools:
+                    if tool.name == button.text():
+                        for label in self.group_buttons:
+                            if label.text() == tool.name_class:
+                                label.setVisible(True)
+
+    def clear_search(self):
+        self.searchField.setText("")
 
     def on_button_click(self):
 
