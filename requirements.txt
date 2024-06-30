@@ -1,3 +1,4 @@
 requests>=2.31.0
 PyQt6>=6.6.1
 pyinstaller>=6.6.0
+cx_Freeze>=7.0.0

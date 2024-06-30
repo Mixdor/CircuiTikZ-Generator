@@ -145,23 +145,23 @@ class Draw:
         self.scene.addItem(item_text)
         return item_text
 
-    def label4(self, pos_point, label):
-        item_text = QGraphicsTextItem()
-        item_text.setDefaultTextColor(QColor(0, 0, 0))
-        item_text.setPlainText(label)
-        new_x = pos_point.x() - (item_text.boundingRect().width() / 2)
-        new_y = pos_point.y() - (50 + item_text.boundingRect().height())
-        item_text.setPos(new_x, new_y)
-
-        self.scene.addItem(item_text)
-        return item_text
-
-    def label3(self, pos_point, label):
+    def label_transistor(self, pos_point, label):
         item_text = QGraphicsTextItem()
         item_text.setDefaultTextColor(QColor(0, 0, 0))
         item_text.setPlainText(label)
         new_x = pos_point.x()
         new_y = pos_point.y() - (item_text.boundingRect().height() / 2)
+        item_text.setPos(new_x, new_y)
+
+        self.scene.addItem(item_text)
+        return item_text
+
+    def label_transformer(self, pos_point, label):
+        item_text = QGraphicsTextItem()
+        item_text.setDefaultTextColor(QColor(0, 0, 0))
+        item_text.setPlainText(label)
+        new_x = pos_point.x() - (item_text.boundingRect().width() / 2)
+        new_y = pos_point.y() - (50 + item_text.boundingRect().height())
         item_text.setPos(new_x, new_y)
 
         self.scene.addItem(item_text)

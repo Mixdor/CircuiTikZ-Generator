@@ -34,7 +34,7 @@ class TxtToComponents:
 
         return list_components
 
-    def get_name_group(self, group_str):
+    def get_group_name(self, group_str):
         lines = group_str.split("\n")
         lines.remove("")
         line_tag = lines[0]
@@ -54,9 +54,10 @@ class TxtToComponents:
             list_components.append(
                 ObjTool(
                     name=self.get_name(lines[i]),
-                    name_class=name_group,
-                    number_pins=self.get_number_pins(lines[i]),
-                    image_path=self.get_image(lines[i]),
+                    group_name=name_group,
+                    class_name=self.get_name_class(lines[i]),
+                    image=self.get_image(lines[i]),
+                    image_static=self.get_image_static(lines[i]),
                     latex=self.get_latex(lines[i])
                 )
             )
@@ -71,31 +72,48 @@ class TxtToComponents:
 
         return name_tool
 
-    def get_number_pins(self, text_line):
+    def get_name_class(self, text_line):
 
-        text = re.search(r'(\{pins=(\w+)})', text_line, re.UNICODE).group()
-        text = re.search(r'(=(\w+))', text, re.UNICODE).group()
-        text = text.replace("=", "")
+        text = re.search(r'(<class>)(.+)(</class>)', text_line, re.UNICODE).group()
+        text = text.replace("<class>", "")
+        text = text.replace("</class>", "")
 
-        return int(text)
+        return text
 
     def get_image(self, text_line):
 
-        text = re.search(r'(\{img=(.+)}\{)', text_line).group()
-        text = re.search("(=(.+)})", text).group()
-        text = text.replace("=", "")
-        text = text.replace("}", "")
-        text = text.replace("{", "")
+        text = re.search(r'(<img>)(.+)(</img>)', text_line)
 
-        path = os.path.join(self.base_path, text)
+        if text is not None:
+            text = text.group()
+            text = text.replace("<img>", "")
+            text = text.replace("</img>", "")
+            path = os.path.join(self.base_path, text)
+
+        else:
+            path = ''
+
+        return path
+
+    def get_image_static(self, text_line):
+
+        text = re.search(r'(<img_static>)(.+)(</img_static>)', text_line)
+        if text is not None:
+            text = text.group()
+            text = text.replace("<img_static>", "")
+            text = text.replace("</img_static>", "")
+
+            path = os.path.join(self.base_path, text)
+
+        else:
+            path = ''
 
         return path
 
     def get_latex(self, text_line):
 
-        text = re.search(r'(\{latex=(.+)})', text_line).group()
-        text = re.search("(=(.+)})", text).group()
-        text = text[1:]
-        text = text[:-1]
+        text = re.search(r'((<latex>)(.+)(</latex>))', text_line).group()
+        text = text.replace("<latex>", "")
+        text = text.replace("</latex>", "")
 
         return text

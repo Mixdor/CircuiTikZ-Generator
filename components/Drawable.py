@@ -50,7 +50,7 @@ class Drawable:
             90
         )
 
-        if tool.name_class == "Power Supplies":
+        if tool.group_name == "Power Supplies":
             item_label = self.get_label1_center(
                 scene,
                 tool.name,

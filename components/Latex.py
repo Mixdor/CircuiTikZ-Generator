@@ -15,21 +15,35 @@ class Latex:
 
         return draws
 
-    def get_two_pin(self, start_point, final_point, latex, label):
+    def get_two_pin(self, name_tool, start_point, final_point, latex, label):
         draws = []
         x1 = str(start_point.x())
         y1 = str(start_point.y())
         x2 = str(final_point.x())
         y2 = str(final_point.y())
 
-        draw_text = '\\draw (' + x1 + ",-" + y1 + ')to[' + latex + '={' + label + '}] (' + x2 + ',-' + y2 + ');'
+        if name_tool == 'Ramp Oscilloscope':
+            draws.append('\\ctikzset{bipoles/oscope/waveform=ramps}')
+        elif name_tool == 'Sin Oscilloscope':
+            draws.append('\\ctikzset{bipoles/oscope/waveform=sin}')
+        elif name_tool == 'Square Oscilloscope':
+            draws.append('\\ctikzset{bipoles/oscope/waveform=square}')
+        elif name_tool == 'Triangle Oscilloscope':
+            draws.append('\\ctikzset{bipoles/oscope/waveform=triangle}')
+        elif name_tool == 'Lissajous Oscilloscope':
+            draws.append('\\ctikzset{bipoles/oscope/waveform=lissajous}')
+        elif name_tool == 'Zero Oscilloscope':
+            draws.append('\\ctikzset{bipoles/oscope/waveform=zero}')
+        elif name_tool == 'None Oscilloscope':
+            draws.append('\\ctikzset{bipoles/oscope/waveform=none}')
+        draw_text = '\\draw[' + latex + '={' + label + '}](' + x1 + ",-" + y1 + ')to(' + x2 + ',-' + y2 + ');'
         draws.append(draw_text)
 
         return draws
 
     def get_transistor(self, id_node, point, latex, label):
         draws = []
-        node = 'Q' + str(id_node + 1)
+        node = 'Q' + str(id_node)
         top = QPoint(point.x(), point.y() - 1)
         button = QPoint(point.x(), point.y() + 1)
         middle = QPoint(point.x() - 1, point.y())
@@ -47,10 +61,10 @@ class Latex:
             conf = ['E', 'B', 'C']
 
         draw_node = '\\draw (' + x + ",-" + y + ') ' + latex + '(' + node + ')' + '{' + label + '}' + ';'
-        draw_line_top = '\\draw (' + node + '.' + conf[0] + ') to[short] (' + str(top.x()) + ',-' + str(top.y()) + ');'
-        draw_line_middle = '\\draw (' + node + '.' + conf[1] + ') to[short] (' + str(middle.x()) + ',-' + str(
+        draw_line_top = '\\draw[short](' + node + '.' + conf[0] + ')to(' + str(top.x()) + ',-' + str(top.y()) + ');'
+        draw_line_middle = '\\draw[short](' + node + '.' + conf[1] + ')to(' + str(middle.x()) + ',-' + str(
             middle.y()) + ');'
-        draw_line_button = '\\draw (' + node + '.' + conf[2] + ') to[short] (' + str(button.x()) + ',-' + str(
+        draw_line_button = '\\draw[short](' + node + '.' + conf[2] + ')to(' + str(button.x()) + ',-' + str(
             button.y()) + ');'
 
         draws.append(draw_node)
@@ -63,7 +77,7 @@ class Latex:
     def get_transformer(self, id_node, point, latex, label):
 
         draws = []
-        node = 'Q' + str(id_node + 1)
+        node = 'Q' + str(id_node)
         x = str(point.x())
         y = str(point.y())
 

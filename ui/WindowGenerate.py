@@ -4,13 +4,16 @@ from components.Latex import Latex
 
 
 class WindowGenerate(QDialog):
-    def __init__(self, draws_list):
+    def __init__(self, components):
         super().__init__()
         self.setWindowTitle('Generated')
         self.setGeometry(150, 150, 350, 500)
         self.latexGen = Latex()
 
-        self.draw_list = draws_list
+        self.draw_list = []
+        for component in components:
+            self.draw_list.append(component.latex)
+
         self.dic_settings = {
             'wrap_in_figure': 0,
             'american_style_components': 0

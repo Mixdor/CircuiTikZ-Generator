@@ -1,13 +1,13 @@
-import os
-import webbrowser
-
 from PyQt6.QtCore import Qt, QThread, pyqtSignal, QUrl
 from PyQt6.QtGui import QKeySequence, QShortcut, QIcon, QDesktopServices
 from PyQt6.QtSvgWidgets import QSvgWidget
 from PyQt6.QtWidgets import *
 
 from auxiliar.SourceForge import SourceForge
-from components.ComponentsManager import ComponentsManager
+from components.ComponentsCreator import ComponentsCreator
+from components.ComponentsEditor import ComponentsEditor
+from components.ComponentsRemover import ComponentsRemover
+from components.ComponentsSelector import ComponentsSelector
 from components.History import History
 from components.TxtToComponents import TxtToComponents
 from drawables.DrawComponent import DrawComponent
@@ -30,11 +30,8 @@ class MainWindow(QMainWindow):
         self.botones = []
         self.group_buttons = []
         self.obj_tools = []
-        self.tool_selected = ObjTool("Select", "Basic", 0, f'{self.resources.main_path}/images/components_svg/arrow_selector.svg', '')
-        self.components_added = []
-        self.components_deleted = []
-        self.draw_added = []
-        self.draw_deleted = []
+        self.tool_selected = ObjTool("Select", "Basic", 0, f'{self.resources.main_path}/images/components_svg/arrow_selector.svg', '', '')
+        self.components = []
 
         shortcut_undo = QShortcut(QKeySequence(Qt.Modifier.CTRL | Qt.Key.Key_Z), self)
         shortcut_undo.activated.connect(self.on_undo2)
@@ -79,7 +76,7 @@ class MainWindow(QMainWindow):
         for i in range(list_groups_components.__len__()):
 
             group_str = list_groups_components[i]
-            name = txt_to_components.get_name_group(group_str)
+            name = txt_to_components.get_group_name(group_str)
             label_name = QLabel(name)
             layout_scroll_area.addWidget(label_name)
             self.group_buttons.append(label_name)
@@ -120,11 +117,17 @@ class MainWindow(QMainWindow):
         widget_layout_properties.setFixedHeight(64)
         widget_layout_properties.setLayout(layout_properties)
 
-        layout_properties.addWidget(QLabel('Component label'))
+        layout_properties.addWidget(QLabel('Label'))
         self.label_component = QLineEdit()
         self.label_component.setFixedHeight(28)
-
+        self.label_component.setEnabled(False)
+        self.label_component.returnPressed.connect(self.handle_component_label)
         layout_properties.addWidget(self.label_component)
+
+        self.button_label_edit = QPushButton(QIcon(f'{self.resources.get_path()}/edit.svg'), '')
+        self.button_label_edit.setEnabled(False)
+        self.button_label_edit.clicked.connect(self.handle_component_label)
+        layout_properties.addWidget(self.button_label_edit)
 
         self.button_delete = QPushButton(QIcon(f'{self.resources.get_path()}/delete.svg'), '')
         self.button_delete.setEnabled(False)
@@ -136,7 +139,10 @@ class MainWindow(QMainWindow):
         self.svg_widget.setStyleSheet(
             'background-color: white; color: white; border: 1.5px solid #742B02; border-radius: 3px;'
         )
-        self.svg_widget.load(self.tool_selected.get_image())
+        if self.tool_selected.image_static != '':
+            self.svg_widget.load(self.tool_selected.image_static)
+        else:
+            self.svg_widget.load(self.tool_selected.image)
         layout_properties.addWidget(self.svg_widget)
 
         label_cord = QLabel("Coordinates: [0,0]")
@@ -177,18 +183,24 @@ class MainWindow(QMainWindow):
 
         layout_canvas_properties.addWidget(widget_layout_properties)
         self.history = History()
-        self.manager_components = ComponentsManager(self.history)
+
+        self.components_selector = ComponentsSelector()
+        self.components_creator = ComponentsCreator(self.history)
+        self.components_remover = ComponentsRemover(self.history)
+        self.components_editor = ComponentsEditor(self.history)
+
         self.canvas = Canvas(
             label_cord,
             self.tool_selected,
-            self.components_added,
-            self.draw_added,
+            self.components,
             self.label_component,
+            self.button_label_edit,
             self.button_delete,
-            self.manager_components)
+            self.components_creator,
+            self.history)
         self.canvas_scene = self.canvas.scene
-        self.manager_components.canvas = self.canvas
-        self.manager_components.draw_component = DrawComponent(self.canvas.scene)
+        self.components_creator.canvas = self.canvas
+        self.components_creator.draw_component = DrawComponent(self.canvas.scene)
         layout_canvas_properties.addWidget(self.canvas)
 
         self.hilo = MiHilo(self.name_app.text())
@@ -225,7 +237,7 @@ class MainWindow(QMainWindow):
                 for tool in self.obj_tools:
                     if tool.name == button.text():
                         for label in self.group_buttons:
-                            if label.text() == tool.name_class:
+                            if label.text() == tool.class_name:
                                 label.setVisible(True)
 
     def clear_search(self):
@@ -233,7 +245,7 @@ class MainWindow(QMainWindow):
 
     def on_button_click(self):
 
-        self.manager_components.unselected()
+        self.components_selector.unselect(self.canvas)
 
         button = self.sender()
 
@@ -250,35 +262,46 @@ class MainWindow(QMainWindow):
         if self.tool_selected != current_tool:
 
             self.tool_selected = ObjTool(
-                current_tool.name, current_tool.name_class,
-                current_tool.number_pins,
-                current_tool.image, current_tool.latex)
+                name=current_tool.name,
+                group_name=current_tool.group_name,
+                class_name=current_tool.class_name,
+                image=current_tool.image,
+                image_static=current_tool.image_static,
+                latex=current_tool.latex
+            )
 
             self.canvas.set_tool(self.tool_selected)
 
-            self.svg_widget.load(self.tool_selected.get_image())
+            if self.tool_selected.image_static != '':
+                self.svg_widget.load(self.tool_selected.image_static)
+            else:
+                self.svg_widget.load(self.tool_selected.image)
 
             button.setStyleSheet(f'background-color: {self.resources.color_active}; color: black;')
         else:
             button.setStyleSheet(f'background-color: {self.resources.color_active}; color: black;')
 
+    def handle_component_label(self):
+        if self.canvas.component_selected:
+            self.components_editor.label(self.canvas, self.canvas.current_label.text())
+
     def delete_component(self):
         if self.canvas.component_selected:
-            self.manager_components.delete_selected()
+            self.components_remover.delete_selected(self.canvas)
 
     def show_generate_latex(self):
-        self.manager_components.unselected()
-        dialog = WindowGenerate(self.draw_added)
+        self.components_selector.unselect(self.canvas)
+        dialog = WindowGenerate(self.components)
         dialog.move(self.frameGeometry().topLeft() + self.rect().center() - dialog.rect().center())
         dialog.exec()
 
     def show_web(self):
-        self.manager_components.unselected()
+        self.components_selector.unselect(self.canvas)
         url = QUrl('https://mixdor.github.io/circuitikz-generator.github.io/')
         QDesktopServices.openUrl(url)
 
     def show_kofi(self):
-        self.manager_components.unselected()
+        self.components_selector.unselect(self.canvas)
         url = QUrl('https://ko-fi.com/mixdor')
         QDesktopServices.openUrl(url)
 
@@ -291,12 +314,12 @@ class MainWindow(QMainWindow):
 
     def on_undo2(self):
 
-        self.manager_components.unselected()
+        self.components_selector.unselect(self.canvas)
         self.history.undo(self.canvas)
 
     def on_redo2(self):
 
-        self.manager_components.unselected()
+        self.components_selector.unselect(self.canvas)
         self.history.redo(self.canvas)
 
 

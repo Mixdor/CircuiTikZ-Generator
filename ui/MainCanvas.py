@@ -3,30 +3,32 @@ from PyQt6.QtGui import QColor
 from PyQt6.QtWidgets import QGraphicsView, QGraphicsScene, QGraphicsRectItem, QGraphicsLineItem, \
     QGraphicsTextItem
 
+from components.ComponentsRemover import ComponentsRemover
+from components.ComponentsSelector import ComponentsSelector
 from components.Latex import Latex
 from drawables.DrawAuxiliar import DrawAuxiliar
 from drawables.DrawComponent import DrawComponent
 
 
-def contain_item(components_added, item):
-    for sublist in components_added:
-        if item in sublist:
-            return sublist
+def contain_item(drawables, item):
+    if item in drawables:
+        return drawables
     return []
 
 
 class Canvas(QGraphicsView):
 
-    def __init__(self, cord, tool_selected, components_added, draw_added, label_component, button_delete, manager_components):
+    def __init__(self, cord, tool_selected, components, label_component,
+                 button_label_edit, button_delete, manager_components, history):
         super().__init__()
 
         self.setBackgroundBrush(QColor(255, 255, 255))
         self.scene = QGraphicsScene(self)
         self.setScene(self.scene)
         self.setMouseTracking(True)
-        self.id_node = 0
 
         self.current_label = label_component
+        self.button_label_edit = button_label_edit
         self.button_delete = button_delete
 
         # Inicializar el punto del mouse como None
@@ -39,12 +41,11 @@ class Canvas(QGraphicsView):
 
         self.cord = cord
         self.tool = tool_selected
-        self.components_added = components_added
-        self.draw_added = draw_added
+        self.components = components
 
+        self.components_selector = ComponentsSelector()
+        self.components_remover = ComponentsRemover(history)
         self.manager_components = manager_components
-
-        self.component_selected = []
 
         self.rect_select = None
         self.start_point = None
@@ -91,7 +92,7 @@ class Canvas(QGraphicsView):
             self.space_pressed = False
 
         if event.key() == Qt.Key.Key_Delete:
-            self.manager_components.delete_selected()
+            self.components_remover.delete_selected(self)
 
     def mousePressEvent(self, event):
 
@@ -119,83 +120,39 @@ class Canvas(QGraphicsView):
                 round(real_pos.x() / self.cell_size) * self.cell_size,
                 round(real_pos.y() / self.cell_size) * self.cell_size)
 
-            number_pins = self.tool.number_pins
+            name_class = self.tool.class_name
 
-            if number_pins == 0:
+            if name_class == 'None':
 
-                self.manager_components.unselected()
+                self.components_selector.unselect(self)
 
                 pos = event.pos()
                 item = self.itemAt(pos)
 
                 if item:
-                    component = contain_item(self.components_added, item)
-                    if len(component) > 0:
+                    select_component = None
+                    for component in self.components:
+                        selected_drawables = contain_item(component.drawables, item)
+                        if len(selected_drawables) > 0:
+                            select_component = component
 
-                        rec_select_x = 2000
-                        rec_select_y = 2000
-                        point_final_x = 0
-                        point_final_y = 0
+                    if select_component is not None:
+                        self.components_selector.select(self, select_component)
 
-                        for item_comp in component:
-
-                            if not isinstance(item_comp, QGraphicsTextItem):
-                                if isinstance(item_comp, QGraphicsLineItem):
-                                    if item_comp.boundingRect().x() < rec_select_x:
-                                        rec_select_x = item_comp.boundingRect().x()
-                                    if item_comp.boundingRect().y() < rec_select_y:
-                                        rec_select_y = item_comp.boundingRect().y()
-
-                                    point_comp_x = item_comp.boundingRect().x() + item_comp.boundingRect().width()
-                                    point_comp_y = item_comp.boundingRect().y() + item_comp.boundingRect().height()
-
-                                else:
-                                    if item_comp.x() < rec_select_x:
-                                        rec_select_x = item_comp.x()
-                                    if item_comp.y() < rec_select_y:
-                                        rec_select_y = item_comp.y()
-
-                                    point_comp_x = item_comp.x() + item_comp.boundingRect().width()
-                                    point_comp_y = item_comp.y() + item_comp.boundingRect().height()
-
-                                if point_comp_x > point_final_x:
-                                    point_final_x = point_comp_x
-                                if point_comp_y > point_final_y:
-                                    point_final_y = point_comp_y
-
-                        self.rect_select = QGraphicsRectItem(
-                            QRectF(
-                                rec_select_x,
-                                rec_select_y,
-                                point_final_x - rec_select_x,
-                                point_final_y - rec_select_y
-                            )
-                        )
-                        self.rect_select.setBrush(Qt.GlobalColor.transparent)
-                        pen = self.rect_select.pen()
-                        pen.setStyle(Qt.PenStyle.DotLine)
-                        pen.setColor(QColor('#DB6725'))
-                        pen.setWidth(2)
-                        self.rect_select.setPen(pen)
-
-                        self.scene.addItem(self.rect_select)
-                        self.component_selected = component
-                        self.button_delete.setEnabled(True)
-
-            if number_pins == 1:
+            if name_class == 'Traceable_Final':
                 path_svg = self.tool.image
-                self.manager_components.create_one_pins(path_svg)
+                self.manager_components.create_traceable_final(self, path_svg)
 
-            if number_pins == 2:
-                self.manager_components.create_two_pins()
+            if name_class == 'Traceable':
+                self.manager_components.create_traceable(self)
 
-            if number_pins == 3:
+            if name_class == 'Transistor':
                 path_svg = self.tool.image
-                self.manager_components.create_three_pins(path_svg)
+                self.manager_components.create_transistor(self, path_svg)
 
-            if number_pins == 4:
+            if name_class == 'Transformer':
                 path_svg = self.tool.image
-                self.manager_components.create_four_pins(path_svg)
+                self.manager_components.create_transformer(self, path_svg)
 
         if self.dragMode() == QGraphicsView.DragMode.ScrollHandDrag:
             self.setDragMode(QGraphicsView.DragMode.NoDrag)

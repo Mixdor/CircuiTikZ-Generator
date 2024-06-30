@@ -1,38 +1,57 @@
 class ObjTool:
 
-    def __init__(self, name, name_class, number_pins, image_path, latex):
+    def __init__(self, name, group_name, class_name, image, image_static, latex):
         self.name = name
-        self.name_class = name_class
-        self.number_pins = number_pins
-        self.image = image_path
+        self.group_name = group_name
+        self.class_name = class_name
+        self.image = image
+        self.image_static = image_static
         self.latex = latex
 
-    def get_name(self):
-        return self.name
+    @property
+    def name(self):
+        return self._name
 
-    def set_name(self, new_name):
-        self.name = new_name
+    @name.setter
+    def name(self, new_name):
+        self._name = new_name
 
-    def get_name_class(self):
-        return self.name
+    @property
+    def group_name(self):
+        return self._group_name
 
-    def set_name_class(self, new_name):
-        self.name = new_name
+    @group_name.setter
+    def group_name(self, new_group_name):
+        self._group_name = new_group_name
 
-    def get_number_pins(self):
-        return self.number_pins
+    @property
+    def class_name(self):
+        return self._name_class
 
-    def set_number_pins(self, new_number_pins):
-        self.number_pins = new_number_pins
+    @class_name.setter
+    def class_name(self, new_name_class):
+        self._name_class = new_name_class
 
-    def get_image(self):
-        return self.image
+    @property
+    def image(self):
+        return self._image_path
 
-    def set_image(self, new_image_path):
-        self.image = new_image_path
+    @image.setter
+    def image(self, new_image_path):
+        self._image_path = new_image_path
 
-    def get_latex(self):
-        return self.name
+    @property
+    def image_static(self):
+        return self._image_static
 
-    def set_latex(self, new_latex):
-        self.latex = new_latex
+    @image_static.setter
+    def image_static(self, new_image_static):
+        self._image_static = new_image_static
+
+    @property
+    def latex(self):
+        return self._latex
+
+    @latex.setter
+    def latex(self, new_latex):
+        self._latex = new_latex

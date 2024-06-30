@@ -2,18 +2,8 @@ import math
 
 from PyQt6.QtCore import QPointF
 
+from auxiliar.Calculate import Calculate
 from drawables.Draw import Draw
-
-
-def calculate_angle(x1, y1, x2, y2):
-    delta_x = x2 - x1
-    delta_y = y2 - y1
-
-    radians = math.atan2(delta_y, delta_x)
-    angle = math.degrees(radians)
-    angle = (angle + 360) % 360
-
-    return angle
 
 
 class DrawComponent:
@@ -21,6 +11,7 @@ class DrawComponent:
     def __init__(self, scene):
         self.scene = scene
         self.draw = Draw(self.scene)
+        self.calculate = Calculate()
 
     def one_pins(self, device_ratio, start_point, final_point, tool, label_component):
 
@@ -41,7 +32,7 @@ class DrawComponent:
             90
         )
 
-        if tool.name_class == "Power Supplies":
+        if tool.group_name == 'Power Supplies':
             item_label = self.draw.label1_center(
                 tool.name,
                 final_point,
@@ -60,31 +51,14 @@ class DrawComponent:
 
         return items_added
 
-    def two_pins(self, scene, device_ratio, start_point, final_point, path_svg, label_component):
+    def two_pins(self, scene, device_ratio, start_point, final_point, path_svg, image_static, label_component):
 
         items_added = []
 
-        middle_point = QPointF(
-            (start_point.x() + final_point.x()) / 2,
-            (start_point.y() + final_point.y()) / 2
-        )
-        magnitude = math.sqrt(
-            math.pow((final_point.x() - start_point.x()), 2) +
-            math.pow(final_point.y() - start_point.y(), 2)
-        )
-        angle = calculate_angle(start_point.x(), start_point.y(), final_point.x(), final_point.y())
-
-        if magnitude == 0:
-            component = QPointF(
-                (final_point.x() - start_point.x()),
-                (final_point.y() - start_point.y())
-            )
-            angle = 90
-        else:
-            component = QPointF(
-                (final_point.x() - start_point.x()) / magnitude,
-                (final_point.y() - start_point.y()) / magnitude
-            )
+        middle_point = self.calculate.middle_point(start_point, final_point)
+        magnitude = self.calculate.magnitude(start_point, final_point)
+        angle = self.calculate.angle(magnitude, start_point, final_point)
+        component = self.calculate.component(magnitude, start_point, final_point)
 
         line_top = self.draw.line(
             start_point.x(),
@@ -114,6 +88,16 @@ class DrawComponent:
             angle
         )
 
+        if image_static != '':
+            item_img_static = self.draw.image(
+                device_ratio,
+                image_static,
+                start_point,
+                final_point,
+                0
+            )
+            items_added.append(item_img_static)
+
         items_added.append(line_top)
         items_added.append(item_img)
         items_added.append(item_label)
@@ -125,18 +109,9 @@ class DrawComponent:
 
         items_added = []
 
-        middle_point = QPointF(
-            (start_point.x() + final_point.x()) / 2,
-            (start_point.y() + final_point.y()) / 2
-        )
-        magnitude = math.sqrt(
-            math.pow((final_point.x() - start_point.x()), 2) +
-            math.pow(final_point.y() - start_point.y(), 2)
-        )
-        angle = calculate_angle(start_point.x(), start_point.y(), final_point.x(), final_point.y())
-
-        if magnitude == 0:
-            angle = 90
+        middle_point = self.calculate.middle_point(start_point, final_point)
+        magnitude = self.calculate.magnitude(start_point, final_point)
+        angle = self.calculate.angle(magnitude, start_point, final_point)
 
         item_line = self.draw.line(
             start_point.x(),
@@ -183,7 +158,7 @@ class DrawComponent:
             final_point.x() - 25, final_point.y()
         )
 
-        item_label = self.draw.label3(final_point, label_component)
+        item_label = self.draw.label_transistor(final_point, label_component)
 
         items_added.append(item_img)
         items_added.append(line_top)
@@ -205,7 +180,7 @@ class DrawComponent:
             0
         )
 
-        item_label = self.draw.label4(final_point, label_component)
+        item_label = self.draw.label_transformer(final_point, label_component)
 
         items_added.append(item_img)
         items_added.append(item_label)

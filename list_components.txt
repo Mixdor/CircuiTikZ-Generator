@@ -1,107 +1,157 @@
 <group name="Basic">
-[Select]{pins=0}{img=images/components_svg/arrow_selector.svg}{latex=None}
-[Wire]{pins=2}{img=images/components_svg/Wire.svg}{latex=short}
-[Crossing Wire]{pins=2}{img=images/components_svg/Crossings.svg}{latex=crossing}
+[Select]<class>None</class><img>images/components_svg/arrow_selector.svg</img><latex>None</latex>
+[Wire]<class>Traceable</class><img>images/components_svg/Wire.svg</img><latex>short</latex>
+[Crossing Wire]<class>Traceable</class><img>images/components_svg/Crossings.svg</img><latex>crossing</latex>
 </group>
 <group name="Terminal Shapes">
-[Connected]{pins=1}{img=images/components_svg/Circle.svg}{latex=node[circ]}
-[Unconnected]{pins=1}{img=images/components_svg/Circle_Open.svg}{latex=node[ocirc]}
-[Diamond]{pins=1}{img=images/components_svg/Diamond.svg}{latex=node[diamondpole]}
-[Open Diamond]{pins=1}{img=images/components_svg/Diamond_Open.svg}{latex=node[odiamondpole]}
-[Square]{pins=1}{img=images/components_svg/Square.svg}{latex=node[squarepole]}
-[Open Square]{pins=1}{img=images/components_svg/Square_Open.svg}{latex=node[osquarepole]}
-[Arrow]{pins=1}{img=images/components_svg/Arrow.svg}{latex=node[currarrow]}
+[Connected]<class>Traceable_Final</class><img>images/components_svg/Circle.svg</img><latex>node[circ]</latex>
+[Unconnected]<class>Traceable_Final</class><img>images/components_svg/Circle_Open.svg</img><latex>node[ocirc]</latex>
+[Diamond]<class>Traceable_Final</class><img>images/components_svg/Diamond.svg</img><latex>node[diamondpole]</latex>
+[Open Diamond]<class>Traceable_Final</class><img>images/components_svg/Diamond_Open.svg</img><latex>node[odiamondpole]</latex>
+[Square]<class>Traceable_Final</class><img>images/components_svg/Square.svg</img><latex>node[squarepole]</latex>
+[Open Square]<class>Traceable_Final</class><img>images/components_svg/Square_Open.svg</img><latex>node[osquarepole]</latex>
+[Arrow]<class>Traceable_Final</class><img>images/components_svg/Arrow.svg</img><latex>node[currarrow]</latex>
 </group>
 <group name="Sources">
-[Battery]{pins=2}{img=images/components_svg/Battery.svg}{latex=battery}
-[Battery 1]{pins=2}{img=images/components_svg/Battery_1.svg}{latex=battery1}
-[Battery 2]{pins=2}{img=images/components_svg/Battery_2.svg}{latex=battery2}
-[DC Voltage]{pins=2}{img=images/components_svg/Voltage_Source.svg}{latex=V}
-[DC Current]{pins=2}{img=images/components_svg/Current_Source.svg}{latex=I}
-[AC Voltage]{pins=2}{img=images/components_svg/SinusoidalVoltage.svg}{latex=sV}
-[AC Current]{pins=2}{img=images/components_svg/SinusoidalCurrent.svg}{latex=sI}
-[DC Controlled Voltage]{pins=2}{img=images/components_svg/ControlledVoltage.svg}{latex=controlled voltage source}
-[DC Controlled Current]{pins=2}{img=images/components_svg/ControlledCurrent.svg}{latex=controlled current source}
-[AC Controlled Voltage]{pins=2}{img=images/components_svg/ControlledSinusoidalVoltage.svg}{latex=csV}
-[AC Controlled Current]{pins=2}{img=images/components_svg/ControlledSinusoidalCurrent.svg}{latex=csI}
-[Square Voltage]{pins=2}{img=images/components_svg/Square_Voltage.svg}{latex=sqV}
-[Triangle Voltage]{pins=2}{img=images/components_svg/Triangle_Voltage.svg}{latex=tV}
+[Battery]<class>Traceable</class><img>images/components_svg/Battery.svg</img><latex>battery</latex>
+[Battery 1]<class>Traceable</class><img>images/components_svg/Battery_1.svg</img><latex>battery1</latex>
+[Battery 2]<class>Traceable</class><img>images/components_svg/Battery_2.svg</img><latex>battery2</latex>
+[Voltage]<class>Traceable</class><img>images/components_svg/Voltage_Source.svg</img><latex>V</latex>
+[Current]<class>Traceable</class><img>images/components_svg/Current_Source.svg</img><latex>I</latex>
+[Sinusoidal Voltage]<class>Traceable</class><img>images/components_svg/SinusoidalVoltage.svg</img><latex>sV</latex>
+[Sinusoidal Current]<class>Traceable</class><img>images/components_svg/SinusoidalCurrent.svg</img><latex>sI</latex>
+</group>
+<group name="Controlled Sources">
+[Controlled Voltage]<class>Traceable</class><img>images/components_svg/ControlledVoltage.svg</img><latex>controlled voltage source</latex>
+[Controlled Current]<class>Traceable</class><img>images/components_svg/ControlledCurrent.svg</img><latex>controlled current source</latex>
+[Controlled Sinusoidal Voltage]<class>Traceable</class><img>images/components_svg/ControlledSinusoidalVoltage.svg</img><latex>csV</latex>
+[Controlled Sinusoidal Current]<class>Traceable</class><img>images/components_svg/ControlledSinusoidalCurrent.svg</img><latex>csI</latex>
+[Empty Controlled Source]<class>Traceable</class><img>images/components_svg/EmptyControlled.svg</img><latex>ecsource</latex>
+</group>
+<group name="DC Sources">
+[DC Voltage]<class>Traceable</class><img>images/components_svg/DC_Voltage.svg</img><latex>dcvsource</latex>
+[DC Current]<class>Traceable</class><img>images/components_svg/DC_Current.svg</img><latex>dcisource</latex>
+</group>
+<group name="Especial Sources">
+[Noise Voltage]<class>Traceable</class><img>images/components_svg/Noise_Voltage.svg</img><latex>nV</latex>
+[Noise Current]<class>Traceable</class><img>images/components_svg/Noise_Current.svg</img><latex>nI</latex>
+[Square Voltage]<class>Traceable</class><img>images/components_svg/Square_Voltage.svg</img><latex>sqV</latex>
+[Triangle Voltage]<class>Traceable</class><img>images/components_svg/Triangle_Voltage.svg</img><latex>tV</latex>
+[Empty Voltage]<class>Traceable</class><img>images/components_svg/Empty_Voltage.svg</img><latex>esource</latex>
+[Photovoltaic Voltage]<class>Traceable</class><img>images/components_svg/Photovoltaic_Voltage.svg</img><latex>pvsource</latex>
+[Double Zero style Current]<class>Traceable</class><img>images/components_svg/Double_Zero_Source.svg</img><latex>ioosource</latex>
+[Double Zero style Voltage]<class>Traceable</class><img>images/components_svg/Double_Zero_Source.svg</img><latex>voosource</latex>
+</group>
+<group name="Nullator and norator">
+[Nullator]<class>Traceable</class><img>images/components_svg/Nullator.svg</img><latex>nullator</latex>
+[Norator]<class>Traceable</class><img>images/components_svg/Norator.svg</img><latex>norator</latex>
 </group>
 <group name="Resistors">
-[Resistor]{pins=2}{img=images/components_svg/Resistor.svg}{latex=R}
+[Resistor]<class>Traceable</class><img>images/components_svg/Resistor.svg</img><latex>R</latex>
 </group>
 <group name="Inductors">
-[Inductor]{pins=2}{img=images/components_svg/Inductor.svg}{latex=L}
+[Inductor]<class>Traceable</class><img>images/components_svg/Inductor.svg</img><latex>L</latex>
 </group>
 <group name="Capacitors">
-[Capacitor]{pins=2}{img=images/components_svg/Capacitor.svg}{latex=C}
-[Polarized Capacitor]{pins=2}{img=images/components_svg/Capacitor_Polarized.svg}{latex=cC}
-[Electrolytic capacitor]{pins=2}{img=images/components_svg/Capacitor_Electrolytic.svg}{latex=eC}
-[Piezoelectric]{pins=2}{img=images/components_svg/Capacitor_Piezoelectric.svg}{latex=PZ}
+[Capacitor]<class>Traceable</class><img>images/components_svg/Capacitor.svg</img><latex>C</latex>
+[Polarized Capacitor]<class>Traceable</class><img>images/components_svg/Capacitor_Polarized.svg</img><latex>cC</latex>
+[Electrolytic capacitor]<class>Traceable</class><img>images/components_svg/Capacitor_Electrolytic.svg</img><latex>eC</latex>
+[Piezoelectric]<class>Traceable</class><img>images/components_svg/Capacitor_Piezoelectric.svg</img><latex>PZ</latex>
 </group>
 <group name="Diodes">
-[Diode]{pins=2}{img=images/components_svg/Diode.svg}{latex=D}
-[Schottky Diode]{pins=2}{img=images/components_svg/Diode_Schottky.svg}{latex=sD}
-[Zener Diode]{pins=2}{img=images/components_svg/Diode_Zener.svg}{latex=zD}
-[ZZener Diode]{pins=2}{img=images/components_svg/Diode_ZZener.svg}{latex=zzD}
-[Tunnel Diode]{pins=2}{img=images/components_svg/Diode_Tunnel.svg}{latex=tD}
-[Photodiode]{pins=2}{img=images/components_svg/Diode_Photo.svg}{latex=pD}
-[Led]{pins=2}{img=images/components_svg/Diode_Led.svg}{latex=pD}
-[Laser Diode]{pins=2}{img=images/components_svg/Diode_Laser.svg}{latex=lasD}
-[Varcap]{pins=2}{img=images/components_svg/Diode_Varcap.svg}{latex=VC}
-[TVS Diode]{pins=2}{img=images/components_svg/Diode_TVS.svg}{latex=tvsD}
-[Shockley Diode]{pins=2}{img=images/components_svg/Diode_Shockley.svg}{latex=shD}
-[Bidirectional Diode]{pins=2}{img=images/components_svg/Diode_Bidirectional.svg}{latex=biD}
+[Diode]<class>Traceable</class><img>images/components_svg/Diode.svg</img><latex>D</latex>
+[Schottky Diode]<class>Traceable</class><img>images/components_svg/Diode_Schottky.svg</img><latex>sD</latex>
+[Zener Diode]<class>Traceable</class><img>images/components_svg/Diode_Zener.svg</img><latex>zD</latex>
+[ZZener Diode]<class>Traceable</class><img>images/components_svg/Diode_ZZener.svg</img><latex>zzD</latex>
+[Tunnel Diode]<class>Traceable</class><img>images/components_svg/Diode_Tunnel.svg</img><latex>tD</latex>
+[Photodiode]<class>Traceable</class><img>images/components_svg/Diode_Photo.svg</img><latex>pD</latex>
+[Led]<class>Traceable</class><img>images/components_svg/Diode_Led.svg</img><latex>pD</latex>
+[Laser Diode]<class>Traceable</class><img>images/components_svg/Diode_Laser.svg</img><latex>lasD</latex>
+[Varcap]<class>Traceable</class><img>images/components_svg/Diode_Varcap.svg</img><latex>VC</latex>
+[TVS Diode]<class>Traceable</class><img>images/components_svg/Diode_TVS.svg</img><latex>tvsD</latex>
+[Shockley Diode]<class>Traceable</class><img>images/components_svg/Diode_Shockley.svg</img><latex>shD</latex>
+[Bidirectional Diode]<class>Traceable</class><img>images/components_svg/Diode_Bidirectional.svg</img><latex>biD</latex>
 </group>
 <group name="Switches">
-[Switch]{pins=2}{img=images/components_svg/Switch_Open.svg}{latex=nos}
-[Closing Switch]{pins=2}{img=images/components_svg/Switch_Closing.svg}{latex=cspst}
-[Opening Switch]{pins=2}{img=images/components_svg/Switch_Opening.svg}{latex=ospst}
-[Push Button]{pins=2}{img=images/components_svg/Push.svg}{latex=nopb}
-[Push Closed]{pins=2}{img=images/components_svg/Push_Closed.svg}{latex=nopbc}
+[Switch]<class>Traceable</class><img>images/components_svg/Switch_Open.svg</img><latex>nos</latex>
+[Closing Switch]<class>Traceable</class><img>images/components_svg/Switch_Closing.svg</img><latex>cspst</latex>
+[Opening Switch]<class>Traceable</class><img>images/components_svg/Switch_Opening.svg</img><latex>ospst</latex>
+[Push Button]<class>Traceable</class><img>images/components_svg/Push.svg</img><latex>nopb</latex>
+[Push Closed]<class>Traceable</class><img>images/components_svg/Push_Closed.svg</img><latex>nopbc</latex>
 </group>
 <group name="Transistors">
-[NPN]{pins=3}{img=images/components_svg/NPN.svg}{latex=node[npn]}
-[PNP]{pins=3}{img=images/components_svg/PNP.svg}{latex=node[pnp]}
-[Schottky NPN]{pins=3}{img=images/components_svg/NPN_Schottky.svg}{latex=node[npn,schottky base]}
-[Schottky PNP]{pins=3}{img=images/components_svg/PNP_Schottky.svg}{latex=node[pnp,schottky base]}
-[Diode NPN]{pins=3}{img=images/components_svg/NPN_Diode.svg}{latex=node[npn,bodydiode]}
-[Diode PNP]{pins=3}{img=images/components_svg/PNP_Diode.svg}{latex=node[pnp,bodydiode]}
-[Photo NPN]{pins=3}{img=images/components_svg/NPN_Photo.svg}{latex=node[npn,photo]}
-[Photo PNP]{pins=3}{img=images/components_svg/PNP_Photo.svg}{latex=node[pnp,photo]}
-[Nigbt]{pins=3}{img=images/components_svg/NPN_Nigbt.svg}{latex=node[nigbt]}
-[Pigbt]{pins=3}{img=images/components_svg/PNP_Pigbt.svg}{latex=node[pigbt]}
-[NMOS]{pins=3}{img=images/components_svg/Nmos.svg}{latex=node[nmos]}
-[PMOS]{pins=3}{img=images/components_svg/Pmos.svg}{latex=node[pmos]}
-[NMOS Depletion]{pins=3}{img=images/components_svg/Nmos_Depletion.svg}{latex=node[nmosd]}
-[PMOS Depletion]{pins=3}{img=images/components_svg/Pmos_Depletion.svg}{latex=node[pmosd]}
-[Hemt]{pins=3}{img=images/components_svg/Hemt.svg}{latex=node[hemt]}
-[Hemt NoBase]{pins=3}{img=images/components_svg/Hemt_Nobase.svg}{latex=node[hemt,nobase]}
-[NFET]{pins=3}{img=images/components_svg/Nfet.svg}{latex=node[nfet]}
-[PFET]{pins=3}{img=images/components_svg/Pfet.svg}{latex=node[pfet]}
-[NFET Depletion]{pins=3}{img=images/components_svg/Nfet_Depletion.svg}{latex=node[nfetd]}
-[PFET Depletion]{pins=3}{img=images/components_svg/Pfet_Depletion.svg}{latex=node[pfetd]}
+[NPN]<class>Transistor</class><img>images/components_svg/NPN.svg</img><latex>node[npn]</latex>
+[PNP]<class>Transistor</class><img>images/components_svg/PNP.svg</img><latex>node[pnp]</latex>
+[Schottky NPN]<class>Transistor</class><img>images/components_svg/NPN_Schottky.svg</img><latex>node[npn,schottky base]</latex>
+[Schottky PNP]<class>Transistor</class><img>images/components_svg/PNP_Schottky.svg</img><latex>node[pnp,schottky base]</latex>
+[Diode NPN]<class>Transistor</class><img>images/components_svg/NPN_Diode.svg</img><latex>node[npn,bodydiode]</latex>
+[Diode PNP]<class>Transistor</class><img>images/components_svg/PNP_Diode.svg</img><latex>node[pnp,bodydiode]</latex>
+[Photo NPN]<class>Transistor</class><img>images/components_svg/NPN_Photo.svg</img><latex>node[npn,photo]</latex>
+[Photo PNP]<class>Transistor</class><img>images/components_svg/PNP_Photo.svg</img><latex>node[pnp,photo]</latex>
+[Nigbt]<class>Transistor</class><img>images/components_svg/NPN_Nigbt.svg</img><latex>node[nigbt]</latex>
+[Pigbt]<class>Transistor</class><img>images/components_svg/PNP_Pigbt.svg</img><latex>node[pigbt]</latex>
+[NMOS]<class>Transistor</class><img>images/components_svg/Nmos.svg</img><latex>node[nmos]</latex>
+[PMOS]<class>Transistor</class><img>images/components_svg/Pmos.svg</img><latex>node[pmos]</latex>
+[NMOS Depletion]<class>Transistor</class><img>images/components_svg/Nmos_Depletion.svg</img><latex>node[nmosd]</latex>
+[PMOS Depletion]<class>Transistor</class><img>images/components_svg/Pmos_Depletion.svg</img><latex>node[pmosd]</latex>
+[Hemt]<class>Transistor</class><img>images/components_svg/Hemt.svg</img><latex>node[hemt]</latex>
+[Hemt NoBase]<class>Transistor</class><img>images/components_svg/Hemt_Nobase.svg</img><latex>node[hemt,nobase]</latex>
+[NFET]<class>Transistor</class><img>images/components_svg/Nfet.svg</img><latex>node[nfet]</latex>
+[PFET]<class>Transistor</class><img>images/components_svg/Pfet.svg</img><latex>node[pfet]</latex>
+[NFET Depletion]<class>Transistor</class><img>images/components_svg/Nfet_Depletion.svg</img><latex>node[nfetd]</latex>
+[PFET Depletion]<class>Transistor</class><img>images/components_svg/Pfet_Depletion.svg</img><latex>node[pfetd]</latex>
 </group>
 <group name="Grounds">
-[Ground]{pins=1}{img=images/components_svg/Ground_Earth.svg}{latex=node[ground]}
-[Tailless]{pins=1}{img=images/components_svg/Ground_Tailless.svg}{latex=node[tlground]}
-[Reference]{pins=1}{img=images/components_svg/Ground_Reference.svg}{latex=node[rground]}
-[Signal]{pins=1}{img=images/components_svg/Ground_Signal.svg}{latex=node[sground]}
-[Noiseless]{pins=1}{img=images/components_svg/Ground_Noiseles.svg}{latex=node[nground]}
-[Protective]{pins=1}{img=images/components_svg/Ground_Protective.svg}{latex=node[pground]}
-[Chassis]{pins=1}{img=images/components_svg/Ground_Chassis.svg}{latex=node[cground]}
+[Ground]<class>Traceable_Final</class><img>images/components_svg/Ground_Earth.svg</img><latex>node[ground]</latex>
+[Tailless]<class>Traceable_Final</class><img>images/components_svg/Ground_Tailless.svg</img><latex>node[tlground]</latex>
+[Reference]<class>Traceable_Final</class><img>images/components_svg/Ground_Reference.svg</img><latex>node[rground]</latex>
+[Signal]<class>Traceable_Final</class><img>images/components_svg/Ground_Signal.svg</img><latex>node[sground]</latex>
+[Noiseless]<class>Traceable_Final</class><img>images/components_svg/Ground_Noiseles.svg</img><latex>node[nground]</latex>
+[Protective]<class>Traceable_Final</class><img>images/components_svg/Ground_Protective.svg</img><latex>node[pground]</latex>
+[Chassis]<class>Traceable_Final</class><img>images/components_svg/Ground_Chassis.svg</img><latex>node[cground]</latex>
 </group>
 <group name="Power Supplies">
-[VCC]{pins=1}{img=images/components_svg/Supplies_VCC.svg}{latex=node[vcc]}
-[VEE]{pins=1}{img=images/components_svg/Supplies_VEE.svg}{latex=node[vee]}
+[VCC]<class>Traceable_Final</class><img>images/components_svg/Supplies_VCC.svg</img><latex>node[vcc]</latex>
+[VEE]<class>Traceable_Final</class><img>images/components_svg/Supplies_VEE.svg</img><latex>node[vee]</latex>
 </group>
 <group name="Transformers">
-[Transformer]{pins=4}{img=images/components_svg/Transformer.svg}{latex=node[transformer, scale=0.952]}
-[Gyrator]{pins=4}{img=images/components_svg/Gyrator.svg}{latex=node[gyrator, scale=0.952]}
-[Transformer Core]{pins=4}{img=images/components_svg/Transformer_Core.svg}{latex=node[transformer core, scale=0.952]}
+[Transformer]<class>Transformer</class><img>images/components_svg/Transformer.svg</img><latex>node[transformer, scale=0.952]</latex>
+[Gyrator]<class>Transformer</class><img>images/components_svg/Gyrator.svg</img><latex>node[gyrator, scale=0.952]</latex>
+[Transformer Core]<class>Transformer</class><img>images/components_svg/Transformer_Core.svg</img><latex>node[transformer core, scale=0.952]</latex>
 </group>
 <group name="Instruments">
-[Ammeter]{pins=2}{img=images/components_svg/Ammeter.svg}{latex=ammeter}
-[Voltmeter]{pins=2}{img=images/components_svg/Voltmeter.svg}{latex=voltmeter}
-[Ohmmeter]{pins=2}{img=images/components_svg/Ohmmeter.svg}{latex=ohmmeter}
+[Ammeter]<class>Traceable</class><img>images/components_svg/Ammeter.svg</img><latex>ammeter</latex>
+[Voltmeter]<class>Traceable</class><img>images/components_svg/Voltmeter.svg</img><latex>voltmeter</latex>
+[Ohmmeter]<class>Traceable</class><img>images/components_svg/Ohmmeter.svg</img><latex>ohmmeter</latex>
+[Square Meter]<class>Traceable</class><img>images/components_svg/Oscilloscope.svg</img><img_static>images/components_svg/Square_Meter.svg</img_static><latex>smeter</latex>
+[Ramp Oscilloscope]<class>Traceable</class><img>images/components_svg/Oscilloscope.svg</img><img_static>images/components_svg/Oscilloscope_Ramps.svg</img_static><latex>oscope</latex>
+[Sin Oscilloscope]<class>Traceable</class><img>images/components_svg/Oscilloscope.svg</img><img_static>images/components_svg/Oscilloscope_Sin.svg</img_static><latex>oscope</latex>
+[Square Oscilloscope]<class>Traceable</class><img>images/components_svg/Oscilloscope.svg</img><img_static>images/components_svg/Oscilloscope_Square.svg</img_static><latex>oscope</latex>
+[Triangle Oscilloscope]<class>Traceable</class><img>images/components_svg/Oscilloscope.svg</img><img_static>images/components_svg/Oscilloscope_Triangles.svg</img_static><latex>oscope</latex>
+[Lissajous Oscilloscope]<class>Traceable</class><img>images/components_svg/Oscilloscope.svg</img><img_static>images/components_svg/Oscilloscope_Lissajous.svg</img_static><latex>oscope</latex>
+[Zero Oscilloscope]<class>Traceable</class><img>images/components_svg/Oscilloscope.svg</img><img_static>images/components_svg/Oscilloscope_Zero.svg</img_static><latex>oscope</latex>
+[None Oscilloscope]<class>Traceable</class><img>images/components_svg/Oscilloscope.svg</img><img_static>images/components_svg/Oscilloscope_None.svg</img_static><latex>oscope</latex>
+[Current Loop]<class>Traceable</class><img>images/components_svg/Current_Loop.svg</img><latex>iloop</latex>
+</group>
+<group name="Mechanical Analogy">
+[Mechanical Damping]<class>Traceable</class><img>images/components_svg/Damping.svg</img><latex>damper</latex>
+[Mechanical Inerter]<class>Traceable</class><img>images/components_svg/Inerter.svg</img><latex>inerter</latex>
+[Mechanical Stiffness]<class>Traceable</class><img>images/components_svg/Stiffness.svg</img><latex>spring</latex>
+[Mechanical Viscoelastic]<class>Traceable</class><img>images/components_svg/Viscoelastic.svg</img><latex>viscoe</latex>
+[Mechanical Mass]<class>Traceable</class><img>images/components_svg/Mass.svg</img><latex>mass</latex>
+</group>
+<group name="Other Bipoles">
+[Thermocouple]<class>Traceable</class><img>images/components_svg/Thermocouple.svg</img><latex>thermocouple</latex>
+[Fuse]<class>Traceable</class><img>images/components_svg/Fuse.svg</img><latex>fuse</latex>
+[Asymmetric Fuse]<class>Traceable</class><img>images/components_svg/Asymmetric_Fuse.svg</img><latex>afuse</latex>
+[Squid]<class>Traceable</class><img>images/components_svg/Squid.svg</img><latex>squid</latex>
+[Barrier]<class>Traceable</class><img>images/components_svg/Barrier.svg</img><latex>barrier</latex>
+[Open Barrier]<class>Traceable</class><img>images/components_svg/Open_Barrier.svg</img><latex>openbarrier</latex>
+[Gas]<class>Traceable</class><img>images/components_svg/Gas.svg</img><latex>american gas filled surge arrester</latex>
+[Lamp]<class>Traceable</class><img>images/components_svg/Lamp.svg</img><latex>lamp</latex>
+[Bulb]<class>Traceable</class><img>images/components_svg/Bulb.svg</img><latex>bulb</latex>
+[LoudSpeaker]<class>Traceable</class><img>images/components_svg/LoudSpeaker.svg</img><latex>loudspeaker</latex>
+[Mic]<class>Traceable</class><img>images/components_svg/Mic.svg</img><latex>mic</latex>
+[Buzzer]<class>Traceable</class><img>images/components_svg/Buzzer.svg</img><latex>buzzer</latex>
+[Reversed Buzzer]<class>Traceable</class><img>images/components_svg/Reversed_Buzzer.svg</img><latex>rbuzzer</latex>
 </group>
