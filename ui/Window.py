@@ -170,7 +170,7 @@ class MainWindow(QMainWindow):
         layout_donate.setContentsMargins(0, 0, 0, 0)
         layout_tools.addWidget(widget_layout_donate)
 
-        button_donate = QPushButton(QIcon(f'{self.resources.get_path()}/ko-fi-icon.svg'), ' Support me ', self)
+        button_donate = QPushButton(QIcon(f'{self.resources.get_path()}/ko-fi-icon.svg'), ' Donate ', self)
         button_donate.clicked.connect(self.show_kofi)
 
         # button_about = QPushButton(QIcon(f'{self.resources.get_path()}/info.svg'), '', self)
@@ -237,7 +237,7 @@ class MainWindow(QMainWindow):
                 for tool in self.obj_tools:
                     if tool.name == button.text():
                         for label in self.group_buttons:
-                            if label.text() == tool.class_name:
+                            if label.text() == tool.group_name:
                                 label.setVisible(True)
 
     def clear_search(self):

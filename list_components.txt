@@ -80,26 +80,26 @@
 [Push Closed]<class>Traceable</class><img>images/components_svg/Push_Closed.svg</img><latex>nopbc</latex>
 </group>
 <group name="Transistors">
-[NPN]<class>Transistor</class><img>images/components_svg/NPN.svg</img><latex>node[npn]</latex>
-[PNP]<class>Transistor</class><img>images/components_svg/PNP.svg</img><latex>node[pnp]</latex>
-[Schottky NPN]<class>Transistor</class><img>images/components_svg/NPN_Schottky.svg</img><latex>node[npn,schottky base]</latex>
-[Schottky PNP]<class>Transistor</class><img>images/components_svg/PNP_Schottky.svg</img><latex>node[pnp,schottky base]</latex>
-[Diode NPN]<class>Transistor</class><img>images/components_svg/NPN_Diode.svg</img><latex>node[npn,bodydiode]</latex>
-[Diode PNP]<class>Transistor</class><img>images/components_svg/PNP_Diode.svg</img><latex>node[pnp,bodydiode]</latex>
-[Photo NPN]<class>Transistor</class><img>images/components_svg/NPN_Photo.svg</img><latex>node[npn,photo]</latex>
-[Photo PNP]<class>Transistor</class><img>images/components_svg/PNP_Photo.svg</img><latex>node[pnp,photo]</latex>
-[Nigbt]<class>Transistor</class><img>images/components_svg/NPN_Nigbt.svg</img><latex>node[nigbt]</latex>
-[Pigbt]<class>Transistor</class><img>images/components_svg/PNP_Pigbt.svg</img><latex>node[pigbt]</latex>
-[NMOS]<class>Transistor</class><img>images/components_svg/Nmos.svg</img><latex>node[nmos]</latex>
-[PMOS]<class>Transistor</class><img>images/components_svg/Pmos.svg</img><latex>node[pmos]</latex>
-[NMOS Depletion]<class>Transistor</class><img>images/components_svg/Nmos_Depletion.svg</img><latex>node[nmosd]</latex>
-[PMOS Depletion]<class>Transistor</class><img>images/components_svg/Pmos_Depletion.svg</img><latex>node[pmosd]</latex>
-[Hemt]<class>Transistor</class><img>images/components_svg/Hemt.svg</img><latex>node[hemt]</latex>
-[Hemt NoBase]<class>Transistor</class><img>images/components_svg/Hemt_Nobase.svg</img><latex>node[hemt,nobase]</latex>
-[NFET]<class>Transistor</class><img>images/components_svg/Nfet.svg</img><latex>node[nfet]</latex>
-[PFET]<class>Transistor</class><img>images/components_svg/Pfet.svg</img><latex>node[pfet]</latex>
-[NFET Depletion]<class>Transistor</class><img>images/components_svg/Nfet_Depletion.svg</img><latex>node[nfetd]</latex>
-[PFET Depletion]<class>Transistor</class><img>images/components_svg/Pfet_Depletion.svg</img><latex>node[pfetd]</latex>
+[NPN]<class>Transistor</class><img>images/components_svg/NPN.svg</img><latex>node[npn,scale=0.59]</latex>
+[PNP]<class>Transistor</class><img>images/components_svg/PNP.svg</img><latex>node[pnp,scale=0.59]</latex>
+[Schottky NPN]<class>Transistor</class><img>images/components_svg/NPN_Schottky.svg</img><latex>node[npn,schottky base,scale=0.59]</latex>
+[Schottky PNP]<class>Transistor</class><img>images/components_svg/PNP_Schottky.svg</img><latex>node[pnp,schottky base,scale=0.59]</latex>
+[Diode NPN]<class>Transistor</class><img>images/components_svg/NPN_Diode.svg</img><latex>node[npn,bodydiode,scale=0.59]</latex>
+[Diode PNP]<class>Transistor</class><img>images/components_svg/PNP_Diode.svg</img><latex>node[pnp,bodydiode,scale=0.59]</latex>
+[Photo NPN]<class>Transistor</class><img>images/components_svg/NPN_Photo.svg</img><latex>node[npn,photo,scale=0.59]</latex>
+[Photo PNP]<class>Transistor</class><img>images/components_svg/PNP_Photo.svg</img><latex>node[pnp,photo,scale=0.59]</latex>
+[Nigbt]<class>Transistor</class><img>images/components_svg/NPN_Nigbt.svg</img><latex>node[nigbt,scale=0.59]</latex>
+[Pigbt]<class>Transistor</class><img>images/components_svg/PNP_Pigbt.svg</img><latex>node[pigbt,scale=0.59]</latex>
+[NMOS]<class>Transistor</class><img>images/components_svg/Nmos.svg</img><latex>node[nmos,scale=0.59]</latex>
+[PMOS]<class>Transistor</class><img>images/components_svg/Pmos.svg</img><latex>node[pmos,scale=0.59]</latex>
+[NMOS Depletion]<class>Transistor</class><img>images/components_svg/Nmos_Depletion.svg</img><latex>node[nmosd,scale=0.59]</latex>
+[PMOS Depletion]<class>Transistor</class><img>images/components_svg/Pmos_Depletion.svg</img><latex>node[pmosd,scale=0.59]</latex>
+[Hemt]<class>Transistor</class><img>images/components_svg/Hemt.svg</img><latex>node[hemt,scale=0.59]</latex>
+[Hemt NoBase]<class>Transistor</class><img>images/components_svg/Hemt_Nobase.svg</img><latex>node[hemt,nobase,scale=0.59]</latex>
+[NFET]<class>Transistor</class><img>images/components_svg/Nfet.svg</img><latex>node[nfet,scale=0.59]</latex>
+[PFET]<class>Transistor</class><img>images/components_svg/Pfet.svg</img><latex>node[pfet,scale=0.59]</latex>
+[NFET Depletion]<class>Transistor</class><img>images/components_svg/Nfet_Depletion.svg</img><latex>node[nfetd,scale=0.59]</latex>
+[PFET Depletion]<class>Transistor</class><img>images/components_svg/Pfet_Depletion.svg</img><latex>node[pfetd,scale=0.59]</latex>
 </group>
 <group name="Grounds">
 [Ground]<class>Traceable_Final</class><img>images/components_svg/Ground_Earth.svg</img><latex>node[ground]</latex>
@@ -118,6 +118,9 @@
 [Transformer]<class>Transformer</class><img>images/components_svg/Transformer.svg</img><latex>node[transformer, scale=0.952]</latex>
 [Gyrator]<class>Transformer</class><img>images/components_svg/Gyrator.svg</img><latex>node[gyrator, scale=0.952]</latex>
 [Transformer Core]<class>Transformer</class><img>images/components_svg/Transformer_Core.svg</img><latex>node[transformer core, scale=0.952]</latex>
+</group>
+<group name="Amplifiers">
+[Operational Amplifier]<class>Amplifier</class><img>images/components_svg/Amplifier.svg</img><latex>node[op amp,scale=1.02]</latex>
 </group>
 <group name="Instruments">
 [Ammeter]<class>Traceable</class><img>images/components_svg/Ammeter.svg</img><latex>ammeter</latex>

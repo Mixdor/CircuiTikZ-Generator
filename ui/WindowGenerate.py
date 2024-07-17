@@ -1,3 +1,4 @@
+from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QWidget, QCheckBox, QVBoxLayout, QTextEdit, QPushButton, QDialog, QHBoxLayout, QApplication
 
 from components.Latex import Latex
@@ -16,7 +17,7 @@ class WindowGenerate(QDialog):
 
         self.dic_settings = {
             'wrap_in_figure': 0,
-            'american_style_components': 0
+            'american_style_components': 1
         }
 
         self.layout = QVBoxLayout()
@@ -29,6 +30,7 @@ class WindowGenerate(QDialog):
         check_figure = QCheckBox("Wrap in Figure")
         check_figure.stateChanged.connect(self.figure_change)
         check_style_american = QCheckBox("American Style")
+        check_style_american.setCheckState(Qt.CheckState.Checked)
         check_style_american.stateChanged.connect(self.american_change)
 
         layout_settings1.addWidget(check_figure)

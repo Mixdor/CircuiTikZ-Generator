@@ -2,11 +2,14 @@ from PyQt6.QtCore import QRectF, Qt
 from PyQt6.QtGui import QColor
 from PyQt6.QtWidgets import QGraphicsTextItem, QGraphicsLineItem, QGraphicsRectItem
 
+from ui.Resources import Resources
+
 
 class ComponentsSelector:
 
     def __init__(self):
         super().__init__()
+        self.resources = Resources()
 
     def unselect(self, canvas):
 
@@ -65,7 +68,7 @@ class ComponentsSelector:
         canvas.rect_select.setBrush(Qt.GlobalColor.transparent)
         pen = canvas.rect_select.pen()
         pen.setStyle(Qt.PenStyle.DotLine)
-        pen.setColor(QColor('#DB6725'))
+        pen.setColor(self.resources.get_color_shadow())
         pen.setWidth(2)
         canvas.rect_select.setPen(pen)
 

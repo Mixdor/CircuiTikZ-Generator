@@ -3,24 +3,28 @@ from PyQt6.QtCore import QPoint
 
 class Latex:
 
+    def __init__(self):
+        super().__init__()
+        self.cell_size = 50
+
     def get_one_pin(self, start_point, final_point, latex, label):
         draws = []
-        x1 = str(start_point.x())
-        y1 = str(start_point.y())
-        x2 = str(final_point.x())
-        y2 = str(final_point.y())
+        x1 = str(start_point.x() / self.cell_size)
+        y1 = str(start_point.y() / self.cell_size)
+        x2 = str(final_point.x() / self.cell_size)
+        y2 = str(final_point.y() / self.cell_size)
 
-        draw_text = '\\draw (' + x1 + ",-" + y1 + ')to(' + x2 + ',-' + y2 + ') ' + latex + '{' + label + '}' + ';'
+        draw_text = '\\draw(' + x1 + ",-" + y1 + ')to(' + x2 + ',-' + y2 + ') ' + latex + '{' + label + '}' + ';'
         draws.append(draw_text)
 
         return draws
 
     def get_two_pin(self, name_tool, start_point, final_point, latex, label):
         draws = []
-        x1 = str(start_point.x())
-        y1 = str(start_point.y())
-        x2 = str(final_point.x())
-        y2 = str(final_point.y())
+        x1 = str(start_point.x() / self.cell_size)
+        y1 = str(start_point.y() / self.cell_size)
+        x2 = str(final_point.x() / self.cell_size)
+        y2 = str(final_point.y() / self.cell_size)
 
         if name_tool == 'Ramp Oscilloscope':
             draws.append('\\ctikzset{bipoles/oscope/waveform=ramps}')
@@ -45,10 +49,14 @@ class Latex:
         draws = []
         node = 'Q' + str(id_node)
         top = QPoint(point.x(), point.y() - 1)
+        top_x = (point.x() / self.cell_size)
+        top_y = (point.y() / self.cell_size) - 0.5
         button = QPoint(point.x(), point.y() + 1)
-        middle = QPoint(point.x() - 1, point.y())
-        x = str(point.x())
-        y = str(point.y())
+        button_x = (point.x() / self.cell_size)
+        button_y = (point.y() / self.cell_size) + 0.5
+
+        x = str(point.x() / self.cell_size)
+        y = str(point.y() / self.cell_size)
 
         if latex.__contains__('mos'):
             draw_properties = '\\ctikzset{tripoles/mos style/arrows}'
@@ -60,16 +68,13 @@ class Latex:
         else:
             conf = ['E', 'B', 'C']
 
-        draw_node = '\\draw (' + x + ",-" + y + ') ' + latex + '(' + node + ')' + '{' + label + '}' + ';'
-        draw_line_top = '\\draw[short](' + node + '.' + conf[0] + ')to(' + str(top.x()) + ',-' + str(top.y()) + ');'
-        draw_line_middle = '\\draw[short](' + node + '.' + conf[1] + ')to(' + str(middle.x()) + ',-' + str(
-            middle.y()) + ');'
-        draw_line_button = '\\draw[short](' + node + '.' + conf[2] + ')to(' + str(button.x()) + ',-' + str(
-            button.y()) + ');'
+        draw_node = '\\draw(' + x + ",-" + y + ') ' + latex + '(' + node + ')' + '{' + label + '}' + ';'
+        draw_line_top = '\\draw[short](' + node + '.' + conf[0] + ')to(' + str(top_x) + ',-' + str(top_y) + ');'
+        draw_line_button = '\\draw[short](' + node + '.' + conf[2] + ')to(' + str(button_x) + ',-' + str(
+            button_y) + ');'
 
         draws.append(draw_node)
         draws.append(draw_line_top)
-        draws.append(draw_line_middle)
         draws.append(draw_line_button)
 
         return draws
@@ -78,11 +83,28 @@ class Latex:
 
         draws = []
         node = 'Q' + str(id_node)
-        x = str(point.x())
-        y = str(point.y())
+        x = str(point.x() / self.cell_size)
+        y = str(point.y() / self.cell_size)
 
         draw_node = '\\draw (' + x + ",-" + y + ') ' + latex + '(' + node + ')' + '{' + label + '}' + ';'
         draws.append(draw_node)
+
+        return draws
+
+    def get_amplifier(self, id_node, x, y, latex, label):
+
+        draws = []
+        node = 'Q' + str(id_node)
+
+        x_int = x / self.cell_size
+        x = str((x / self.cell_size) + 0.22)
+        y = str(y / self.cell_size)
+
+        draw_node = '\\draw (' + x + ",-" + y + ') ' + latex + '(' + node + ')' + '{' + label + '}' + ';'
+        draw_out = '\\draw[short](' + node + '.out)to(+' + str(x_int+1.5) + ', -' + y + ');'
+
+        draws.append(draw_node)
+        draws.append(draw_out)
 
         return draws
 

@@ -1,5 +1,7 @@
 import os
 
+from PyQt6.QtCore import Qt
+
 from auxiliar.Calculate import Calculate
 from components.ComponentsSelector import ComponentsSelector
 from components.Latex import Latex
@@ -28,15 +30,16 @@ class ComponentsCreator:
                 canvas.devicePixelRatio(),
                 start_point, end_point,
                 tool,
-                canvas.current_label.text()
+                canvas.current_label.text(),
+                Qt.GlobalColor.black
             )
         else:
-            draw_comp = self.draw_component.line(start_point, end_point)
+            draw_comp = self.draw_component.line(start_point, end_point, Qt.GlobalColor.black)
         canvas.update()
 
         latex_comp = self.latex.get_one_pin(
-            start_point / canvas.cell_size,
-            end_point / canvas.cell_size,
+            start_point,
+            end_point,
             tool.latex,
             current_label)
 
@@ -70,26 +73,30 @@ class ComponentsCreator:
         end_point = canvas.end_point
         current_label = canvas.current_label.text()
 
-        if start_point != end_point:
+        difference = self.calculate.difference(start_point, end_point)
+
+        if difference > 40 or tool.name == 'Wire':
 
             if tool.name != 'Wire':
                 draw_comp = self.draw_component.two_pins(
                     canvas.scene, canvas.devicePixelRatio(),
                     start_point, end_point,
-                    tool.image, tool.image_static, current_label
+                    tool.image, tool.image_static, current_label,
+                    Qt.GlobalColor.black
                 )
             else:
                 draw_comp = self.draw_component.two_pins_no_img(
                     canvas.scene,
                     start_point, end_point,
-                    current_label
+                    current_label,
+                    Qt.GlobalColor.black
                 )
             canvas.update()
 
             latex_comp = self.latex.get_two_pin(
                 tool.name,
-                start_point / canvas.cell_size,
-                end_point / canvas.cell_size,
+                start_point,
+                end_point,
                 tool.latex,
                 current_label)
 
@@ -116,11 +123,10 @@ class ComponentsCreator:
             self.history.new_event_undo(1, None, new_comp)
             self.history.list_redo.clear()
 
-    def create_transistor(self, canvas, path_svg):
+    def create_transistor(self, canvas, point, path_svg):
         if os.path.exists(path_svg):
 
             tool = canvas.tool
-            point = canvas.end_point
             current_label = canvas.current_label.text()
 
             draw_comp = self.draw_component.transistor(
@@ -132,7 +138,52 @@ class ComponentsCreator:
 
             latex_comp = self.latex.get_transistor(
                 len(canvas.components) + 1,
-                point / canvas.cell_size,
+                point,
+                tool.latex,
+                current_label
+            )
+
+            new_comp = ObjComponent(
+                num=len(canvas.components) + 1,
+                name=tool.name,
+                group_name=tool.group_name,
+                class_name=tool.class_name,
+                seed_latex=tool.latex,
+                middle_point=point,
+                angle=0,
+                positions=[point],
+                label=current_label,
+                drawables=draw_comp,
+                latex=latex_comp
+            )
+
+            canvas.components.append(new_comp)
+
+            self.history.new_event_undo(1, None, new_comp)
+            self.history.list_redo.clear()
+
+        else:
+            print("No found image")
+
+    def create_amplifier(self, canvas, path_svg):
+
+        if os.path.exists(path_svg):
+
+            tool = canvas.tool
+            point = canvas.end_point
+            current_label = canvas.current_label.text()
+
+            draw_comp = self.draw_component.amplifier(
+                canvas.scene, canvas.devicePixelRatio(), canvas.end_point,
+                path_svg, canvas.current_label.text(),
+            )
+
+            canvas.update()
+
+            latex_comp = self.latex.get_amplifier(
+                len(canvas.components) + 1,
+                point.x(),
+                point.y(),
                 tool.latex,
                 current_label
             )
@@ -175,7 +226,7 @@ class ComponentsCreator:
 
             latex_comp = self.latex.get_transformer(
                 len(canvas.components) + 1,
-                point / canvas.cell_size,
+                point,
                 tool.latex,
                 current_label
             )

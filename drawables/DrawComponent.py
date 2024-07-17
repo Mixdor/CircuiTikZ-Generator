@@ -1,6 +1,6 @@
 import math
 
-from PyQt6.QtCore import QPointF
+from PyQt6.QtCore import QPointF, Qt
 
 from auxiliar.Calculate import Calculate
 from drawables.Draw import Draw
@@ -13,15 +13,14 @@ class DrawComponent:
         self.draw = Draw(self.scene)
         self.calculate = Calculate()
 
-    def one_pins(self, device_ratio, start_point, final_point, tool, label_component):
+    def one_pins(self, device_ratio, start_point, final_point, tool, label_component, color):
 
         items_added = []
 
         item_line = self.draw.line(
-            start_point.x(),
-            start_point.y(),
-            final_point.x(),
-            final_point.y()
+            start_point.x(), start_point.y(),
+            final_point.x(), final_point.y(),
+            color
         )
 
         item_img = self.draw.image_1(
@@ -29,11 +28,12 @@ class DrawComponent:
             tool.image,
             50,
             final_point,
-            90
+            90,
+            color
         )
 
         if tool.group_name == 'Power Supplies':
-            item_label = self.draw.label1_center(
+            item_label = self.draw.label_center_horizontal(
                 tool.name,
                 final_point,
                 label_component
@@ -51,7 +51,7 @@ class DrawComponent:
 
         return items_added
 
-    def two_pins(self, scene, device_ratio, start_point, final_point, path_svg, image_static, label_component):
+    def two_pins(self, scene, device_ratio, start_point, final_point, path_svg, image_static, label_component, color):
 
         items_added = []
 
@@ -64,14 +64,16 @@ class DrawComponent:
             start_point.x(),
             start_point.y(),
             middle_point.x() - 25 * component.x(),
-            middle_point.y() - 25 * component.y()
+            middle_point.y() - 25 * component.y(),
+            color
         )
 
         line_button = self.draw.line(
             middle_point.x() + 25 * component.x(),
             middle_point.y() + 25 * component.y(),
             final_point.x(),
-            final_point.y()
+            final_point.y(),
+            color
         )
 
         item_img = self.draw.image(
@@ -79,7 +81,8 @@ class DrawComponent:
             path_svg,
             start_point,
             final_point,
-            angle
+            angle,
+            color
         )
 
         item_label = self.draw.label(
@@ -94,7 +97,8 @@ class DrawComponent:
                 image_static,
                 start_point,
                 final_point,
-                0
+                0,
+                color
             )
             items_added.append(item_img_static)
 
@@ -105,7 +109,7 @@ class DrawComponent:
 
         return items_added
 
-    def two_pins_no_img(self, scene, start_point, final_point, label_component):
+    def two_pins_no_img(self, scene, start_point, final_point, label_component, color):
 
         items_added = []
 
@@ -117,7 +121,8 @@ class DrawComponent:
             start_point.x(),
             start_point.y(),
             final_point.x(),
-            final_point.y()
+            final_point.y(),
+            color
         )
 
         item_label = self.draw.label(
@@ -140,30 +145,13 @@ class DrawComponent:
             path_svg,
             final_point,
             final_point,
-            0
-        )
-
-        line_top = self.draw.line(
-            final_point.x(), final_point.y() - 50,
-            final_point.x(), final_point.y() - 25
-        )
-
-        line_button = self.draw.line(
-            final_point.x(), final_point.y() + 50,
-            final_point.x(), final_point.y() + 25
-        )
-
-        line_middle = self.draw.line(
-            final_point.x() - 50, final_point.y(),
-            final_point.x() - 25, final_point.y()
+            0,
+            Qt.GlobalColor.black
         )
 
         item_label = self.draw.label_transistor(final_point, label_component)
 
         items_added.append(item_img)
-        items_added.append(line_top)
-        items_added.append(line_middle)
-        items_added.append(line_button)
         items_added.append(item_label)
 
         return items_added
@@ -177,7 +165,8 @@ class DrawComponent:
             path_svg,
             100,
             final_point,
-            0
+            0,
+            Qt.GlobalColor.black
         )
 
         item_label = self.draw.label_transformer(final_point, label_component)
@@ -187,12 +176,35 @@ class DrawComponent:
 
         return items_added
 
-    def line(self, start_point, end_point):
+    def amplifier(self, scene, device_ratio, final_point, path_svg, label_component):
+
+        items_added = []
+
+        item_img = self.draw.image_with_height(
+            device_ratio,
+            path_svg,
+            125,
+            100,
+            final_point.x(),
+            final_point.y(),
+            0,
+            Qt.GlobalColor.black
+        )
+
+        item_label = self.draw.label_transformer(final_point, label_component)
+
+        items_added.append(item_img)
+        items_added.append(item_label)
+
+        return items_added
+
+    def line(self, start_point, end_point, color):
         items_added = []
 
         item_line = self.draw.line(
             start_point.x(), start_point.y(),
-            end_point.x(), end_point.y()
+            end_point.x(), end_point.y(),
+            color
         )
         items_added.append(item_line)
 

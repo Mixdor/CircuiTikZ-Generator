@@ -86,3 +86,12 @@ class Resources:
             self.pathResources = os.path.join(self.main_path, 'images/basic_light/')
 
         return self.pathResources
+
+    def get_color_canvas(self, canvas):
+        if QGuiApplication.styleHints().colorScheme() == QGuiApplication.styleHints().colorScheme().Light:
+            canvas.setBackgroundBrush(QColor('#FFFFFF'))
+        else:
+            return QColor('#B0B0B0')
+
+    def get_color_shadow(self):
+        return QColor('#DB6725')

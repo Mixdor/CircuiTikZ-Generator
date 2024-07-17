@@ -24,6 +24,16 @@ class Calculate:
         )
         return magnitude
 
+    def difference(self, start_point, final_point):
+
+        x1 = start_point.x()
+        y1 = start_point.y()
+        x2 = final_point.x()
+        y2 = final_point.y()
+
+        difference = math.sqrt(math.pow(x2 - x1, 2) + math.pow(y2 - y1, 2))
+        return difference
+
     def angle(self, magnitude, start_point, final_point):
 
         x1 = start_point.x()

@@ -43,7 +43,7 @@ class ComponentsEditor:
                     if component.class_name == 'Traceable_Final':
 
                         if component.group_name == 'Power Supplies':
-                            item_label = drawer.label1_center(
+                            item_label = drawer.label_center_horizontal(
                                 name_tool=component.name,
                                 pos_point=component.positions[1],
                                 label=input_text
@@ -59,8 +59,8 @@ class ComponentsEditor:
                         component.drawables.append(item_label)
 
                         new_latext = self.latex.get_one_pin(
-                            start_point=component.positions[0] / canvas.cell_size,
-                            final_point=component.positions[1] / canvas.cell_size,
+                            start_point=component.positions[0],
+                            final_point=component.positions[1],
                             latex=component.seed_latex,
                             label=input_text
                         )
@@ -81,8 +81,8 @@ class ComponentsEditor:
 
                         new_latext = self.latex.get_two_pin(
                             component.name,
-                            start_point=component.positions[0] / canvas.cell_size,
-                            final_point=component.positions[1] / canvas.cell_size,
+                            start_point=component.positions[0],
+                            final_point=component.positions[1],
                             latex=component.seed_latex,
                             label=input_text
                         )
@@ -101,7 +101,27 @@ class ComponentsEditor:
 
                         new_latext = self.latex.get_transistor(
                             id_node=component.num,
-                            point=component.middle_point / canvas.cell_size,
+                            point=component.middle_point,
+                            latex=component.seed_latex,
+                            label=input_text
+                        )
+                        component.latex = new_latext
+
+                    elif component.class_name == 'Amplifier':
+
+                        item_label = drawer.label_center(
+                            pos_point=component.middle_point,
+                            label=input_text
+                        )
+
+                        component.drawables.remove(draw)
+                        canvas.scene.removeItem(draw)
+                        component.drawables.append(item_label)
+
+                        new_latext = self.latex.get_amplifier(
+                            id_node=component.num,
+                            x=component.middle_point.x(),
+                            y=component.middle_point.y(),
                             latex=component.seed_latex,
                             label=input_text
                         )
@@ -120,7 +140,7 @@ class ComponentsEditor:
 
                         new_latext = self.latex.get_transformer(
                             id_node=component.num,
-                            point=component.middle_point / canvas.cell_size,
+                            point=component.middle_point,
                             latex=component.seed_latex,
                             label=input_text
                         )
