@@ -38,15 +38,18 @@ class MainWindow(QMainWindow):
         shortcut_redo = QShortcut(QKeySequence(Qt.Modifier.CTRL | Qt.Modifier.SHIFT | Qt.Key.Key_Z), self)
         shortcut_redo.activated.connect(self.on_redo2)
 
+        screen_width = QApplication.primaryScreen().size().width()
+        desired_width = int(screen_width * 0.19)
+
         layout = QHBoxLayout()
 
         layout_tools = QVBoxLayout()
         widget_layout_tools = QWidget(self)
         widget_layout_tools.setLayout(layout_tools)
-        widget_layout_tools.setFixedWidth(250)
+        widget_layout_tools.setFixedWidth(desired_width)
         layout.addWidget(widget_layout_tools)
 
-        self.name_app = QLabel('CircuiTikZ Generator v0.7')
+        self.name_app = QLabel('CircuiTikZ Generator v0.8')
         self.name_app.setStyleSheet("font-size: 11pt; font-weight: bold")
         self.name_app.setContentsMargins(0, 0, 0, 11)
         layout_tools.addWidget(self.name_app)
@@ -87,11 +90,11 @@ class MainWindow(QMainWindow):
                 tool = current_tools[k]
                 self.obj_tools.append(tool)
                 button = QPushButton(tool.name)
-                button.setStyleSheet(f'background-color: {self.resources.color_deactivate}; color: black;')
+                button.setStyleSheet(f'background-color: {self.resources.get_hex_deactivate()}; color: black;')
                 button.clicked.connect(self.on_button_click)
 
                 if tool.name == "Select":
-                    button.setStyleSheet(f'background-color: {self.resources.color_active}; color: black;')
+                    button.setStyleSheet(f'background-color: {self.resources.get_hex_active()}; color: black;')
 
                 self.botones.append(button)
                 layout_scroll_area.addWidget(button)
@@ -137,7 +140,7 @@ class MainWindow(QMainWindow):
         self.svg_widget = QSvgWidget(parent=self)
         self.svg_widget.setFixedSize(40, 40)
         self.svg_widget.setStyleSheet(
-            'background-color: white; color: white; border: 1.5px solid #742B02; border-radius: 3px;'
+            'background-color: white; color: white; border: 1.5px solid #DB6725; border-radius: 3px;'
         )
         if self.tool_selected.image_static != '':
             self.svg_widget.load(self.tool_selected.image_static)
@@ -251,7 +254,7 @@ class MainWindow(QMainWindow):
 
         list_buttons = self.botones
         for i in range(list_buttons.__len__()):
-            list_buttons[i].setStyleSheet(f'background-color: {self.resources.color_deactivate}; color: black;')
+            list_buttons[i].setStyleSheet(f'background-color: {self.resources.get_hex_deactivate()}; color: black;')
 
         current_tool = None
 
@@ -277,9 +280,9 @@ class MainWindow(QMainWindow):
             else:
                 self.svg_widget.load(self.tool_selected.image)
 
-            button.setStyleSheet(f'background-color: {self.resources.color_active}; color: black;')
+            button.setStyleSheet(f'background-color: {self.resources.get_hex_active()}; color: black;')
         else:
-            button.setStyleSheet(f'background-color: {self.resources.color_active}; color: black;')
+            button.setStyleSheet(f'background-color: {self.resources.get_hex_active()}; color: black;')
 
     def handle_component_label(self):
         if self.canvas.component_selected:

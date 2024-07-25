@@ -12,6 +12,9 @@ class Resources:
         self.pathResources = None
         self.color_active = None
         self.color_deactivate = None
+        self.color_canvas = None
+
+        self.color_shadow = QColor('#DB6725')
 
         if hasattr(sys, '_MEIPASS'):
             # Ruta a la carpeta donde se extrajeron los archivos empaquetados
@@ -24,14 +27,16 @@ class Resources:
         if QGuiApplication.styleHints().colorScheme() == QGuiApplication.styleHints().colorScheme().Dark:
             self.color_active = '#DB6725'
             self.color_deactivate = '#996845'
+            self.color_canvas = QColor('#B0B0B0')
         else:
             self.color_active = '#DB6725'
             self.color_deactivate = '#D9A178'
+            self.color_canvas = QColor('#FFFFFF') #742B02
 
-    def get_active(self):
+    def get_hex_active(self):
         return self.color_active
 
-    def get_deactivate(self):
+    def get_hex_deactivate(self):
         return self.color_deactivate
 
     def apply_theme(self, window):
@@ -55,19 +60,19 @@ class Resources:
             palette.setColor(QPalette.ColorGroup.Inactive, QPalette.ColorRole.ButtonText, QColor('#F4DED1'))
             palette.setColor(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Highlight, QColor('#DB6725'))
         else:
-            palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Window, QColor('#F4DED1'))
+            palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Window, QColor('#FFF0E8'))
             palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.WindowText, QColor('#742B02'))
-            palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Base, QColor('#EEC4B2'))
+            palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Base, QColor('#FFDDCB'))
             palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Text, QColor('#191C1E'))
-            palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, QColor('#DF7E48'))
+            palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, QColor('#D9A178'))
             palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.ButtonText, QColor('#2F2721'))
             palette.setColor(QPalette.ColorGroup.Active, QPalette.ColorRole.Highlight, QColor('#DB6725'))
 
-            palette.setColor(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Window, QColor('#F4DED1'))
+            palette.setColor(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Window, QColor('#FFF0E8'))
             palette.setColor(QPalette.ColorGroup.Inactive, QPalette.ColorRole.WindowText, QColor('#742B02'))
-            palette.setColor(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Base, QColor('#EEC4B2'))
+            palette.setColor(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Base, QColor('#FFDDCB'))
             palette.setColor(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Text, QColor('#191C1E'))
-            palette.setColor(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Button, QColor('#DF7E48'))
+            palette.setColor(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Button, QColor('#D9A178'))
             palette.setColor(QPalette.ColorGroup.Inactive, QPalette.ColorRole.ButtonText, QColor('#2F2721'))
             palette.setColor(QPalette.ColorGroup.Inactive, QPalette.ColorRole.Highlight, QColor('#DB6725'))
 
@@ -87,11 +92,8 @@ class Resources:
 
         return self.pathResources
 
-    def get_color_canvas(self, canvas):
-        if QGuiApplication.styleHints().colorScheme() == QGuiApplication.styleHints().colorScheme().Light:
-            canvas.setBackgroundBrush(QColor('#FFFFFF'))
-        else:
-            return QColor('#B0B0B0')
+    def get_color_canvas(self):
+        return self.color_canvas
 
     def get_color_shadow(self):
-        return QColor('#DB6725')
+        return self.color_shadow

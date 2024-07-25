@@ -26,7 +26,7 @@ class Canvas(QGraphicsView):
         super().__init__()
 
         self.resources = Resources()
-        self.setBackgroundBrush(self.resources.get_color_canvas(self))
+        self.setBackgroundBrush(self.resources.get_color_canvas())
         self.scene = QGraphicsScene(self)
         self.setScene(self.scene)
         self.setMouseTracking(True)
