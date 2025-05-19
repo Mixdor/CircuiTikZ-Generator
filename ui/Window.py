@@ -1,4 +1,4 @@
-from PyQt6.QtCore import Qt, QThread, pyqtSignal, QUrl
+from PyQt6.QtCore import Qt, QThread, pyqtSignal, QUrl, QSize
 from PyQt6.QtGui import QKeySequence, QShortcut, QIcon, QDesktopServices
 from PyQt6.QtSvgWidgets import QSvgWidget
 from PyQt6.QtWidgets import *
@@ -11,7 +11,7 @@ from components.ComponentsSelector import ComponentsSelector
 from components.History import History
 from components.TxtToComponents import TxtToComponents
 from drawables.DrawComponent import DrawComponent
-from objects.ObjTool import ObjTool
+from objects.Tools import ObjTool
 from ui.MainCanvas import Canvas
 from ui.Resources import Resources
 from ui.WindowGenerate import WindowGenerate
@@ -30,8 +30,12 @@ class MainWindow(QMainWindow):
         self.botones = []
         self.group_buttons = []
         self.obj_tools = []
-        self.tool_selected = ObjTool("Select", "Basic", 0, f'{self.resources.main_path}/images/components_svg/arrow_selector.svg', '', '')
+
         self.components = []
+
+        xml_to_tools = TxtToComponents(self.base_path)
+        list_groups_tools = xml_to_tools.parse_xml_to_objects()
+        self.tool_selected = list_groups_tools.get_tool("Select")
 
         shortcut_undo = QShortcut(QKeySequence(Qt.Modifier.CTRL | Qt.Key.Key_Z), self)
         shortcut_undo.activated.connect(self.on_undo2)
@@ -49,7 +53,7 @@ class MainWindow(QMainWindow):
         widget_layout_tools.setFixedWidth(desired_width)
         layout.addWidget(widget_layout_tools)
 
-        self.name_app = QLabel('CircuiTikZ Generator v0.8')
+        self.name_app = QLabel('CircuiTikZ Generator v0.9')
         self.name_app.setStyleSheet("font-size: 11pt; font-weight: bold")
         self.name_app.setContentsMargins(0, 0, 0, 11)
         layout_tools.addWidget(self.name_app)
@@ -73,31 +77,44 @@ class MainWindow(QMainWindow):
         layout_scroll_area = QVBoxLayout()
         layout_scroll_area.setAlignment(Qt.AlignmentFlag.AlignTop)
 
-        txt_to_components = TxtToComponents(self.base_path)
-        list_groups_components = txt_to_components.get_groups()
 
-        for i in range(list_groups_components.__len__()):
+        for i in range(list_groups_tools.size()):
 
-            group_str = list_groups_components[i]
-            name = txt_to_components.get_group_name(group_str)
-            label_name = QLabel(name)
+            group_tool = list_groups_tools[i]
+            name_group = group_tool.get_name()
+
+            label_name = QLabel(name_group)
             layout_scroll_area.addWidget(label_name)
             self.group_buttons.append(label_name)
 
-            current_tools = txt_to_components.get_tools_for_group(group_str, name)
+            colum = 3
+            content_button_aux = []
 
-            for k in range(current_tools.__len__()):
-                tool = current_tools[k]
+            for k in range(group_tool.size()):
+
+                tool = group_tool[k]
                 self.obj_tools.append(tool)
-                button = QPushButton(tool.name)
+
+                button = QPushButton()
+                button.setFixedWidth(int((214-(6*colum))/colum))
+                button.setToolTip(tool.get_name())
+                button.setIcon(QIcon(tool.get_cover()))
+                button.setIconSize(QSize(45, 45))
                 button.setStyleSheet(f'background-color: {self.resources.get_hex_deactivate()}; color: black;')
+
                 button.clicked.connect(self.on_button_click)
 
-                if tool.name == "Select":
+                if tool.get_name() == "Select":
                     button.setStyleSheet(f'background-color: {self.resources.get_hex_active()}; color: black;')
 
                 self.botones.append(button)
-                layout_scroll_area.addWidget(button)
+                content_button_aux.append(button)
+
+                if (k+1) % colum == 0:
+                    self.layout_tools_aux(content_button_aux, layout_scroll_area)
+
+            if len(content_button_aux) != 0:
+                self.layout_tools_aux(content_button_aux, layout_scroll_area)
 
         # Crear un área de desplazamiento y configurar el layout dentro de ella
         scroll_area = QScrollArea(self)
@@ -142,10 +159,7 @@ class MainWindow(QMainWindow):
         self.svg_widget.setStyleSheet(
             'background-color: white; color: white; border: 1.5px solid #DB6725; border-radius: 3px;'
         )
-        if self.tool_selected.image_static != '':
-            self.svg_widget.load(self.tool_selected.image_static)
-        else:
-            self.svg_widget.load(self.tool_selected.image)
+        self.svg_widget.load(self.tool_selected.get_cover())
         layout_properties.addWidget(self.svg_widget)
 
         label_cord = QLabel("Coordinates: [0,0]")
@@ -229,8 +243,8 @@ class MainWindow(QMainWindow):
         text = str(input_text).lower()
 
         for button in self.botones:
-            if not button.text() == 'Select':
-                title = button.text().lower()
+            if not button.toolTip() == 'Select':
+                title = button.toolTip().lower()
                 if not title.__contains__(text):
                     button.setVisible(False)
 
@@ -238,7 +252,7 @@ class MainWindow(QMainWindow):
             if button.isVisible():
 
                 for tool in self.obj_tools:
-                    if tool.name == button.text():
+                    if tool.name == button.toolTip():
                         for label in self.group_buttons:
                             if label.text() == tool.group_name:
                                 label.setVisible(True)
@@ -259,26 +273,23 @@ class MainWindow(QMainWindow):
         current_tool = None
 
         for j in range(self.obj_tools.__len__()):
-            if self.obj_tools[j].name == button.text():
+            if self.obj_tools[j].get_name() == button.toolTip():
                 current_tool = self.obj_tools[j]
 
         if self.tool_selected != current_tool:
 
             self.tool_selected = ObjTool(
-                name=current_tool.name,
-                group_name=current_tool.group_name,
-                class_name=current_tool.class_name,
-                image=current_tool.image,
-                image_static=current_tool.image_static,
-                latex=current_tool.latex
+                name=current_tool.get_name(),
+                group_name=current_tool.get_group(),
+                class_name=current_tool.get_class(),
+                latex=current_tool.get_latex(),
+                img_cover=current_tool.get_cover(),
+                canvas_stroke=current_tool.get_canvas_stroke(),
+                canvas_stroke_static=current_tool.get_canvas_stroke_static(),
             )
 
             self.canvas.set_tool(self.tool_selected)
-
-            if self.tool_selected.image_static != '':
-                self.svg_widget.load(self.tool_selected.image_static)
-            else:
-                self.svg_widget.load(self.tool_selected.image)
+            self.svg_widget.load(self.tool_selected.get_cover())
 
             button.setStyleSheet(f'background-color: {self.resources.get_hex_active()}; color: black;')
         else:
@@ -305,7 +316,7 @@ class MainWindow(QMainWindow):
 
     def show_kofi(self):
         self.components_selector.unselect(self.canvas)
-        url = QUrl('https://ko-fi.com/mixdor')
+        url = QUrl('https://github.com/sponsors/Mixdor')
         QDesktopServices.openUrl(url)
 
     def show_winversion(self, version_available):
@@ -324,6 +335,17 @@ class MainWindow(QMainWindow):
 
         self.components_selector.unselect(self.canvas)
         self.history.redo(self.canvas)
+
+    def layout_tools_aux(self, button_list, layout_scrollable):
+
+        colum_box = QHBoxLayout()
+        colum_box.setAlignment(Qt.AlignmentFlag.AlignLeft)
+        layout_scrollable.addLayout(colum_box)
+
+        for btn_aux in button_list:
+            colum_box.addWidget(btn_aux)
+
+        button_list.clear()
 
 
 class MiHilo(QThread):

@@ -1,0 +1,530 @@
+<list_group>
+    <group name="Basic" class="Traceable">
+        <tool name="Select" class="None" latex="None">
+            <img_cover>images/components/basic/arrow_selector.svg</img_cover>
+            <canvas_stroke>images/components/basic/arrow_selector.svg</canvas_stroke>
+        </tool>
+        <tool name="Wire" latex="short">
+            <img_cover>images/components/basic/Wire.svg</img_cover>
+            <canvas_stroke>images/components/basic/Wire.svg</canvas_stroke>
+        </tool>
+        <tool name="Crossing Wire" latex="crossing">
+            <img_cover>images/components/basic/Crossings.svg</img_cover>
+            <canvas_stroke>images/components/basic/Crossings.svg</canvas_stroke>
+        </tool>
+    </group>
+    <group name="Terminal Shapes" class="Traceable_Final">
+        <tool name="Connected" latex="node[circ]">
+            <img_cover>images/components/terminal_shapes/Circle.svg</img_cover>
+            <canvas_stroke>images/components/terminal_shapes/Circle.svg</canvas_stroke>
+        </tool>
+        <tool name="Unconnected" latex="node[ocirc]">
+            <img_cover>images/components/terminal_shapes/cover/Circle_Open.svg</img_cover>
+            <canvas_stroke>images/components/terminal_shapes/Circle_Open.svg</canvas_stroke>
+        </tool>
+        <tool name="Diamond" latex="node[diamondpole]">
+            <img_cover>images/components/terminal_shapes/Diamond.svg</img_cover>
+            <canvas_stroke>images/components/terminal_shapes/Diamond.svg</canvas_stroke>
+        </tool>
+        <tool name="Open Diamond" latex="node[odiamondpole]">
+            <img_cover>images/components/terminal_shapes/cover/Diamond_Open.svg</img_cover>
+            <canvas_stroke>images/components/terminal_shapes/Diamond_Open.svg</canvas_stroke>
+        </tool>
+        <tool name="Square" latex="node[squarepole]">
+            <img_cover>images/components/terminal_shapes/Square.svg</img_cover>
+            <canvas_stroke>images/components/terminal_shapes/Square.svg</canvas_stroke>
+        </tool>
+        <tool name="Open Square" latex="node[osquarepole]">
+            <img_cover>images/components/terminal_shapes/cover/Square_Open.svg</img_cover>
+            <canvas_stroke>images/components/terminal_shapes/Square_Open.svg</canvas_stroke>
+        </tool>
+        <tool name="Arrow" latex="node[currarrow]">
+            <img_cover>images/components/terminal_shapes/Arrow.svg</img_cover>
+            <canvas_stroke>images/components/terminal_shapes/Arrow.svg</canvas_stroke>
+        </tool>
+    </group>
+    <group name="Sources" class="Traceable">
+        <tool name="Battery" latex="battery">
+            <img_cover>images/components/sources/Battery.svg</img_cover>
+            <canvas_stroke>images/components/sources/Battery.svg</canvas_stroke>
+        </tool>
+        <tool name="Battery 1" latex="battery1">
+            <img_cover>images/components/sources/Battery_1.svg</img_cover>
+            <canvas_stroke>images/components/sources/Battery_1.svg</canvas_stroke>
+        </tool>
+        <tool name="Battery 2" latex="battery2">
+            <img_cover>images/components/sources/Battery_2.svg</img_cover>
+            <canvas_stroke>images/components/sources/Battery_2.svg</canvas_stroke>
+        </tool>
+        <tool name="Voltage" latex="V">
+            <img_cover>images/components/sources/Voltage_Source.svg</img_cover>
+            <canvas_stroke>images/components/sources/Voltage_Source.svg</canvas_stroke>
+        </tool>
+        <tool name="Current" latex="I">
+            <img_cover>images/components/sources/Current_Source.svg</img_cover>
+            <canvas_stroke>images/components/sources/Current_Source.svg</canvas_stroke>
+        </tool>
+        <tool name="Sinusoidal Voltage" latex="sV">
+            <img_cover>images/components/sources/SinusoidalVoltage.svg</img_cover>
+            <canvas_stroke>images/components/sources/SinusoidalVoltage.svg</canvas_stroke>
+        </tool>
+        <tool name="Sinusoidal Current" latex="sI">
+            <img_cover>images/components/sources/SinusoidalCurrent.svg</img_cover>
+            <canvas_stroke>images/components/sources/SinusoidalCurrent.svg</canvas_stroke>
+        </tool>
+    </group>
+    <group name="Controlled Sources" class="Traceable">
+        <tool name="Controlled Voltage" latex="controlled voltage source">
+            <img_cover>images/components/controller_sources/ControlledVoltage.svg</img_cover>
+            <canvas_stroke>images/components/controller_sources/ControlledVoltage.svg</canvas_stroke>
+        </tool>
+        <tool name="Controlled Current" latex="controlled current source">
+            <img_cover>images/components/controller_sources/ControlledCurrent.svg</img_cover>
+            <canvas_stroke>images/components/controller_sources/ControlledCurrent.svg</canvas_stroke>
+        </tool>
+        <tool name="Controlled Sinusoidal Voltage" latex="csV">
+            <img_cover>images/components/controller_sources/ControlledSinusoidalVoltage.svg</img_cover>
+            <canvas_stroke>images/components/controller_sources/ControlledSinusoidalVoltage.svg</canvas_stroke>
+        </tool>
+        <tool name="Controlled Sinusoidal Current" latex="csI">
+            <img_cover>images/components/controller_sources/ControlledSinusoidalCurrent.svg</img_cover>
+            <canvas_stroke>images/components/controller_sources/ControlledSinusoidalCurrent.svg</canvas_stroke>
+        </tool>
+        <tool name="Empty Controlled Source" latex="ecsource">
+            <img_cover>images/components/controller_sources/EmptyControlled.svg</img_cover>
+            <canvas_stroke>images/components/controller_sources/EmptyControlled.svg</canvas_stroke>
+        </tool>
+    </group>
+    <group name="DC Sources" class="Traceable">
+        <tool name="DC Voltage" latex="dcvsource">
+            <img_cover>images/components/dc_sources/DC_Voltage.svg</img_cover>
+            <canvas_stroke>images/components/dc_sources/DC_Voltage.svg</canvas_stroke>
+        </tool>
+        <tool name="DC Current" latex="dcisource">
+            <img_cover>images/components/dc_sources/DC_Current.svg</img_cover>
+            <canvas_stroke>images/components/dc_sources/DC_Current.svg</canvas_stroke>
+        </tool>
+    </group>
+    <group name="Especial Sources" class="Traceable">
+        <tool name="Noise Voltage" latex="nV">
+            <img_cover>images/components/special_sources/Noise_Voltage.svg</img_cover>
+            <canvas_stroke>images/components/special_sources/Noise_Voltage.svg</canvas_stroke>
+        </tool>
+        <tool name="Noise Current" latex="nI">
+            <img_cover>images/components/special_sources/Noise_Current.svg</img_cover>
+            <canvas_stroke>images/components/special_sources/Noise_Current.svg</canvas_stroke>
+        </tool>
+        <tool name="Square Voltage" latex="sqV">
+            <img_cover>images/components/special_sources/Square_Voltage.svg</img_cover>
+            <canvas_stroke>images/components/special_sources/Square_Voltage.svg</canvas_stroke>
+        </tool>
+        <tool name="Triangle Voltage" latex="tV">
+            <img_cover>images/components/special_sources/Triangle_Voltage.svg</img_cover>
+            <canvas_stroke>images/components/special_sources/Triangle_Voltage.svg</canvas_stroke>
+        </tool>
+        <tool name="Empty Voltage" latex="esource">
+            <img_cover>images/components/special_sources/Empty_Voltage.svg</img_cover>
+            <canvas_stroke>images/components/special_sources/Empty_Voltage.svg</canvas_stroke>
+        </tool>
+        <tool name="Photovoltaic Voltage" latex="pvsource">
+            <img_cover>images/components/special_sources/Photovoltaic_Voltage.svg</img_cover>
+            <canvas_stroke>images/components/special_sources/Photovoltaic_Voltage.svg</canvas_stroke>
+        </tool>
+        <tool name="Double Zero style Current" latex="ioosource">
+            <img_cover>images/components/special_sources/Double_Zero_Source.svg</img_cover>
+            <canvas_stroke>images/components/special_sources/Double_Zero_Source.svg</canvas_stroke>
+        </tool>
+        <tool name="Double Zero style Voltage" latex="voosource">
+            <img_cover>images/components/special_sources/Double_Zero_Source.svg</img_cover>
+            <canvas_stroke>images/components/special_sources/Double_Zero_Source.svg</canvas_stroke>
+        </tool>
+    </group>
+    <group name="Nullator and norator" class="Traceable">
+        <tool name="Nullator" latex="nullator">
+            <img_cover>images/components/nullator_norator/Nullator.svg</img_cover>
+            <canvas_stroke>images/components/nullator_norator/Nullator.svg</canvas_stroke>
+        </tool>
+        <tool name="Norator" latex="norator">
+            <img_cover>images/components/nullator_norator/Norator.svg</img_cover>
+            <canvas_stroke>images/components/nullator_norator/Norator.svg</canvas_stroke>
+        </tool>
+    </group>
+    <group name="Resistors" class="Traceable">
+        <tool name="Resistor" latex="R">
+            <img_cover>images/components/resistors/Resistor.svg</img_cover>
+            <canvas_stroke>images/components/resistors/Resistor.svg</canvas_stroke>
+        </tool>
+    </group>
+    <group name="Inductors" class="Traceable">
+        <tool name="Inductor" latex="L">
+            <img_cover>images/components/inductors/Inductor.svg</img_cover>
+            <canvas_stroke>images/components/inductors/Inductor.svg</canvas_stroke>
+        </tool>
+    </group>
+    <group name="Capacitors" class="Traceable">
+        <tool name="Capacitor" latex="C">
+            <img_cover>images/components/capacitors/Capacitor.svg</img_cover>
+            <canvas_stroke>images/components/capacitors/Capacitor.svg</canvas_stroke>
+        </tool>
+        <tool name="Polarized Capacitor" latex="cC">
+            <img_cover>images/components/capacitors/Capacitor_Polarized.svg</img_cover>
+            <canvas_stroke>images/components/capacitors/Capacitor_Polarized.svg</canvas_stroke>
+        </tool>
+        <tool name="Electrolytic capacitor" latex="eC">
+            <img_cover>images/components/capacitors/Capacitor_Electrolytic.svg</img_cover>
+            <canvas_stroke>images/components/capacitors/Capacitor_Electrolytic.svg</canvas_stroke>
+        </tool>
+        <tool name="Piezoelectric" latex="PZ">
+            <img_cover>images/components/capacitors/Capacitor_Piezoelectric.svg</img_cover>
+            <canvas_stroke>images/components/capacitors/Capacitor_Piezoelectric.svg</canvas_stroke>
+        </tool>
+    </group>
+    <group name="Diodes" class="Traceable">
+        <tool name="Diode" latex="D">
+            <img_cover>images/components/diodes/Diode.svg</img_cover>
+            <canvas_stroke>images/components/diodes/Diode.svg</canvas_stroke>
+        </tool>
+        <tool name="Schottky Diode" latex="sD">
+            <img_cover>images/components/diodes/Diode_Schottky.svg</img_cover>
+            <canvas_stroke>images/components/diodes/Diode_Schottky.svg</canvas_stroke>
+        </tool>
+        <tool name="Zener Diode" latex="zD">
+            <img_cover>images/components/diodes/Diode_Zener.svg</img_cover>
+            <canvas_stroke>images/components/diodes/Diode_Zener.svg</canvas_stroke>
+        </tool>
+        <tool name="ZZener Diode" latex="zzD">
+            <img_cover>images/components/diodes/Diode_ZZener.svg</img_cover>
+            <canvas_stroke>images/components/diodes/Diode_ZZener.svg</canvas_stroke>
+        </tool>
+        <tool name="Tunnel Diode" latex="tD">
+            <img_cover>images/components/diodes/Diode_Tunnel.svg</img_cover>
+            <canvas_stroke>images/components/diodes/Diode_Tunnel.svg</canvas_stroke>
+        </tool>
+        <tool name="Photodiode" latex="pD">
+            <img_cover>images/components/diodes/Diode_Photo.svg</img_cover>
+            <canvas_stroke>images/components/diodes/Diode_Photo.svg</canvas_stroke>
+        </tool>
+        <tool name="Led" latex="pD">
+            <img_cover>images/components/diodes/Diode_Led.svg</img_cover>
+            <canvas_stroke>images/components/diodes/Diode_Led.svg</canvas_stroke>
+        </tool>
+        <tool name="Laser Diode" latex="lasD">
+            <img_cover>images/components/diodes/Diode_Laser.svg</img_cover>
+            <canvas_stroke>images/components/diodes/Diode_Laser.svg</canvas_stroke>
+        </tool>
+        <tool name="Varcap" latex="VC">
+            <img_cover>images/components/diodes/Diode_Varcap.svg</img_cover>
+            <canvas_stroke>images/components/diodes/Diode_Varcap.svg</canvas_stroke>
+        </tool>
+        <tool name="TVS Diode" latex="tvsD">
+            <img_cover>images/components/diodes/Diode_TVS.svg</img_cover>
+            <canvas_stroke>images/components/diodes/Diode_TVS.svg</canvas_stroke>
+        </tool>
+        <tool name="Shockley Diode" latex="shD">
+            <img_cover>images/components/diodes/Diode_Shockley.svg</img_cover>
+            <canvas_stroke>images/components/diodes/Diode_Shockley.svg</canvas_stroke>
+        </tool>
+        <tool name="Bidirectional Diode" latex="biD">
+            <img_cover>images/components/diodes/Diode_Bidirectional.svg</img_cover>
+            <canvas_stroke>images/components/diodes/Diode_Bidirectional.svg</canvas_stroke>
+        </tool>
+    </group>
+    <group name="Switches" class="Traceable">
+        <tool name="Switch" latex="nos">
+            <img_cover>images/components/switches/Switch_Open.svg</img_cover>
+            <canvas_stroke>images/components/switches/Switch_Open.svg</canvas_stroke>
+        </tool>
+        <tool name="Closing Switch" latex="cspst">
+            <img_cover>images/components/switches/Switch_Closing.svg</img_cover>
+            <canvas_stroke>images/components/switches/Switch_Closing.svg</canvas_stroke>
+        </tool>
+        <tool name="Opening Switch" latex="ospst">
+            <img_cover>images/components/switches/Switch_Opening.svg</img_cover>
+            <canvas_stroke>images/components/switches/Switch_Opening.svg</canvas_stroke>
+        </tool>
+        <tool name="Push Button" latex="nopb">
+            <img_cover>images/components/switches/Push.svg</img_cover>
+            <canvas_stroke>images/components/switches/Push.svg</canvas_stroke>
+        </tool>
+        <tool name="Push Closed" latex="nopbc">
+            <img_cover>images/components/switches/Push_Closed.svg</img_cover>
+            <canvas_stroke>images/components/switches/Push_Closed.svg</canvas_stroke>
+        </tool>
+    </group>
+    <group name="Transistors" class="Transistor">
+        <tool name="NPN" latex="node[npn,scale=0.59]">
+            <img_cover>images/components/transistors/NPN.svg</img_cover>
+            <canvas_stroke>images/components/transistors/NPN.svg</canvas_stroke>
+        </tool>
+        <tool name="PNP" latex="node[pnp,scale=0.59]">
+            <img_cover>images/components/transistors/PNP.svg</img_cover>
+            <canvas_stroke>images/components/transistors/PNP.svg</canvas_stroke>
+        </tool>
+        <tool name="Schottky NPN" latex="node[npn,schottky base,scale=0.59]">
+            <img_cover>images/components/transistors/NPN_Schottky.svg</img_cover>
+            <canvas_stroke>images/components/transistors/NPN_Schottky.svg</canvas_stroke>
+        </tool>
+        <tool name="Schottky PNP" latex="node[pnp,schottky base,scale=0.59]">
+            <img_cover>images/components/transistors/PNP_Schottky.svg</img_cover>
+            <canvas_stroke>images/components/transistors/PNP_Schottky.svg</canvas_stroke>
+        </tool>
+        <tool name="Diode NPN" latex="node[npn,bodydiode,scale=0.59]">
+            <img_cover>images/components/transistors/NPN_Diode.svg</img_cover>
+            <canvas_stroke>images/components/transistors/NPN_Diode.svg</canvas_stroke>
+        </tool>
+        <tool name="Diode PNP" latex="node[pnp,bodydiode,scale=0.59]">
+            <img_cover>images/components/transistors/PNP_Diode.svg</img_cover>
+            <canvas_stroke>images/components/transistors/PNP_Diode.svg</canvas_stroke>
+        </tool>
+        <tool name="Photo NPN" latex="node[npn,photo,scale=0.59]">
+            <img_cover>images/components/transistors/NPN_Photo.svg</img_cover>
+            <canvas_stroke>images/components/transistors/NPN_Photo.svg</canvas_stroke>
+        </tool>
+        <tool name="Photo PNP" latex="node[pnp,photo,scale=0.59]">
+            <img_cover>images/components/transistors/PNP_Photo.svg</img_cover>
+            <canvas_stroke>images/components/transistors/PNP_Photo.svg</canvas_stroke>
+        </tool>
+        <tool name="Nigbt" latex="node[nigbt,scale=0.59]">
+            <img_cover>images/components/transistors/NPN_Nigbt.svg</img_cover>
+            <canvas_stroke>images/components/transistors/NPN_Nigbt.svg</canvas_stroke>
+        </tool>
+        <tool name="Pigbt" latex="node[pigbt,scale=0.59]">
+            <img_cover>images/components/transistors/PNP_Pigbt.svg</img_cover>
+            <canvas_stroke>images/components/transistors/PNP_Pigbt.svg</canvas_stroke>
+        </tool>
+        <tool name="NMOS" latex="node[nmos,scale=0.59]">
+            <img_cover>images/components/transistors/Nmos.svg</img_cover>
+            <canvas_stroke>images/components/transistors/Nmos.svg</canvas_stroke>
+        </tool>
+        <tool name="PMOS" latex="node[pmos,scale=0.59]">
+            <img_cover>images/components/transistors/Pmos.svg</img_cover>
+            <canvas_stroke>images/components/transistors/Pmos.svg</canvas_stroke>
+        </tool>
+        <tool name="NMOS Depletion" latex="node[nmosd,scale=0.59]">
+            <img_cover>images/components/transistors/Nmos_Depletion.svg</img_cover>
+            <canvas_stroke>images/components/transistors/Nmos_Depletion.svg</canvas_stroke>
+        </tool>
+        <tool name="PMOS Depletion" latex="node[pmosd,scale=0.59]">
+            <img_cover>images/components/transistors/Pmos_Depletion.svg</img_cover>
+            <canvas_stroke>images/components/transistors/Pmos_Depletion.svg</canvas_stroke>
+        </tool>
+        <tool name="Hemt" latex="node[hemt,scale=0.59]">
+            <img_cover>images/components/transistors/Hemt.svg</img_cover>
+            <canvas_stroke>images/components/transistors/Hemt.svg</canvas_stroke>
+        </tool>
+        <tool name="Hemt NoBase" latex="node[hemt,nobase,scale=0.59]">
+            <img_cover>images/components/transistors/Hemt_Nobase.svg</img_cover>
+            <canvas_stroke>images/components/transistors/Hemt_Nobase.svg</canvas_stroke>
+        </tool>
+        <tool name="NFET" latex="node[nfet,scale=0.59]">
+            <img_cover>images/components/transistors/Nfet.svg</img_cover>
+            <canvas_stroke>images/components/transistors/Nfet.svg</canvas_stroke>
+        </tool>
+        <tool name="PFET" latex="node[pfet,scale=0.59]">
+            <img_cover>images/components/transistors/Pfet.svg</img_cover>
+            <canvas_stroke>images/components/transistors/Pfet.svg</canvas_stroke>
+        </tool>
+        <tool name="NFET Depletion" latex="node[nfetd,scale=0.59]">
+            <img_cover>images/components/transistors/Nfet_Depletion.svg</img_cover>
+            <canvas_stroke>images/components/transistors/Nfet_Depletion.svg</canvas_stroke>
+        </tool>
+        <tool name="PFET Depletion" latex="node[pfetd,scale=0.59]">
+            <img_cover>images/components/transistors/Pfet_Depletion.svg</img_cover>
+            <canvas_stroke>images/components/transistors/Pfet_Depletion.svg</canvas_stroke>
+        </tool>
+    </group>
+    <group name="Grounds" class="Traceable_Final">
+        <tool name="Ground" latex="node[ground]">
+            <img_cover>images/components/grounds/cover/Ground_Earth.svg</img_cover>
+            <canvas_stroke>images/components/grounds/Ground_Earth.svg</canvas_stroke>
+        </tool>
+        <tool name="Tailless" latex="node[tlground]">
+            <img_cover>images/components/grounds/cover/Ground_Tailless.svg</img_cover>
+            <canvas_stroke>images/components/grounds/Ground_Tailless.svg</canvas_stroke>
+        </tool>
+        <tool name="Reference" latex="node[rground]">
+            <img_cover>images/components/grounds/cover/Ground_Reference.svg</img_cover>
+            <canvas_stroke>images/components/grounds/Ground_Reference.svg</canvas_stroke>
+        </tool>
+        <tool name="Signal" latex="node[sground]">
+            <img_cover>images/components/grounds/cover/Ground_Signal.svg</img_cover>
+            <canvas_stroke>images/components/grounds/Ground_Signal.svg</canvas_stroke>
+        </tool>
+        <tool name="Noiseless" latex="node[nground]">
+            <img_cover>images/components/grounds/cover/Ground_Noiseles.svg</img_cover>
+            <canvas_stroke>images/components/grounds/Ground_Noiseles.svg</canvas_stroke>
+        </tool>
+        <tool name="Protective" latex="node[pground]">
+            <img_cover>images/components/grounds/cover/Ground_Protective.svg</img_cover>
+            <canvas_stroke>images/components/grounds/Ground_Protective.svg</canvas_stroke>
+        </tool>
+        <tool name="Chassis" latex="node[cground]">
+            <img_cover>images/components/grounds/cover/Ground_Chassis.svg</img_cover>
+            <canvas_stroke>images/components/grounds/Ground_Chassis.svg</canvas_stroke>
+        </tool>
+    </group>
+    <group name="Power Supplies" class="Traceable_Final">
+        <tool name="VCC" latex="node[vcc]">
+            <img_cover>images/components/power_supplies/cover/Supplies_VCC.svg</img_cover>
+            <canvas_stroke>images/components/power_supplies/Supplies_VCC.svg</canvas_stroke>
+        </tool>
+        <tool name="VEE" latex="node[vee]">
+            <img_cover>images/components/power_supplies/cover/Supplies_VEE.svg</img_cover>
+            <canvas_stroke>images/components/power_supplies/Supplies_VEE.svg</canvas_stroke>
+        </tool>
+    </group>
+    <group name="Transformers" class="Transformer">
+        <tool name="Transformer" latex="node[transformer, scale=0.952]">
+            <img_cover>images/components/transformers/cover/Transformer.svg</img_cover>
+            <canvas_stroke>images/components/transformers/Transformer.svg</canvas_stroke>
+        </tool>
+        <tool name="Gyrator" latex="node[gyrator, scale=0.952]">
+            <img_cover>images/components/transformers/cover/Gyrator.svg</img_cover>
+            <canvas_stroke>images/components/transformers/Gyrator.svg</canvas_stroke>
+        </tool>
+        <tool name="Transformer Core" latex="node[transformer core, scale=0.952]">
+            <img_cover>images/components/transformers/cover/Transformer_Core.svg</img_cover>
+            <canvas_stroke>images/components/transformers/Transformer_Core.svg</canvas_stroke>
+        </tool>
+    </group>
+    <group name="Amplifiers" class="Amplifier">
+        <tool name="Operational Amplifier" latex="node[op amp,scale=1.02]">
+            <img_cover>images/components/amplifiers/cover/Amplifier.svg</img_cover>
+            <canvas_stroke>images/components/amplifiers/Amplifier.svg</canvas_stroke>
+        </tool>
+    </group>
+    <group name="Instruments" class="Traceable">
+        <tool name="Ammeter" latex="ammeter">
+            <img_cover>images/components/instruments/Ammeter.svg</img_cover>
+            <canvas_stroke>images/components/instruments/Ammeter.svg</canvas_stroke>
+        </tool>
+        <tool name="Voltmeter" latex="voltmeter">
+            <img_cover>images/components/instruments/Voltmeter.svg</img_cover>
+            <canvas_stroke>images/components/instruments/Voltmeter.svg</canvas_stroke>
+        </tool>
+        <tool name="Ohmmeter" latex="ohmmeter">
+            <img_cover>images/components/instruments/Ohmmeter.svg</img_cover>
+            <canvas_stroke>images/components/instruments/Ohmmeter.svg</canvas_stroke>
+        </tool>
+        <tool name="Square Meter" latex="smeter">
+            <img_cover>images/components/instruments/cover/Square_Meter.svg</img_cover>
+            <canvas_stroke>images/components/instruments/Oscilloscope.svg</canvas_stroke>
+            <canvas_stroke_static>images/components/instruments/Square_Meter.svg</canvas_stroke_static>
+        </tool>
+        <tool name="Ramp Oscilloscope" latex="oscope">
+            <img_cover>images/components/instruments/cover/Oscilloscope_Ramps.svg</img_cover>
+            <canvas_stroke>images/components/instruments/Oscilloscope.svg</canvas_stroke>
+            <canvas_stroke_static>images/components/instruments/Oscilloscope_Ramps.svg</canvas_stroke_static>
+        </tool>
+        <tool name="Sin Oscilloscope" latex="oscope">
+            <img_cover>images/components/instruments/cover/Oscilloscope_Sin.svg</img_cover>
+            <canvas_stroke>images/components/instruments/Oscilloscope.svg</canvas_stroke>
+            <canvas_stroke_static>images/components/instruments/Oscilloscope_Sin.svg</canvas_stroke_static>
+        </tool>
+        <tool name="Square Oscilloscope" latex="oscope">
+            <img_cover>images/components/instruments/cover/Oscilloscope_Square.svg</img_cover>
+            <canvas_stroke>images/components/instruments/Oscilloscope.svg</canvas_stroke>
+            <canvas_stroke_static>images/components/instruments/Oscilloscope_Square.svg</canvas_stroke_static>
+        </tool>
+        <tool name="Triangle Oscilloscope" latex="oscope">
+            <img_cover>images/components/instruments/cover/Oscilloscope_Triangles.svg</img_cover>
+            <canvas_stroke>images/components/instruments/Oscilloscope.svg</canvas_stroke>
+            <canvas_stroke_static>images/components/instruments/Oscilloscope_Triangles.svg</canvas_stroke_static>
+        </tool>
+        <tool name="Lissajous Oscilloscope" latex="oscope">
+            <img_cover>images/components/instruments/cover/Oscilloscope_Lissajous.svg</img_cover>
+            <canvas_stroke>images/components/instruments/Oscilloscope.svg</canvas_stroke>
+            <canvas_stroke_static>images/components/instruments/Oscilloscope_Lissajous.svg</canvas_stroke_static>
+        </tool>
+        <tool name="Zero Oscilloscope" latex="oscope">
+            <img_cover>images/components/instruments/cover/Oscilloscope_Zero.svg</img_cover>
+            <canvas_stroke>images/components/instruments/Oscilloscope.svg</canvas_stroke>
+            <canvas_stroke_static>images/components/instruments/Oscilloscope_Zero.svg</canvas_stroke_static>
+        </tool>
+        <tool name="None Oscilloscope" latex="oscope">
+            <img_cover>images/components/instruments/cover/Oscilloscope_None.svg</img_cover>
+            <canvas_stroke>images/components/instruments/Oscilloscope.svg</canvas_stroke>
+            <canvas_stroke_static>images/components/instruments/Oscilloscope_None.svg</canvas_stroke_static>
+        </tool>
+        <tool name="Current Loop" latex="iloop">
+            <img_cover>images/components/instruments/Current_Loop.svg</img_cover>
+            <canvas_stroke>images/components/instruments/Current_Loop.svg</canvas_stroke>
+        </tool>
+    </group>
+    <group name="Mechanical Analogy" class="Traceable">
+        <tool name="Mechanical Damping" latex="damper">
+            <img_cover>images/components/mechanical_analogy/Damping.svg</img_cover>
+            <canvas_stroke>images/components/mechanical_analogy/Damping.svg</canvas_stroke>
+        </tool>
+        <tool name="Mechanical Inerter" latex="inerter">
+            <img_cover>images/components/mechanical_analogy/Inerter.svg</img_cover>
+            <canvas_stroke>images/components/mechanical_analogy/Inerter.svg</canvas_stroke>
+        </tool>
+        <tool name="Mechanical Stiffness" latex="spring">
+            <img_cover>images/components/mechanical_analogy/Stiffness.svg</img_cover>
+            <canvas_stroke>images/components/mechanical_analogy/Stiffness.svg</canvas_stroke>
+        </tool>
+        <tool name="Mechanical Viscoelastic" latex="viscoe">
+            <img_cover>images/components/mechanical_analogy/Viscoelastic.svg</img_cover>
+            <canvas_stroke>images/components/mechanical_analogy/Viscoelastic.svg</canvas_stroke>
+        </tool>
+        <tool name="Mechanical Mass" latex="mass">
+            <img_cover>images/components/mechanical_analogy/Mass.svg</img_cover>
+            <canvas_stroke>images/components/mechanical_analogy/Mass.svg</canvas_stroke>
+        </tool>
+    </group>
+    <group name="Other Bipoles" class="Traceable">
+        <tool name="Thermocouple" latex="thermocouple">
+            <img_cover>images/components/other_bipoles/Thermocouple.svg</img_cover>
+            <canvas_stroke>images/components/other_bipoles/Thermocouple.svg</canvas_stroke>
+        </tool>
+        <tool name="Fuse" latex="fuse">
+            <img_cover>images/components/other_bipoles/Fuse.svg</img_cover>
+            <canvas_stroke>images/components/other_bipoles/Fuse.svg</canvas_stroke>
+        </tool>
+        <tool name="Asymmetric Fuse" latex="afuse">
+            <img_cover>images/components/other_bipoles/Asymmetric_Fuse.svg</img_cover>
+            <canvas_stroke>images/components/other_bipoles/Asymmetric_Fuse.svg</canvas_stroke>
+        </tool>
+        <tool name="Squid" latex="squid">
+            <img_cover>images/components/other_bipoles/Squid.svg</img_cover>
+            <canvas_stroke>images/components/other_bipoles/Squid.svg</canvas_stroke>
+        </tool>
+        <tool name="Barrier" latex="barrier">
+            <img_cover>images/components/other_bipoles/Barrier.svg</img_cover>
+            <canvas_stroke>images/components/other_bipoles/Barrier.svg</canvas_stroke>
+        </tool>
+        <tool name="Open Barrier" latex="openbarrier">
+            <img_cover>images/components/other_bipoles/Open_Barrier.svg</img_cover>
+            <canvas_stroke>images/components/other_bipoles/Open_Barrier.svg</canvas_stroke>
+        </tool>
+        <tool name="Gas" latex="american gas filled surge arrester">
+            <img_cover>images/components/other_bipoles/Gas.svg</img_cover>
+            <canvas_stroke>images/components/other_bipoles/Gas.svg</canvas_stroke>
+        </tool>
+        <tool name="Lamp" latex="lamp">
+            <img_cover>images/components/other_bipoles/Lamp.svg</img_cover>
+            <canvas_stroke>images/components/other_bipoles/Lamp.svg</canvas_stroke>
+        </tool>
+        <tool name="Bulb" latex="bulb">
+            <img_cover>images/components/other_bipoles/Bulb.svg</img_cover>
+            <canvas_stroke>images/components/other_bipoles/Bulb.svg</canvas_stroke>
+        </tool>
+        <tool name="LoudSpeaker" latex="loudspeaker">
+            <img_cover>images/components/other_bipoles/LoudSpeaker.svg</img_cover>
+            <canvas_stroke>images/components/other_bipoles/LoudSpeaker.svg</canvas_stroke>
+        </tool>
+        <tool name="Mic" latex="mic">
+            <img_cover>images/components/other_bipoles/Mic.svg</img_cover>
+            <canvas_stroke>images/components/other_bipoles/Mic.svg</canvas_stroke>
+        </tool>
+        <tool name="Buzzer" latex="buzzer">
+            <img_cover>images/components/other_bipoles/Buzzer.svg</img_cover>
+            <canvas_stroke>images/components/other_bipoles/Buzzer.svg</canvas_stroke>
+        </tool>
+        <tool name="Reversed Buzzer" latex="rbuzzer">
+            <img_cover>images/components/other_bipoles/Reversed_Buzzer.svg</img_cover>
+            <canvas_stroke>images/components/other_bipoles/Reversed_Buzzer.svg</canvas_stroke>
+        </tool>
+    </group>
+</list_group>

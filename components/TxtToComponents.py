@@ -1,119 +1,53 @@
+import xml.etree.ElementTree as ET
 import os
 import re
 
-from objects.ObjTool import ObjTool
+from objects.Tools import ObjTool, GroupTools, ListGroupTools
 
 
 class TxtToComponents:
+
     def __init__(self, base_path):
+
         self.base_path = base_path
 
-    def get_groups(self):
-        path = os.path.join(self.base_path, 'list_components.txt')
-        with open(path, 'r') as file:
-            content = file.read()
+    def parse_xml_to_objects(self):
 
-            list_groups = content.split("</group>")
-            list_groups.remove("")
+        xml_path = os.path.join(self.base_path, 'list_components.xml')
+        tree = ET.parse(xml_path)
+        root = tree.getroot()
+        list_group = ListGroupTools()
 
-        return list_groups
+        for group_tool in root.findall('group'):
 
-    def get_components(self, group_str):
+            name_group = group_tool.attrib['name']
+            class_group = group_tool.attrib['class']
+            group = GroupTools(name_group)
 
-        list_components = []
+            for tool in group_tool.findall('tool'):
 
-        lines = group_str.split("\n")
-        lines = [elemento for elemento in lines if elemento != ""]
-        lines.remove(lines[0])
+                name = tool.attrib['name']
+                class_tool = tool.attrib.get('class')
+                latex = tool.attrib['latex']
+                cover = tool.findtext('img_cover')
+                stroke = tool.findtext('canvas_stroke')
+                stroke_static = tool.findtext('canvas_stroke_static')
 
-        for i in range(lines.__len__()):
-            match = re.search("\[.+]", lines[i]).group()
-            match = match.replace("[", "")
-            match = match.replace("]", "")
-            list_components.append(match)
+                class_ = class_group
+                if class_tool:
+                    class_ = class_tool
 
-        return list_components
-
-    def get_group_name(self, group_str):
-        lines = group_str.split("\n")
-        lines.remove("")
-        line_tag = lines[0]
-        match = re.search("\".+\"", line_tag).group()
-        match = match.replace("\"", "")
-
-        return match
-
-    def get_tools_for_group(self, group_str, name_group):
-        list_components = []
-
-        lines = group_str.split("\n")
-        lines = [elemento for elemento in lines if elemento != ""]
-        lines.remove(lines[0])
-
-        for i in range(lines.__len__()):
-            list_components.append(
-                ObjTool(
-                    name=self.get_name(lines[i]),
+                component = ObjTool(
+                    name=name,
                     group_name=name_group,
-                    class_name=self.get_name_class(lines[i]),
-                    image=self.get_image(lines[i]),
-                    image_static=self.get_image_static(lines[i]),
-                    latex=self.get_latex(lines[i])
+                    class_name=class_,
+                    latex=latex,
+                    img_cover=cover,
+                    canvas_stroke=stroke,
+                    canvas_stroke_static=stroke_static,
                 )
-            )
+                group.add_component(component)
 
-        return list_components
+            list_group.add_group(group)
 
-    def get_name(self, text_line):
-
-        name_tool = re.search(r'\[[a-zA-Z0-9\s]+]', text_line).group()
-        name_tool = name_tool.replace("[", "")
-        name_tool = name_tool.replace("]", "")
-
-        return name_tool
-
-    def get_name_class(self, text_line):
-
-        text = re.search(r'(<class>)(.+)(</class>)', text_line, re.UNICODE).group()
-        text = text.replace("<class>", "")
-        text = text.replace("</class>", "")
-
-        return text
-
-    def get_image(self, text_line):
-
-        text = re.search(r'(<img>)(.+)(</img>)', text_line)
-
-        if text is not None:
-            text = text.group()
-            text = text.replace("<img>", "")
-            text = text.replace("</img>", "")
-            path = os.path.join(self.base_path, text)
-
-        else:
-            path = ''
-
-        return path
-
-    def get_image_static(self, text_line):
-
-        text = re.search(r'(<img_static>)(.+)(</img_static>)', text_line)
-        if text is not None:
-            text = text.group()
-            text = text.replace("<img_static>", "")
-            text = text.replace("</img_static>", "")
-
-            path = os.path.join(self.base_path, text)
-
-        else:
-            path = ''
-
-        return path
-
-    def get_latex(self, text_line):
-
-        text = re.search(r'((<latex>)(.+)(</latex>))', text_line).group()
-        text = text.replace("<latex>", "")
-        text = text.replace("</latex>", "")
-
-        return text
+        return list_group

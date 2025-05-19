@@ -25,16 +25,16 @@ class DrawComponent:
 
         item_img = self.draw.image_1(
             device_ratio,
-            tool.image,
+            tool.get_canvas_stroke(),
             50,
             final_point,
             90,
             color
         )
 
-        if tool.group_name == 'Power Supplies':
+        if tool.get_group() == 'Power Supplies':
             item_label = self.draw.label_center_horizontal(
-                tool.name,
+                tool.get_name(),
                 final_point,
                 label_component
             )

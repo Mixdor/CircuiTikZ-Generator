@@ -37,7 +37,7 @@ class SourceForge:
                     if float(remote_version) > float(local_version):
                         new_version_available = True
                         print(f"A new version is available: {remote_version}.")
-                        print("You can download it from: https://sourceforge.net/projects/circuitikz-generator/")
+                        print("You can download it from: https://www.circuitikz-generator.xyz/")
                     else:
                         print("Your software is up to date.")
 

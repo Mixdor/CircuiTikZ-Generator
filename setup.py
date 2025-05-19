@@ -1,6 +1,6 @@
 from cx_Freeze import setup, Executable
 
-includefiles = [('images', 'lib/images'), ('list_components.txt', 'lib/list_components.txt')]
+includefiles = [('images', 'lib/images'), ('list_components.xml', 'lib/list_components.xml')]
 
 setup(
     name="Circuitikz-Generator",

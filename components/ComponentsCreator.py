@@ -40,15 +40,15 @@ class ComponentsCreator:
         latex_comp = self.latex.get_one_pin(
             start_point,
             end_point,
-            tool.latex,
+            tool.get_latex(),
             current_label)
 
         new_comp = ObjComponent(
             num=len(canvas.components) + 1,
-            name=tool.name,
-            group_name=tool.group_name,
-            class_name=tool.class_name,
-            seed_latex=tool.latex,
+            name=tool.get_name(),
+            group_name=tool.get_group(),
+            class_name=tool.get_class(),
+            seed_latex=tool.get_latex(),
             middle_point=self.calculate.middle_point(start_point, end_point),
             angle=self.calculate.angle(
                 magnitude=self.calculate.magnitude(start_point, end_point),
@@ -75,13 +75,13 @@ class ComponentsCreator:
 
         difference = self.calculate.difference(start_point, end_point)
 
-        if difference > 40 or tool.name == 'Wire':
+        if difference > 40 or tool.get_name() == 'Wire':
 
-            if tool.name != 'Wire':
+            if tool.get_name() != 'Wire':
                 draw_comp = self.draw_component.two_pins(
                     canvas.scene, canvas.devicePixelRatio(),
                     start_point, end_point,
-                    tool.image, tool.image_static, current_label,
+                    tool.get_canvas_stroke(), tool.get_canvas_stroke_static(), current_label,
                     Qt.GlobalColor.black
                 )
             else:
@@ -94,18 +94,18 @@ class ComponentsCreator:
             canvas.update()
 
             latex_comp = self.latex.get_two_pin(
-                tool.name,
+                tool.get_name(),
                 start_point,
                 end_point,
-                tool.latex,
+                tool.get_latex(),
                 current_label)
 
             new_comp = ObjComponent(
                 num=len(canvas.components)+1,
-                name=tool.name,
-                group_name=tool.group_name,
-                class_name=tool.class_name,
-                seed_latex=tool.latex,
+                name=tool.get_name(),
+                group_name=tool.get_group(),
+                class_name=tool.get_class(),
+                seed_latex=tool.get_latex(),
                 middle_point=self.calculate.middle_point(start_point, end_point),
                 angle=self.calculate.angle(
                     magnitude=self.calculate.magnitude(start_point, end_point),
@@ -139,16 +139,16 @@ class ComponentsCreator:
             latex_comp = self.latex.get_transistor(
                 len(canvas.components) + 1,
                 point,
-                tool.latex,
+                tool.get_latex(),
                 current_label
             )
 
             new_comp = ObjComponent(
                 num=len(canvas.components) + 1,
-                name=tool.name,
-                group_name=tool.group_name,
-                class_name=tool.class_name,
-                seed_latex=tool.latex,
+                name=tool.get_name(),
+                group_name=tool.get_group(),
+                class_name=tool.get_class(),
+                seed_latex=tool.get_latex(),
                 middle_point=point,
                 angle=0,
                 positions=[point],
@@ -184,16 +184,16 @@ class ComponentsCreator:
                 len(canvas.components) + 1,
                 point.x(),
                 point.y(),
-                tool.latex,
+                tool.get_latex(),
                 current_label
             )
 
             new_comp = ObjComponent(
                 num=len(canvas.components) + 1,
-                name=tool.name,
-                group_name=tool.group_name,
-                class_name=tool.class_name,
-                seed_latex=tool.latex,
+                name=tool.get_name(),
+                group_name=tool.get_group(),
+                class_name=tool.get_class(),
+                seed_latex=tool.get_latex(),
                 middle_point=point,
                 angle=0,
                 positions=[point],
@@ -227,16 +227,16 @@ class ComponentsCreator:
             latex_comp = self.latex.get_transformer(
                 len(canvas.components) + 1,
                 point,
-                tool.latex,
+                tool.get_latex(),
                 current_label
             )
 
             new_comp = ObjComponent(
                 num=len(canvas.components) + 1,
-                name=tool.name,
-                group_name=tool.group_name,
-                class_name=tool.class_name,
-                seed_latex=tool.latex,
+                name=tool.get_name(),
+                group_name=tool.get_group(),
+                class_name=tool.get_class(),
+                seed_latex=tool.get_latex(),
                 middle_point=point,
                 angle=0,
                 positions=[point],

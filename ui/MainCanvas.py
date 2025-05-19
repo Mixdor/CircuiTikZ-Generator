@@ -136,7 +136,7 @@ class Canvas(QGraphicsView):
                 int(cord_x * self.cell_size),
                 int(cord_y * self.cell_size))
 
-            name_class = self.tool.class_name
+            name_class = self.tool.get_class()
 
             if name_class == 'None':
 
@@ -159,22 +159,22 @@ class Canvas(QGraphicsView):
             if self.start_point:
 
                 if name_class == 'Traceable_Final':
-                    path_svg = self.tool.image
+                    path_svg = self.tool.get_canvas_stroke()
                     self.manager_components.create_traceable_final(self, path_svg)
 
                 if name_class == 'Traceable':
                     self.manager_components.create_traceable(self)
 
             if name_class == 'Transistor':
-                path_svg = self.tool.image
+                path_svg = self.tool.get_canvas_stroke()
                 self.manager_components.create_transistor(self, self.end_point, path_svg)
 
             if name_class == 'Amplifier':
-                path_svg = self.tool.image
+                path_svg = self.tool.get_canvas_stroke()
                 self.manager_components.create_amplifier(self, path_svg)
 
             if name_class == 'Transformer':
-                path_svg = self.tool.image
+                path_svg = self.tool.get_canvas_stroke()
                 self.manager_components.create_transformer(self, path_svg)
 
         if self.dragMode() == QGraphicsView.DragMode.ScrollHandDrag:
@@ -189,7 +189,7 @@ class Canvas(QGraphicsView):
 
         if self.dragMode() == QGraphicsView.DragMode.NoDrag:
 
-            if self.tool.name != 'Select':
+            if self.tool.get_name() != 'Select':
                 self.cell_size = 50
                 pos = self.mapToScene(event.pos())
 
@@ -200,8 +200,8 @@ class Canvas(QGraphicsView):
 
                 x = cord_x * self.cell_size
                 y = cord_y * self.cell_size
-                name_class = self.tool.class_name
-                path_svg = self.tool.image
+                name_class = self.tool.get_class()
+                path_svg = self.tool.get_canvas_stroke()
 
                 self.draw_auxiliar.remove_point_cursor()
                 self.draw_auxiliar.remove_shadow()
@@ -212,13 +212,13 @@ class Canvas(QGraphicsView):
 
                         difference = self.calculate.difference(self.start_point, QPointF(x, y))
 
-                        if difference > 40 or self.tool.name == 'Wire':
+                        if difference > 40 or self.tool.get_name() == 'Wire':
 
-                            if self.tool.name != 'Wire':
+                            if self.tool.get_name() != 'Wire':
                                 self.current_tool_shadow = self.draw_component.two_pins(
                                     self.scene, self.devicePixelRatio(),
                                     self.start_point, QPointF(x, y),
-                                    self.tool.image, self.tool.image_static, '',
+                                    self.tool.get_canvas_stroke(), self.tool.get_canvas_stroke_static(), '',
                                     self.resources.get_color_shadow()
                                 )
                             else:
