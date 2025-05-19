@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 24.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="ControlledCurrent.svg"
+   x="0px"
+   y="0px"
+   viewBox="0 0 50 50"
+   style="enable-background:new 0 0 50 50;"
+   xml:space="preserve"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs16" /><sodipodi:namedview
+   id="namedview14"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   showgrid="false"
+   inkscape:zoom="10.6"
+   inkscape:cx="14.339623"
+   inkscape:cy="25"
+   inkscape:window-width="1366"
+   inkscape:window-height="707"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg2" />
+<style
+   type="text/css"
+   id="style2">
+	.st0{fill:none;stroke:#000000;}
+	.st1{fill:none;stroke:#000000;stroke-width:1.1295;stroke-miterlimit:4.518;}
+	.st2{fill-rule:evenodd;clip-rule:evenodd;stroke:#000000;stroke-width:1.1295;stroke-miterlimit:4.518;}
+	.st3{fill:none;stroke:#000000;stroke-linecap:square;}
+</style>
+<g
+   id="layer1"
+   transform="matrix(0,-1.135436,-1.1316024,0,53.29006,53.3859)"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:1.76441904;stroke-dasharray:none">
+	<path
+   id="path2194"
+   class="st0"
+   d="M25,8.1V2.9"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:1.76441904;stroke-dasharray:none" />
+	<path
+   id="path2196"
+   class="st0"
+   d="M25,42.1v5"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:1.76441904;stroke-dasharray:none" />
+	<g
+   id="g8"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:1.76441904;stroke-dasharray:none">
+		<path
+   id="path1309"
+   class="st1"
+   d="M25,34.8v-18"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:1.76441904;stroke-dasharray:none" />
+		<path
+   id="path1311"
+   class="st2"
+   d="M25,15.2l-2,3h4L25,15.2z"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:1.76441904;stroke-dasharray:none" />
+	</g>
+	<rect
+   x="11.3"
+   y="11.3"
+   transform="matrix(0.7071 -0.7071 0.7071 0.7071 -10.3553 25)"
+   class="st3"
+   width="27.4"
+   height="27.4"
+   id="rect10"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:1.76443596;stroke-dasharray:none" />
+</g>
+</svg>

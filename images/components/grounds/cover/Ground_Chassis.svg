@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 24.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   version="1.1"
+   id="svg2"
+   x="0px"
+   y="0px"
+   viewBox="0 0 50 50"
+   style="enable-background:new 0 0 50 50;"
+   xml:space="preserve"
+   sodipodi:docname="Ground_Chassis.svg"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs11" /><sodipodi:namedview
+   id="namedview9"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   showgrid="false"
+   inkscape:zoom="7.4953319"
+   inkscape:cx="21.546744"
+   inkscape:cy="27.150232"
+   inkscape:window-width="1151"
+   inkscape:window-height="739"
+   inkscape:window-x="-2"
+   inkscape:window-y="0"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="svg2" />
+<style
+   type="text/css"
+   id="style2">
+	.st0{fill:none;stroke:#000000;stroke-miterlimit:3.56;}
+</style>
+<g
+   id="g122"
+   transform="matrix(0.94339623,0,0,0.94339623,15.617772,8.0385937)"
+   style="stroke:#000000;stroke-width:2.12;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1">
+	<g
+   id="layer1"
+   style="stroke:#000000;stroke-width:2.12;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1">
+		<path
+   id="path4098_2_"
+   class="st0"
+   d="M -5.3,31 0.5,18.9 h 24 L 19,31"
+   style="stroke:#000000;stroke-width:2.12;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1" />
+		<path
+   id="path4104_2_"
+   class="st0"
+   d="M 7.1,31 12.5,18.9 V 4.5"
+   style="stroke:#000000;stroke-width:2.12;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1" />
+	</g>
+</g>
+</svg>

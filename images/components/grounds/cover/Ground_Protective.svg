@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 24.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   version="1.1"
+   id="svg2"
+   x="0px"
+   y="0px"
+   viewBox="0 0 50 50"
+   style="enable-background:new 0 0 50 50;"
+   xml:space="preserve"
+   sodipodi:docname="Ground_Protective.svg"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs17" />
+<style
+   type="text/css"
+   id="style2">
+	.st0{fill:none;stroke:#000000;stroke-miterlimit:3.7736;}
+</style>
+<sodipodi:namedview
+   bordercolor="#000000"
+   borderopacity="0.25"
+   id="namedview9"
+   inkscape:current-layer="layer1"
+   inkscape:cx="35.009452"
+   inkscape:cy="20.189036"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:document-units="pt"
+   inkscape:pagecheckerboard="0"
+   inkscape:pageopacity="0.0"
+   inkscape:showpageshadow="2"
+   inkscape:window-height="739"
+   inkscape:window-maximized="0"
+   inkscape:window-width="1151"
+   inkscape:window-x="-2"
+   inkscape:window-y="0"
+   inkscape:zoom="6.6125"
+   pagecolor="#ffffff"
+   showgrid="true">
+	<inkscape:grid
+   id="grid11"
+   originx="0"
+   originy="0"
+   type="xygrid"
+   spacingy="1"
+   spacingx="1"
+   units="pt" />
+</sodipodi:namedview>
+<g
+   id="g122"
+   transform="matrix(0,-0.94339623,0.94339623,0,20.754717,36.792453)"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:2.11999999;stroke-dasharray:none">
+	<g
+   id="layer1"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:2.11999999;stroke-dasharray:none">
+		<g
+   id="g9"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:2.11999999;stroke-dasharray:none">
+			
+			
+			
+		</g>
+		
+		<g
+   id="g1"
+   transform="rotate(90,19.19,11.19)"><path
+     id="path4098"
+     class="st0"
+     d="M 3.1,20.1 H 21.8"
+     style="stroke:#000000;stroke-width:2.12;stroke-dasharray:none;stroke-opacity:1" /><path
+     id="path4100"
+     class="st0"
+     d="M 6.3,23.247867 H 18.8"
+     style="stroke:#000000;stroke-width:2.12;stroke-dasharray:none;stroke-opacity:1" /><path
+     id="path4102"
+     class="st0"
+     d="M 15.6,26.354373 H 9.4"
+     style="stroke:#000000;stroke-width:2.12;stroke-dasharray:none;stroke-opacity:1" /><path
+     id="path4104"
+     class="st0"
+     d="M 12.5,20.1 V 4.5"
+     style="stroke:#000000;stroke-width:2.12;stroke-dasharray:none;stroke-opacity:1" /><circle
+     class="st0"
+     cx="12.5"
+     cy="19.1"
+     r="11.1"
+     id="circle12"
+     style="stroke:#000000;stroke-width:2.12;stroke-dasharray:none;stroke-opacity:1" /></g>
+	</g>
+</g>
+</svg>

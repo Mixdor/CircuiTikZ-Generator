@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 24.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="Oscilloscope_Ramps.svg"
+   x="0px"
+   y="0px"
+   viewBox="0 0 50 50"
+   style="enable-background:new 0 0 50 50;"
+   xml:space="preserve"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs36" /><sodipodi:namedview
+   id="namedview34"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   showgrid="false"
+   inkscape:zoom="7.3256263"
+   inkscape:cx="22.318911"
+   inkscape:cy="29.553787"
+   inkscape:window-width="1151"
+   inkscape:window-height="739"
+   inkscape:window-x="213"
+   inkscape:window-y="0"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="svg2" />
+<style
+   type="text/css"
+   id="style2">
+	.st0{fill:none;stroke:#000000;stroke-width:1.7644;stroke-miterlimit:10;}
+	.st1{opacity:0.5;}
+	.st2{fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:10;}
+	.st3{fill:none;stroke:#000000;stroke-width:1.7644;}
+</style>
+
+<path
+   class="st0"
+   d="M11.3,29.9l12.6-9.7c0.1-0.1,0.2,0,0.2,0.1v9.3c0,0.1,0.1,0.2,0.2,0.1l12-9.5c0.1-0.1,0.2,0,0.2,0.1v8.9"
+   id="path6" />
+<g
+   class="st1"
+   id="g28">
+	<rect
+   x="11.3"
+   y="16.3"
+   class="st2"
+   width="27.4"
+   height="17.4"
+   id="rect8" />
+	<g
+   id="g26">
+		<line
+   class="st2"
+   x1="16.2"
+   y1="16.3"
+   x2="16.2"
+   y2="33.7"
+   id="line10" />
+		<line
+   class="st2"
+   x1="20.6"
+   y1="16.3"
+   x2="20.6"
+   y2="33.7"
+   id="line12" />
+		<line
+   class="st2"
+   x1="25"
+   y1="16.3"
+   x2="25"
+   y2="33.7"
+   id="line14" />
+		<line
+   class="st2"
+   x1="29.5"
+   y1="16.3"
+   x2="29.5"
+   y2="33.7"
+   id="line16" />
+		<line
+   class="st2"
+   x1="33.9"
+   y1="16.3"
+   x2="33.9"
+   y2="33.7"
+   id="line18" />
+		<line
+   class="st2"
+   x1="11.3"
+   y1="21.1"
+   x2="38.7"
+   y2="21.1"
+   id="line20" />
+		<line
+   class="st2"
+   x1="11.3"
+   y1="25"
+   x2="38.7"
+   y2="25"
+   id="line22" />
+		<line
+   class="st2"
+   x1="38.7"
+   y1="29.6"
+   x2="11.3"
+   y2="29.6"
+   id="line24" />
+	</g>
+</g>
+
+<style
+   type="text/css"
+   id="style2-5">
+	.st0{fill:none;stroke:#000000;stroke-width:1.7644;stroke-miterlimit:10;}
+	.st1{opacity:0.5;}
+	.st2{fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:10;}
+	.st3{fill:none;stroke:#000000;stroke-width:1.7644;}
+</style><g
+   id="g1617"
+   transform="translate(0,-0.45)"><path
+     class="st0"
+     d="M 37.5,7.2 H 12 C 9.4,7.2 7.3,9.3 7.3,11.9 V 39 c 0,2.6 2.1,4.7 4.7,4.7 h 25.5 c 2.6,0 4.7,-2.1 4.7,-4.7 V 11.9 c 0,-2.6 -2.1,-4.7 -4.7,-4.7 z"
+     id="path4" /><g
+     id="layer1"
+     transform="matrix(0,-1.135436,-1.1316024,0,53.29006,53.3859)">
+	<path
+   id="path2194"
+   class="st3"
+   d="M 25,10 V 2.9" />
+	<path
+   id="path2196"
+   class="st3"
+   d="m 25,40 v 7.1" />
+</g></g></svg>

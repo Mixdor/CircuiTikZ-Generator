@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 24.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="Capacitor_Polarized.svg"
+   sodipodi:version="0.32"
+   x="0px"
+   y="0px"
+   viewBox="0 0 50 50"
+   style="enable-background:new 0 0 50 50;"
+   xml:space="preserve"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs13" /><sodipodi:namedview
+   id="namedview11"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   showgrid="false"
+   inkscape:zoom="10.6"
+   inkscape:cx="14.339623"
+   inkscape:cy="25"
+   inkscape:window-width="1366"
+   inkscape:window-height="707"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg2" />
+<style
+   type="text/css"
+   id="style2">
+	.st0{fill:none;stroke:#000000;stroke-width:1.3117;stroke-miterlimit:5.3832;}
+	.st1{fill:none;stroke:#000000;stroke-width:1.3615;stroke-miterlimit:5.3832;}
+	.st2{fill:none;stroke:#000000;stroke-width:1.3359;stroke-miterlimit:5.3832;}
+</style>
+<g
+   id="layer1"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:2;stroke-dasharray:none">
+	<g
+   id="g228"
+   transform="matrix(1.3458115,0,0,1.3458115,-6.6046735,-1.1917191)"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:1.48609222;stroke-dasharray:none">
+		<path
+   id="path17480"
+   class="st0"
+   d="M27.2,28c-3.3-5.7-3.3-11.4,0-17"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:1.48609222;stroke-dasharray:none" />
+		<path
+   id="path17482"
+   class="st1"
+   d="M21.1,19.5H5"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:1.48609222;stroke-dasharray:none" />
+		<path
+   id="path17484"
+   class="st2"
+   d="M24.7,19.4c0.8,0,17.3,0,17.3,0"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:1.48609222;stroke-dasharray:none" />
+		<path
+   id="path4638"
+   class="st0"
+   d="M21.5,28V11"
+   style="stroke:#000000;stroke-opacity:1;stroke-width:1.48609222;stroke-dasharray:none" />
+	</g>
+</g>
+</svg>
