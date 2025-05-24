@@ -5,7 +5,8 @@ from PyQt6.QtCore import Qt
 from auxiliar.Calculate import Calculate
 from components.ComponentsSelector import ComponentsSelector
 from components.Latex import Latex
-from objects.ObjComponent import ObjComponent
+from objects.Components import ObjComponent, ObjPosition, ObjScales, ObjColors
+from objects.Tools import ObjTool
 
 
 class ComponentsCreator:
@@ -37,28 +38,28 @@ class ComponentsCreator:
             draw_comp = self.draw_component.line(start_point, end_point, Qt.GlobalColor.black)
         canvas.update()
 
-        latex_comp = self.latex.get_one_pin(
-            start_point,
-            end_point,
-            tool.get_latex(),
-            current_label)
+
+        obj_position = ObjPosition(
+            start_point=start_point,
+            middle_point=self.calculate.middle_point(start_point, end_point),
+            end_point=end_point
+        )
+
+        angle = self.calculate.angle(
+            magnitude=self.calculate.magnitude(start_point, end_point),
+            start_point=start_point,
+            final_point=end_point
+        )
 
         new_comp = ObjComponent(
             num=len(canvas.components) + 1,
-            name=tool.get_name(),
-            group_name=tool.get_group(),
-            class_name=tool.get_class(),
-            seed_latex=tool.get_latex(),
-            middle_point=self.calculate.middle_point(start_point, end_point),
-            angle=self.calculate.angle(
-                magnitude=self.calculate.magnitude(start_point, end_point),
-                start_point=start_point,
-                final_point=end_point
-            ),
-            positions=[start_point, end_point],
+            built_tool=tool,
+            positions=obj_position,
+            rotation=angle,
+            scales=ObjScales(1, 1),
             label=current_label,
-            drawables=draw_comp,
-            latex=latex_comp
+            colors=ObjColors("black", ""),
+            draws=draw_comp
         )
 
         canvas.components.append(new_comp)
@@ -68,20 +69,20 @@ class ComponentsCreator:
 
     def create_traceable(self, canvas):
 
-        tool = canvas.tool
+        tool : ObjTool = canvas.tool
         start_point = canvas.start_point
         end_point = canvas.end_point
         current_label = canvas.current_label.text()
 
         difference = self.calculate.difference(start_point, end_point)
 
-        if difference > 40 or tool.get_name() == 'Wire':
+        if difference > 40 or tool.name == 'Wire':
 
-            if tool.get_name() != 'Wire':
+            if tool.name != 'Wire':
                 draw_comp = self.draw_component.two_pins(
                     canvas.scene, canvas.devicePixelRatio(),
                     start_point, end_point,
-                    tool.get_canvas_stroke(), tool.get_canvas_stroke_static(), current_label,
+                    tool.canvas_stroke, tool.canvas_stroke_static, current_label,
                     Qt.GlobalColor.black
                 )
             else:
@@ -93,29 +94,27 @@ class ComponentsCreator:
                 )
             canvas.update()
 
-            latex_comp = self.latex.get_two_pin(
-                tool.get_name(),
-                start_point,
-                end_point,
-                tool.get_latex(),
-                current_label)
+            obj_position = ObjPosition(
+                start_point = start_point,
+                middle_point = self.calculate.middle_point(start_point, end_point),
+                end_point = end_point
+            )
+
+            angle = self.calculate.angle(
+                magnitude=self.calculate.magnitude(start_point, end_point),
+                start_point=start_point,
+                final_point=end_point
+            )
 
             new_comp = ObjComponent(
-                num=len(canvas.components)+1,
-                name=tool.get_name(),
-                group_name=tool.get_group(),
-                class_name=tool.get_class(),
-                seed_latex=tool.get_latex(),
-                middle_point=self.calculate.middle_point(start_point, end_point),
-                angle=self.calculate.angle(
-                    magnitude=self.calculate.magnitude(start_point, end_point),
-                    start_point=start_point,
-                    final_point=end_point
-                ),
-                positions=[start_point, end_point],
-                label=current_label,
-                drawables=draw_comp,
-                latex=latex_comp
+                num = len(canvas.components) + 1,
+                built_tool = tool,
+                positions = obj_position,
+                rotation = angle,
+                scales = ObjScales(1,1),
+                label = current_label,
+                colors = ObjColors("black", ""),
+                draws = draw_comp
             )
 
             canvas.components.append(new_comp)
@@ -131,30 +130,20 @@ class ComponentsCreator:
 
             draw_comp = self.draw_component.transistor(
                 canvas.scene, canvas.devicePixelRatio(), canvas.end_point,
-                path_svg, canvas.current_label.text()
+                path_svg, 0, canvas.current_label.text()
             )
 
             canvas.update()
 
-            latex_comp = self.latex.get_transistor(
-                len(canvas.components) + 1,
-                point,
-                tool.get_latex(),
-                current_label
-            )
-
             new_comp = ObjComponent(
                 num=len(canvas.components) + 1,
-                name=tool.get_name(),
-                group_name=tool.get_group(),
-                class_name=tool.get_class(),
-                seed_latex=tool.get_latex(),
-                middle_point=point,
-                angle=0,
-                positions=[point],
+                built_tool=tool,
+                positions=ObjPosition(None, point, None),
+                rotation=0,
+                scales=ObjScales(1, 1),
                 label=current_label,
-                drawables=draw_comp,
-                latex=latex_comp
+                colors=ObjColors("black", ""),
+                draws=draw_comp
             )
 
             canvas.components.append(new_comp)
@@ -180,26 +169,15 @@ class ComponentsCreator:
 
             canvas.update()
 
-            latex_comp = self.latex.get_amplifier(
-                len(canvas.components) + 1,
-                point.x(),
-                point.y(),
-                tool.get_latex(),
-                current_label
-            )
-
             new_comp = ObjComponent(
                 num=len(canvas.components) + 1,
-                name=tool.get_name(),
-                group_name=tool.get_group(),
-                class_name=tool.get_class(),
-                seed_latex=tool.get_latex(),
-                middle_point=point,
-                angle=0,
-                positions=[point],
+                built_tool=tool,
+                positions=ObjPosition(None, point, None),
+                rotation=0,
+                scales=ObjScales(1, 1),
                 label=current_label,
-                drawables=draw_comp,
-                latex=latex_comp
+                colors=ObjColors("black", ""),
+                draws=draw_comp
             )
 
             canvas.components.append(new_comp)
@@ -224,25 +202,15 @@ class ComponentsCreator:
 
             canvas.update()
 
-            latex_comp = self.latex.get_transformer(
-                len(canvas.components) + 1,
-                point,
-                tool.get_latex(),
-                current_label
-            )
-
             new_comp = ObjComponent(
                 num=len(canvas.components) + 1,
-                name=tool.get_name(),
-                group_name=tool.get_group(),
-                class_name=tool.get_class(),
-                seed_latex=tool.get_latex(),
-                middle_point=point,
-                angle=0,
-                positions=[point],
+                built_tool=tool,
+                positions=ObjPosition(None, point, None),
+                rotation=0,
+                scales=ObjScales(1, 1),
                 label=current_label,
-                drawables=draw_comp,
-                latex=latex_comp
+                colors=ObjColors("black", ""),
+                draws=draw_comp
             )
 
             canvas.components.append(new_comp)

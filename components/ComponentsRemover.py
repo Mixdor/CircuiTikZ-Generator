@@ -1,4 +1,5 @@
 from components.ComponentsSelector import ComponentsSelector
+from objects.Components import ObjComponent
 
 
 class ComponentsRemover:
@@ -17,9 +18,9 @@ class ComponentsRemover:
 
     def delete_component(self, canvas):
 
-        component = canvas.component_selected
+        component : ObjComponent = canvas.component_selected
 
-        for draw in component.drawables:
+        for draw in component.draws:
             canvas.scene.removeItem(draw)
 
         self.history.new_event_undo(0, None, component)

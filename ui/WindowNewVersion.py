@@ -31,6 +31,6 @@ class WindowNewVersion(QDialog):
         self.setLayout(self.layout)
 
     def web_sourceforge(self):
-        url = QUrl('https://sourceforge.net/projects/circuitikz-generator/')
+        url = QUrl('https://www.circuitikz-generator.xyz/')
         QDesktopServices.openUrl(url)
         self.accept()

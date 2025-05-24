@@ -1,7 +1,7 @@
 from PyQt6.QtCore import QRectF, Qt
-from PyQt6.QtGui import QColor
 from PyQt6.QtWidgets import QGraphicsTextItem, QGraphicsLineItem, QGraphicsRectItem
 
+from objects.Components import ObjComponent
 from ui.Resources import Resources
 
 
@@ -22,14 +22,19 @@ class ComponentsSelector:
             canvas.current_label.setEnabled(False)
             canvas.current_label.setText('')
 
-    def select(self, canvas, component):
+            canvas.button_flip_horizontal.setEnabled(False)
+            canvas.button_flip_vertical.setEnabled(False)
+            canvas.button_rotate_no_clock.setEnabled(False)
+            canvas.button_rotate_clock.setEnabled(False)
+
+    def select(self, canvas, component:ObjComponent):
 
         rec_select_x = 2000
         rec_select_y = 2000
         point_final_x = 0
         point_final_y = 0
 
-        select_drawables = component.drawables
+        select_drawables = component.draws
 
         for item_comp in select_drawables:
 
@@ -78,6 +83,13 @@ class ComponentsSelector:
         canvas.button_label_edit.setEnabled(True)
         canvas.current_label.setEnabled(True)
 
-        for draw in canvas.component_selected.drawables:
+        comp_class = component.built_tool.class_
+        if comp_class == "Transistor":
+            canvas.button_flip_horizontal.setEnabled(True)
+            canvas.button_flip_vertical.setEnabled(True)
+            canvas.button_rotate_no_clock.setEnabled(True)
+            canvas.button_rotate_clock.setEnabled(True)
+
+        for draw in canvas.component_selected.draws:
             if isinstance(draw, QGraphicsTextItem):
                 canvas.current_label.setText(draw.toPlainText())

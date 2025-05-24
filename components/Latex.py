@@ -1,4 +1,6 @@
-from PyQt6.QtCore import QPoint
+import math
+
+from PyQt6.QtCore import QPoint, QPointF
 
 
 class Latex:
@@ -7,7 +9,7 @@ class Latex:
         super().__init__()
         self.cell_size = 50
 
-    def get_one_pin(self, start_point, final_point, latex, label):
+    def get_one_pin(self, start_point:QPointF, final_point:QPointF, latex:str, label:str):
         draws = []
         x1 = str(start_point.x() / self.cell_size)
         y1 = str(start_point.y() / self.cell_size)
@@ -19,7 +21,7 @@ class Latex:
 
         return draws
 
-    def get_two_pin(self, name_tool, start_point, final_point, latex, label):
+    def get_two_pin(self, name_tool:str, start_point:QPointF, final_point:QPointF, latex:str, label:str):
         draws = []
         x1 = str(start_point.x() / self.cell_size)
         y1 = str(start_point.y() / self.cell_size)
@@ -40,23 +42,38 @@ class Latex:
             draws.append('\\ctikzset{bipoles/oscope/waveform=zero}')
         elif name_tool == 'None Oscilloscope':
             draws.append('\\ctikzset{bipoles/oscope/waveform=none}')
-        draw_text = '\\draw[' + latex + '={' + label + '}](' + x1 + ",-" + y1 + ')to(' + x2 + ',-' + y2 + ');'
+
+        scale = ",/tikz/circuitikz/bipoles/length=1.1cm"
+        if latex=="short":
+            scale = ""
+
+        draw_text = f"\\draw[{latex}={{{label}}}{scale}]({x1},-{y1})to({x2},-{y2});"
+        #draw_text = '\\draw[' + latex + '={' + label + '}](' + x1 + ",-" + y1 + ')to(' + x2 + ',-' + y2 + ');'
         draws.append(draw_text)
 
         return draws
 
-    def get_transistor(self, id_node, point, latex, label):
+    def get_transistor(self, id_node:int, point:QPointF, latex:str, label:str, rotation:float):
+
         draws = []
         node = 'Q' + str(id_node)
-        top = QPoint(point.x(), point.y() - 1)
+
+        cx = point.x() / self.cell_size
+        cy = point.y() / self.cell_size
+
+        radian = rotation * (math.pi / 180)
+
         top_x = (point.x() / self.cell_size)
         top_y = (point.y() / self.cell_size) - 0.5
-        button = QPoint(point.x(), point.y() + 1)
+        top_x_ = cx + (math.cos(radian) * (top_x - cx)) - (math.sin(radian) * (top_y - cy))
+        top_y_ = cy + (math.sin(radian) * (top_x - cx)) + (math.cos(radian) * (top_y - cy))
+
         button_x = (point.x() / self.cell_size)
         button_y = (point.y() / self.cell_size) + 0.5
 
-        x = str(point.x() / self.cell_size)
-        y = str(point.y() / self.cell_size)
+        button_x_ = cx + (math.cos(radian) * (button_x - cx)) - (math.sin(radian) * (button_y - cy))
+        button_y_ = cy + (math.sin(radian) * (button_x - cx)) + (math.cos(radian) * (button_y - cy))
+
 
         if latex.__contains__('mos'):
             draw_properties = '\\ctikzset{tripoles/mos style/arrows}'
@@ -68,10 +85,13 @@ class Latex:
         else:
             conf = ['E', 'B', 'C']
 
-        draw_node = '\\draw(' + x + ",-" + y + ') ' + latex + '(' + node + ')' + '{' + label + '}' + ';'
-        draw_line_top = '\\draw[short](' + node + '.' + conf[0] + ')to(' + str(top_x) + ',-' + str(top_y) + ');'
-        draw_line_button = '\\draw[short](' + node + '.' + conf[2] + ')to(' + str(button_x) + ',-' + str(
-            button_y) + ');'
+        label_cord : str
+        cord = {0.0:"west", 90.0:"north", -270.0:"north", 180.0:"east", -180.0:"east", 270.0:"south", -90.0:"south"}
+
+        draw_node = f"\\draw node[{latex},scale=0.59,xscale=1,yscale=1,rotate={rotation*-1}]({node}) at ({str(cx)},-{str(cy)}) {{}} node[anchor={cord[rotation]},scale=0.9] at ({node}.text){{{label}}};"
+        draw_line_top = f"\\draw[short]({node}.{conf[0]})to({str(top_x_)},-{str(top_y_)});"
+        draw_line_button = f"\\draw[short]({node}.{conf[2]})to({str(button_x_)},-{str(button_y_)});"
+
 
         draws.append(draw_node)
         draws.append(draw_line_top)
@@ -79,7 +99,7 @@ class Latex:
 
         return draws
 
-    def get_transformer(self, id_node, point, latex, label):
+    def get_transformer(self, id_node:int, point:QPointF, latex:str, label:str):
 
         draws = []
         node = 'Q' + str(id_node)
@@ -91,7 +111,7 @@ class Latex:
 
         return draws
 
-    def get_amplifier(self, id_node, x, y, latex, label):
+    def get_amplifier(self, id_node:int, x:float, y:float, latex:str, label:str):
 
         draws = []
         node = 'Q' + str(id_node)

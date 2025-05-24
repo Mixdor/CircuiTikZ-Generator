@@ -4,6 +4,7 @@ from PyQt6.QtCore import QPointF, Qt
 
 from auxiliar.Calculate import Calculate
 from drawables.Draw import Draw
+from objects.Tools import ObjTool
 
 
 class DrawComponent:
@@ -13,7 +14,7 @@ class DrawComponent:
         self.draw = Draw(self.scene)
         self.calculate = Calculate()
 
-    def one_pins(self, device_ratio, start_point, final_point, tool, label_component, color):
+    def one_pins(self, device_ratio, start_point, final_point, tool:ObjTool, label_component, color):
 
         items_added = []
 
@@ -25,16 +26,16 @@ class DrawComponent:
 
         item_img = self.draw.image_1(
             device_ratio,
-            tool.get_canvas_stroke(),
+            tool.canvas_stroke,
             50,
             final_point,
             90,
             color
         )
 
-        if tool.get_group() == 'Power Supplies':
+        if tool.group == 'Power Supplies':
             item_label = self.draw.label_center_horizontal(
-                tool.get_name(),
+                tool.name,
                 final_point,
                 label_component
             )
@@ -136,7 +137,7 @@ class DrawComponent:
 
         return items_added
 
-    def transistor(self, scene, device_ratio, final_point, path_svg, label_component):
+    def transistor(self, scene, device_ratio, final_point, path_svg, rotation, label_component):
 
         items_added = []
 
@@ -145,11 +146,11 @@ class DrawComponent:
             path_svg,
             final_point,
             final_point,
-            0,
+            rotation,
             Qt.GlobalColor.black
         )
 
-        item_label = self.draw.label_transistor(final_point, label_component)
+        item_label = self.draw.label_transistor(final_point, label_component,rotation)
 
         items_added.append(item_img)
         items_added.append(item_label)

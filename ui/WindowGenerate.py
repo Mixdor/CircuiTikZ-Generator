@@ -2,18 +2,76 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QWidget, QCheckBox, QVBoxLayout, QTextEdit, QPushButton, QDialog, QHBoxLayout, QApplication
 
 from components.Latex import Latex
+from objects.Components import ObjComponent
 
 
 class WindowGenerate(QDialog):
-    def __init__(self, components):
+
+    def __init__(self, components:list[ObjComponent]):
         super().__init__()
         self.setWindowTitle('Generated')
         self.setGeometry(150, 150, 350, 500)
         self.latexGen = Latex()
 
-        self.draw_list = []
+        self.draw_list : list[str] = []
+
         for component in components:
-            self.draw_list.append(component.latex)
+
+            latex = None
+
+            if component.built_tool.class_ == 'Traceable_Final':
+
+                latex = self.latexGen.get_one_pin(
+                    start_point=component.positions.start_point,
+                    final_point=component.positions.end_point,
+                    latex=component.built_tool.latex,
+                    label=component.label
+                )
+
+            elif component.built_tool.class_ == 'Traceable':
+
+                latex = self.latexGen.get_two_pin(
+                    component.built_tool.name,
+                    start_point=component.positions.start_point,
+                    final_point=component.positions.end_point,
+                    latex=component.built_tool.latex,
+                    label=component.label
+                )
+
+            elif component.built_tool.class_ == 'Transistor':
+
+                latex = self.latexGen.get_transistor(
+                    id_node=component.num,
+                    point=component.positions.middle_point,
+                    latex=component.built_tool.latex,
+                    label=component.label,
+                    rotation=component.rotation
+                )
+
+            elif component.built_tool.class_ == 'Amplifier':
+
+                latex = self.latexGen.get_amplifier(
+                    id_node=component.num,
+                    x=component.positions.middle_point.x(),
+                    y=component.positions.middle_point.y(),
+                    latex=component.built_tool.latex,
+                    label=component.label
+                )
+
+            elif component.built_tool.class_ == 'Transformer':
+
+                latex = self.latexGen.get_transformer(
+                    id_node=component.num,
+                    point=component.positions.middle_point,
+                    latex=component.built_tool.latex,
+                    label=component.label
+                )
+
+            else:
+                print("Number pins not found")
+
+            if latex:
+                self.draw_list.append(latex)
 
         self.dic_settings = {
             'wrap_in_figure': 0,

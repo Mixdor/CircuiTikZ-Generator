@@ -4,147 +4,95 @@ from PyQt6.QtWidgets import QGraphicsTextItem
 
 from components.Latex import Latex
 from drawables.Draw import Draw
-from objects.ObjComponent import ObjComponent
+from objects.Components import ObjComponent
 
 
 class ComponentsEditor:
 
     def __init__(self, history):
         super().__init__()
-        self.history = history
-        self.latex = Latex()
 
-    def label(self, canvas, input_text):
+        self.history = history
+        self.draw_component = None
+
+    def label(self, canvas, input_text:str):
 
         drawer = Draw(canvas.scene)
-        component = canvas.component_selected
+        component : ObjComponent = canvas.component_selected
 
         if component:
 
-            before_component = ObjComponent(
-                num=copy.copy(component.num),
-                name=copy.copy(component.name),
-                group_name=copy.copy(component.group_name),
-                class_name=copy.copy(component.class_name),
-                seed_latex=copy.copy(component.seed_latex),
-                middle_point=copy.copy(component.middle_point),
-                angle=copy.copy(component.angle),
-                positions=copy.copy(component.positions),
-                label=copy.copy(component.label),
-                drawables=copy.copy(component.drawables),
-                latex=copy.copy(component.latex)
-            )
+            before_component = self.create_deep_copy(component)
+            
+            for draw in component.draws:
 
-            for draw in component.drawables:
                 if isinstance(draw, QGraphicsTextItem):
 
                     component.label = input_text
 
-                    if component.class_name == 'Traceable_Final':
+                    if component.built_tool.class_ == 'Traceable_Final':
 
-                        if component.group_name == 'Power Supplies':
+                        if component.built_tool.group == 'Power Supplies':
                             item_label = drawer.label_center_horizontal(
-                                name_tool=component.name,
-                                pos_point=component.positions[1],
+                                name_tool=component.built_tool.name,
+                                pos_point=component.positions.end_point,
                                 label=input_text
                             )
                         else:
                             item_label = drawer.label1(
-                                pos_point=component.positions[1],
+                                pos_point=component.positions.end_point,
                                 label=input_text
                             )
 
-                        component.drawables.remove(draw)
+                        component.draws.remove(draw)
                         canvas.scene.removeItem(draw)
-                        component.drawables.append(item_label)
+                        component.draws.append(item_label)
 
-                        new_latext = self.latex.get_one_pin(
-                            start_point=component.positions[0],
-                            final_point=component.positions[1],
-                            latex=component.seed_latex,
-                            label=input_text
-                        )
-
-                        component.latex = new_latext
-
-                    elif component.class_name == 'Traceable':
+                    elif component.built_tool.class_ == 'Traceable':
 
                         item_label = drawer.label(
-                            component.middle_point,
+                            component.positions.middle_point,
                             input_text,
-                            component.angle
+                            component.rotation
                         )
 
-                        component.drawables.remove(draw)
+                        component.draws.remove(draw)
                         canvas.scene.removeItem(draw)
-                        component.drawables.append(item_label)
+                        component.draws.append(item_label)
 
-                        new_latext = self.latex.get_two_pin(
-                            component.name,
-                            start_point=component.positions[0],
-                            final_point=component.positions[1],
-                            latex=component.seed_latex,
-                            label=input_text
-                        )
-                        component.latex = new_latext
-
-                    elif component.class_name == 'Transistor':
+                    elif component.built_tool.class_ == 'Transistor':
 
                         item_label = drawer.label_transistor(
-                            pos_point=component.middle_point,
-                            label=input_text
+                            pos_point=component.positions.middle_point,
+                            label=input_text,
+                            rotation=component.rotation
                         )
 
-                        component.drawables.remove(draw)
+                        component.draws.remove(draw)
                         canvas.scene.removeItem(draw)
-                        component.drawables.append(item_label)
+                        component.draws.append(item_label)
 
-                        new_latext = self.latex.get_transistor(
-                            id_node=component.num,
-                            point=component.middle_point,
-                            latex=component.seed_latex,
-                            label=input_text
-                        )
-                        component.latex = new_latext
-
-                    elif component.class_name == 'Amplifier':
+                    elif component.built_tool.class_ == 'Amplifier':
 
                         item_label = drawer.label_center(
-                            pos_point=component.middle_point,
+                            pos_point=component.positions.middle_point,
                             label=input_text
                         )
 
-                        component.drawables.remove(draw)
+                        component.draws.remove(draw)
                         canvas.scene.removeItem(draw)
-                        component.drawables.append(item_label)
+                        component.draws.append(item_label)
 
-                        new_latext = self.latex.get_amplifier(
-                            id_node=component.num,
-                            x=component.middle_point.x(),
-                            y=component.middle_point.y(),
-                            latex=component.seed_latex,
-                            label=input_text
-                        )
-                        component.latex = new_latext
-
-                    elif component.class_name == 'Transformer':
+                    elif component.built_tool.class_ == 'Transformer':
 
                         item_label = drawer.label_transformer(
-                            pos_point=component.middle_point,
+                            pos_point=component.positions.middle_point,
                             label=input_text
                         )
 
-                        component.drawables.remove(draw)
+                        component.draws.remove(draw)
                         canvas.scene.removeItem(draw)
-                        component.drawables.append(item_label)
-
-                        new_latext = self.latex.get_transformer(
-                            id_node=component.num,
-                            point=component.middle_point,
-                            latex=component.seed_latex,
-                            label=input_text
-                        )
-                        component.latex = new_latext
+                        component.draws.append(item_label)
 
                     else:
                         print("Number pins not found")
@@ -152,3 +100,45 @@ class ComponentsEditor:
             if component != before_component:
                 self.history.new_event_undo(2, before_component, component)
 
+    def rotation(self, canvas, rotation:int):
+
+        drawer = Draw(canvas.scene)
+        component : ObjComponent = canvas.component_selected
+
+        new_rotation = component.rotation + rotation
+
+        if new_rotation==360 or new_rotation==-360:
+            new_rotation = 0
+
+        if component:
+
+            before_component = self.create_deep_copy(component)
+
+            draw_comp = self.draw_component.transistor(
+                canvas.scene, canvas.devicePixelRatio(), component.positions.middle_point,
+                component.built_tool.canvas_stroke, new_rotation, canvas.current_label.text()
+            )
+
+            for draw in component.draws:
+                canvas.scene.removeItem(draw)
+
+            component.draws.clear()
+            component.draws = draw_comp
+            component.rotation = new_rotation
+
+            if component != before_component:
+                self.history.new_event_undo(2, before_component, component)
+
+
+    def create_deep_copy(self, component) -> ObjComponent:
+
+        return ObjComponent(
+            num=copy.copy(component.num),
+            built_tool=copy.copy(component.built_tool),
+            positions=copy.copy(component.positions),
+            rotation=copy.copy(component.rotation),
+            scales=copy.copy(component.scales),
+            label=copy.copy(component.label),
+            colors=copy.copy(component.colors),
+            draws=copy.copy(component.draws),
+        )

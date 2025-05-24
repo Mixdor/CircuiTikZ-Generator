@@ -1,7 +1,7 @@
 import math
 
-from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QImage, QPainter, QPixmap, QColor, QPen, QFont
+from PyQt6.QtCore import Qt, QPoint, QPointF
+from PyQt6.QtGui import QImage, QPainter, QPixmap, QColor, QPen, QFont, QTransform
 from PyQt6.QtSvg import QSvgRenderer
 from PyQt6.QtWidgets import QGraphicsPixmapItem, QGraphicsLineItem, QGraphicsTextItem, QGraphicsColorizeEffect
 
@@ -9,7 +9,7 @@ from PyQt6.QtWidgets import QGraphicsPixmapItem, QGraphicsLineItem, QGraphicsTex
 class Draw:
 
     def __init__(self, scene):
-        self.font = QFont("Times New Roman", 12)
+        self.font = QFont("Times New Roman", 14)
         self.scene = scene
 
     def image(self, device_ratio, path_svg, point_start, point_final, angle, color):
@@ -205,13 +205,31 @@ class Draw:
         self.scene.addItem(item_text)
         return item_text
 
-    def label_transistor(self, pos_point, label):
+    def label_transistor(self, pos_point:QPointF, label:str, rotation:float):
+
         item_text = QGraphicsTextItem()
         item_text.setDefaultTextColor(QColor(0, 0, 0))
         item_text.setFont(self.font)
         item_text.setPlainText(label)
-        new_x = pos_point.x()
-        new_y = pos_point.y() - (item_text.boundingRect().height() / 2)
+
+        new_x = 0
+        new_y = 0
+
+        #item_text.setRotation(rotation)
+
+        if rotation==0:
+            new_x = pos_point.x()
+            new_y = pos_point.y() - (item_text.boundingRect().height() / 2)
+        elif rotation==90 or rotation==-270:
+            new_x = pos_point.x() - (item_text.boundingRect().width() / 2)
+            new_y = pos_point.y()
+        elif rotation==180 or rotation==-180:
+            new_x = pos_point.x() - item_text.boundingRect().width()
+            new_y = pos_point.y() - (item_text.boundingRect().height() / 2)
+        elif rotation==270 or rotation==-90:
+            new_x = pos_point.x() - (item_text.boundingRect().width() / 2)
+            new_y = pos_point.y() - item_text.boundingRect().height()
+
         item_text.setPos(new_x, new_y)
 
         self.scene.addItem(item_text)

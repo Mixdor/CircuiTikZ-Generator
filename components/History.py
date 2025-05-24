@@ -1,6 +1,6 @@
 import copy
 
-from objects.ObjComponent import ObjComponent
+from objects.Components import ObjComponent
 from objects.ObjEvent import ObjEvent
 
 
@@ -8,10 +8,10 @@ class History:
 
     def __init__(self):
 
-        self.list_undo = []
-        self.list_redo = []
+        self.list_undo : list[ObjEvent] = []
+        self.list_redo : list[ObjEvent] = []
 
-    def new_event_undo(self, type_event, component_before, component):
+    def new_event_undo(self, type_event:int, component_before:ObjComponent|None, component:ObjComponent):
         event = ObjEvent(
             len(self.list_undo),
             type_event,
@@ -20,7 +20,7 @@ class History:
         )
         self.list_undo.append(event)
 
-    def new_event_redo(self, type_event, component_before, component):
+    def new_event_redo(self, type_event:int, component_before:ObjComponent|None, component:ObjComponent):
         event = ObjEvent(
             len(self.list_redo),
             type_event,
@@ -43,7 +43,7 @@ class History:
             if last_event.type_event == 0:
                 component = last_event.component
 
-                for item in component.drawables:
+                for item in component.draws:
                     canvas.scene.addItem(item)
 
                 canvas.components.append(component)
@@ -52,7 +52,7 @@ class History:
 
             elif last_event.type_event == 1:
                 component = last_event.component
-                for item in component.drawables:
+                for item in component.draws:
                     canvas.scene.removeItem(item)
 
                 canvas.components.remove(component)
@@ -64,42 +64,39 @@ class History:
                 component = last_event.component
 
                 component_after = ObjComponent(
-                    num=copy.copy(component.num),
-                    name=copy.copy(component.name),
-                    group_name=copy.copy(component.group_name),
-                    class_name=copy.copy(component.class_name),
-                    seed_latex=copy.copy(component.seed_latex),
-                    middle_point=copy.copy(component.middle_point),
-                    angle=copy.copy(component.angle),
-                    positions=copy.copy(component.positions),
-                    label=copy.copy(component.label),
-                    drawables=copy.copy(component.drawables),
-                    latex=copy.copy(component.latex)
+                    num = copy.copy(component.num),
+                    built_tool = copy.copy(component.built_tool),
+                    positions = copy.copy(component.positions),
+                    rotation = copy.copy(component.rotation),
+                    scales = copy.copy(component.scales),
+                    label = copy.copy(component.label),
+                    colors = copy.copy(component.colors),
+                    draws = copy.copy(component.draws),
                 )
 
                 self.new_event_redo(2, component_after, component)
 
-                for item in component.drawables:
+                for item in component.draws:
                     canvas.scene.removeItem(item)
 
-                for item in component_before.drawables:
+                for item in component_before.draws:
                     canvas.scene.addItem(item)
 
                 index = canvas.components.index(component)
 
                 canvas.components[index].num = component_before.num
-                canvas.components[index].name = component_before.name
-                canvas.components[index].group_name = component_before.group_name
-                canvas.components[index].class_name = component_before.class_name
-                canvas.components[index].seed_latex = component_before.seed_latex
-                canvas.components[index].middle_point = component_before.middle_point
-                canvas.components[index].angle = component_before.angle
+                canvas.components[index].built_tool = component_before.built_tool
                 canvas.components[index].positions = component_before.positions
+                canvas.components[index].rotation = component_before.rotation
+                canvas.components[index].scales = component_before.scales
                 canvas.components[index].label = component_before.label
-                canvas.components[index].drawables = component_before.drawables
-                canvas.components[index].latex = component_before.latex
+                canvas.components[index].colors = component_before.colors
+                canvas.components[index].draws = component_before.draws
 
             self.list_undo.remove(last_event)
+
+        print(f"Undo:{self.list_undo}")
+        print(f"Redo:{self.list_redo}")
 
     def redo(self, canvas):
 
@@ -111,7 +108,7 @@ class History:
 
                 component = last_event.component
 
-                for item in component.drawables:
+                for item in component.draws:
                     canvas.scene.addItem(item)
 
                 canvas.components.append(component)
@@ -119,7 +116,7 @@ class History:
 
             elif last_event.type_event == 1:
                 component = last_event.component
-                for item in component.drawables:
+                for item in component.draws:
                     canvas.scene.removeItem(item)
 
                 canvas.components.remove(component)
@@ -131,39 +128,36 @@ class History:
                 component = last_event.component
 
                 component_before = ObjComponent(
-                    num=copy.copy(component.num),
-                    name=copy.copy(component.name),
-                    group_name=copy.copy(component.group_name),
-                    class_name=copy.copy(component.class_name),
-                    seed_latex=copy.copy(component.seed_latex),
-                    middle_point=copy.copy(component.middle_point),
-                    angle=copy.copy(component.angle),
-                    positions=copy.copy(component.positions),
-                    label=copy.copy(component.label),
-                    drawables=copy.copy(component.drawables),
-                    latex=copy.copy(component.latex)
+                    num = copy.copy(component.num),
+                    built_tool = copy.copy(component.built_tool),
+                    positions = copy.copy(component.positions),
+                    rotation = copy.copy(component.rotation),
+                    scales = copy.copy(component.scales),
+                    label = copy.copy(component.label),
+                    colors = copy.copy(component.colors),
+                    draws = copy.copy(component.draws),
                 )
 
                 self.new_event_undo(2, component_before, component)
 
-                for item in component.drawables:
+                for item in component.draws:
                     canvas.scene.removeItem(item)
 
-                for item in component_after.drawables:
+                for item in component_after.draws:
                     canvas.scene.addItem(item)
 
                 index = canvas.components.index(component)
 
                 canvas.components[index].num = component_after.num
-                canvas.components[index].name = component_after.name
-                canvas.components[index].group_name = component_after.group_name
-                canvas.components[index].class_name = component_after.class_name
-                canvas.components[index].seed_latex = component_after.seed_latex
-                canvas.components[index].middle_point = component_after.middle_point
-                canvas.components[index].angle = component_after.angle
+                canvas.components[index].built_tool = component_after.built_tool
                 canvas.components[index].positions = component_after.positions
+                canvas.components[index].rotation = component_after.rotation
+                canvas.components[index].scales = component_after.scales
                 canvas.components[index].label = component_after.label
-                canvas.components[index].drawables = component_after.drawables
-                canvas.components[index].latex = component_after.latex
+                canvas.components[index].colors = component_after.colors
+                canvas.components[index].draws = component_after.draws
 
             self.list_redo.remove(last_event)
+
+        print(f"Undo:{self.list_undo}")
+        print(f"Redo:{self.list_redo}")

@@ -252,83 +252,83 @@
         </tool>
     </group>
     <group name="Transistors" class="Transistor">
-        <tool name="NPN" latex="node[npn,scale=0.59]">
+        <tool name="NPN" latex="npn">
             <img_cover>images/components/transistors/NPN.svg</img_cover>
             <canvas_stroke>images/components/transistors/NPN.svg</canvas_stroke>
         </tool>
-        <tool name="PNP" latex="node[pnp,scale=0.59]">
+        <tool name="PNP" latex="pnp">
             <img_cover>images/components/transistors/PNP.svg</img_cover>
             <canvas_stroke>images/components/transistors/PNP.svg</canvas_stroke>
         </tool>
-        <tool name="Schottky NPN" latex="node[npn,schottky base,scale=0.59]">
+        <tool name="Schottky NPN" latex="npn,schottky base">
             <img_cover>images/components/transistors/NPN_Schottky.svg</img_cover>
             <canvas_stroke>images/components/transistors/NPN_Schottky.svg</canvas_stroke>
         </tool>
-        <tool name="Schottky PNP" latex="node[pnp,schottky base,scale=0.59]">
+        <tool name="Schottky PNP" latex="pnp,schottky base">
             <img_cover>images/components/transistors/PNP_Schottky.svg</img_cover>
             <canvas_stroke>images/components/transistors/PNP_Schottky.svg</canvas_stroke>
         </tool>
-        <tool name="Diode NPN" latex="node[npn,bodydiode,scale=0.59]">
+        <tool name="Diode NPN" latex="npn,bodydiode">
             <img_cover>images/components/transistors/NPN_Diode.svg</img_cover>
             <canvas_stroke>images/components/transistors/NPN_Diode.svg</canvas_stroke>
         </tool>
-        <tool name="Diode PNP" latex="node[pnp,bodydiode,scale=0.59]">
+        <tool name="Diode PNP" latex="pnp,bodydiode">
             <img_cover>images/components/transistors/PNP_Diode.svg</img_cover>
             <canvas_stroke>images/components/transistors/PNP_Diode.svg</canvas_stroke>
         </tool>
-        <tool name="Photo NPN" latex="node[npn,photo,scale=0.59]">
+        <tool name="Photo NPN" latex="npn,photo">
             <img_cover>images/components/transistors/NPN_Photo.svg</img_cover>
             <canvas_stroke>images/components/transistors/NPN_Photo.svg</canvas_stroke>
         </tool>
-        <tool name="Photo PNP" latex="node[pnp,photo,scale=0.59]">
+        <tool name="Photo PNP" latex="pnp,photo">
             <img_cover>images/components/transistors/PNP_Photo.svg</img_cover>
             <canvas_stroke>images/components/transistors/PNP_Photo.svg</canvas_stroke>
         </tool>
-        <tool name="Nigbt" latex="node[nigbt,scale=0.59]">
+        <tool name="Nigbt" latex="nigbt">
             <img_cover>images/components/transistors/NPN_Nigbt.svg</img_cover>
             <canvas_stroke>images/components/transistors/NPN_Nigbt.svg</canvas_stroke>
         </tool>
-        <tool name="Pigbt" latex="node[pigbt,scale=0.59]">
+        <tool name="Pigbt" latex="pigbt">
             <img_cover>images/components/transistors/PNP_Pigbt.svg</img_cover>
             <canvas_stroke>images/components/transistors/PNP_Pigbt.svg</canvas_stroke>
         </tool>
-        <tool name="NMOS" latex="node[nmos,scale=0.59]">
+        <tool name="NMOS" latex="nmos">
             <img_cover>images/components/transistors/Nmos.svg</img_cover>
             <canvas_stroke>images/components/transistors/Nmos.svg</canvas_stroke>
         </tool>
-        <tool name="PMOS" latex="node[pmos,scale=0.59]">
+        <tool name="PMOS" latex="pmos">
             <img_cover>images/components/transistors/Pmos.svg</img_cover>
             <canvas_stroke>images/components/transistors/Pmos.svg</canvas_stroke>
         </tool>
-        <tool name="NMOS Depletion" latex="node[nmosd,scale=0.59]">
+        <tool name="NMOS Depletion" latex="nmosd">
             <img_cover>images/components/transistors/Nmos_Depletion.svg</img_cover>
             <canvas_stroke>images/components/transistors/Nmos_Depletion.svg</canvas_stroke>
         </tool>
-        <tool name="PMOS Depletion" latex="node[pmosd,scale=0.59]">
+        <tool name="PMOS Depletion" latex="pmosd">
             <img_cover>images/components/transistors/Pmos_Depletion.svg</img_cover>
             <canvas_stroke>images/components/transistors/Pmos_Depletion.svg</canvas_stroke>
         </tool>
-        <tool name="Hemt" latex="node[hemt,scale=0.59]">
+        <tool name="Hemt" latex="hemt">
             <img_cover>images/components/transistors/Hemt.svg</img_cover>
             <canvas_stroke>images/components/transistors/Hemt.svg</canvas_stroke>
         </tool>
-        <tool name="Hemt NoBase" latex="node[hemt,nobase,scale=0.59]">
+        <tool name="Hemt NoBase" latex="hemt,nobase">
             <img_cover>images/components/transistors/Hemt_Nobase.svg</img_cover>
             <canvas_stroke>images/components/transistors/Hemt_Nobase.svg</canvas_stroke>
         </tool>
-        <tool name="NFET" latex="node[nfet,scale=0.59]">
+        <tool name="NFET" latex="nfet">
             <img_cover>images/components/transistors/Nfet.svg</img_cover>
             <canvas_stroke>images/components/transistors/Nfet.svg</canvas_stroke>
         </tool>
-        <tool name="PFET" latex="node[pfet,scale=0.59]">
+        <tool name="PFET" latex="pfet">
             <img_cover>images/components/transistors/Pfet.svg</img_cover>
             <canvas_stroke>images/components/transistors/Pfet.svg</canvas_stroke>
         </tool>
-        <tool name="NFET Depletion" latex="node[nfetd,scale=0.59]">
+        <tool name="NFET Depletion" latex="nfetd">
             <img_cover>images/components/transistors/Nfet_Depletion.svg</img_cover>
             <canvas_stroke>images/components/transistors/Nfet_Depletion.svg</canvas_stroke>
         </tool>
-        <tool name="PFET Depletion" latex="node[pfetd,scale=0.59]">
+        <tool name="PFET Depletion" latex="pfetd">
             <img_cover>images/components/transistors/Pfet_Depletion.svg</img_cover>
             <canvas_stroke>images/components/transistors/Pfet_Depletion.svg</canvas_stroke>
         </tool>

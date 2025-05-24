@@ -29,7 +29,7 @@ class MainWindow(QMainWindow):
 
         self.botones = []
         self.group_buttons = []
-        self.obj_tools = []
+        self.obj_tools : list[ObjTool] = []
 
         self.components = []
 
@@ -81,7 +81,7 @@ class MainWindow(QMainWindow):
         for i in range(list_groups_tools.size()):
 
             group_tool = list_groups_tools[i]
-            name_group = group_tool.get_name()
+            name_group = group_tool.name
 
             label_name = QLabel(name_group)
             layout_scroll_area.addWidget(label_name)
@@ -97,14 +97,14 @@ class MainWindow(QMainWindow):
 
                 button = QPushButton()
                 button.setFixedWidth(int((214-(6*colum))/colum))
-                button.setToolTip(tool.get_name())
-                button.setIcon(QIcon(tool.get_cover()))
+                button.setToolTip(tool.name)
+                button.setIcon(QIcon(tool.img_cover))
                 button.setIconSize(QSize(45, 45))
                 button.setStyleSheet(f'background-color: {self.resources.get_hex_deactivate()}; color: black;')
 
                 button.clicked.connect(self.on_button_click)
 
-                if tool.get_name() == "Select":
+                if tool.name == "Select":
                     button.setStyleSheet(f'background-color: {self.resources.get_hex_active()}; color: black;')
 
                 self.botones.append(button)
@@ -145,21 +145,56 @@ class MainWindow(QMainWindow):
         layout_properties.addWidget(self.label_component)
 
         self.button_label_edit = QPushButton(QIcon(f'{self.resources.get_path()}/edit.svg'), '')
+        self.button_label_edit.setToolTip("Edit Label")
         self.button_label_edit.setEnabled(False)
         self.button_label_edit.clicked.connect(self.handle_component_label)
         layout_properties.addWidget(self.button_label_edit)
 
+        spacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        layout_properties.addItem(spacer)
+
+        self.button_flip_horizontal = QPushButton(QIcon(f'{self.resources.get_path()}/flip_horizontal.svg'), '')
+        self.button_flip_horizontal.setToolTip("Flip Horizontal")
+        self.button_flip_horizontal.setEnabled(False)
+        # self.button_flip_horizontal.clicked.connect(self.handle_component)
+        layout_properties.addWidget(self.button_flip_horizontal)
+
+        self.button_flip_vertical = QPushButton(QIcon(f'{self.resources.get_path()}/flip_vertical.svg'), '')
+        self.button_flip_vertical.setToolTip("Flip Vertical")
+        self.button_flip_vertical.setEnabled(False)
+        # self.button_flip_vertical.clicked.connect(self.handle_component)
+        layout_properties.addWidget(self.button_flip_vertical)
+
+        self.button_rotate_no_clock = QPushButton(QIcon(f'{self.resources.get_path()}/rotate_left.svg'), '')
+        self.button_rotate_no_clock.setToolTip("Rotate 90° Counter-Clockwise")
+        self.button_rotate_no_clock.setEnabled(False)
+        self.button_rotate_no_clock.clicked.connect(self.rotate_counter_clockwise)
+        layout_properties.addWidget(self.button_rotate_no_clock)
+
+        self.button_rotate_clock = QPushButton(QIcon(f'{self.resources.get_path()}/rotate_rigth.svg'), '')
+        self.button_rotate_clock.setToolTip("Rotate 90° Clockwise")
+        self.button_rotate_clock.setEnabled(False)
+        self.button_rotate_clock.clicked.connect(self.rotate_clockwise)
+        layout_properties.addWidget(self.button_rotate_clock)
+
+        spacer2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        layout_properties.addItem(spacer2)
+
         self.button_delete = QPushButton(QIcon(f'{self.resources.get_path()}/delete.svg'), '')
+        self.button_delete.setToolTip("Delete")
         self.button_delete.setEnabled(False)
         self.button_delete.clicked.connect(self.delete_component)
         layout_properties.addWidget(self.button_delete)
+
+        spacer3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        layout_properties.addItem(spacer3)
 
         self.svg_widget = QSvgWidget(parent=self)
         self.svg_widget.setFixedSize(40, 40)
         self.svg_widget.setStyleSheet(
             'background-color: white; color: white; border: 1.5px solid #DB6725; border-radius: 3px;'
         )
-        self.svg_widget.load(self.tool_selected.get_cover())
+        self.svg_widget.load(self.tool_selected.img_cover)
         layout_properties.addWidget(self.svg_widget)
 
         label_cord = QLabel("Coordinates: [0,0]")
@@ -213,11 +248,17 @@ class MainWindow(QMainWindow):
             self.label_component,
             self.button_label_edit,
             self.button_delete,
+            self.button_flip_horizontal,
+            self.button_flip_vertical,
+            self.button_rotate_no_clock,
+            self.button_rotate_clock,
             self.components_creator,
             self.history)
+
         self.canvas_scene = self.canvas.scene
         self.components_creator.canvas = self.canvas
         self.components_creator.draw_component = DrawComponent(self.canvas.scene)
+        self.components_editor.draw_component = DrawComponent(self.canvas.scene)
         layout_canvas_properties.addWidget(self.canvas)
 
         self.hilo = MiHilo(self.name_app.text())
@@ -273,23 +314,23 @@ class MainWindow(QMainWindow):
         current_tool = None
 
         for j in range(self.obj_tools.__len__()):
-            if self.obj_tools[j].get_name() == button.toolTip():
+            if self.obj_tools[j].name == button.toolTip():
                 current_tool = self.obj_tools[j]
 
         if self.tool_selected != current_tool:
 
             self.tool_selected = ObjTool(
-                name=current_tool.get_name(),
-                group_name=current_tool.get_group(),
-                class_name=current_tool.get_class(),
-                latex=current_tool.get_latex(),
-                img_cover=current_tool.get_cover(),
-                canvas_stroke=current_tool.get_canvas_stroke(),
-                canvas_stroke_static=current_tool.get_canvas_stroke_static(),
+                name=current_tool.name,
+                group_name=current_tool.group,
+                class_name=current_tool.class_,
+                latex=current_tool.latex,
+                img_cover=current_tool.img_cover,
+                canvas_stroke=current_tool.canvas_stroke,
+                canvas_stroke_static=current_tool.canvas_stroke_static,
             )
 
             self.canvas.set_tool(self.tool_selected)
-            self.svg_widget.load(self.tool_selected.get_cover())
+            self.svg_widget.load(self.tool_selected.img_cover)
 
             button.setStyleSheet(f'background-color: {self.resources.get_hex_active()}; color: black;')
         else:
@@ -298,6 +339,14 @@ class MainWindow(QMainWindow):
     def handle_component_label(self):
         if self.canvas.component_selected:
             self.components_editor.label(self.canvas, self.canvas.current_label.text())
+
+    def rotate_clockwise(self):
+        if self.canvas.component_selected:
+            self.components_editor.rotation(self.canvas, 90)
+
+    def rotate_counter_clockwise(self):
+        if self.canvas.component_selected:
+            self.components_editor.rotation(self.canvas, -90)
 
     def delete_component(self):
         if self.canvas.component_selected:
