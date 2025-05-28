@@ -11,6 +11,7 @@ from components.ComponentsSelector import ComponentsSelector
 from components.History import History
 from components.TxtToComponents import TxtToComponents
 from drawables.DrawComponent import DrawComponent
+from objects.Components import ObjScales
 from objects.Tools import ObjTool
 from ui.MainCanvas import Canvas
 from ui.Resources import Resources
@@ -156,13 +157,13 @@ class MainWindow(QMainWindow):
         self.button_flip_horizontal = QPushButton(QIcon(f'{self.resources.get_path()}/flip_horizontal.svg'), '')
         self.button_flip_horizontal.setToolTip("Flip Horizontal")
         self.button_flip_horizontal.setEnabled(False)
-        # self.button_flip_horizontal.clicked.connect(self.handle_component)
+        self.button_flip_horizontal.clicked.connect(self.flip_horizontal)
         layout_properties.addWidget(self.button_flip_horizontal)
 
         self.button_flip_vertical = QPushButton(QIcon(f'{self.resources.get_path()}/flip_vertical.svg'), '')
         self.button_flip_vertical.setToolTip("Flip Vertical")
         self.button_flip_vertical.setEnabled(False)
-        # self.button_flip_vertical.clicked.connect(self.handle_component)
+        self.button_flip_vertical.clicked.connect(self.flip_vertical)
         layout_properties.addWidget(self.button_flip_vertical)
 
         self.button_rotate_no_clock = QPushButton(QIcon(f'{self.resources.get_path()}/rotate_left.svg'), '')
@@ -339,6 +340,14 @@ class MainWindow(QMainWindow):
     def handle_component_label(self):
         if self.canvas.component_selected:
             self.components_editor.label(self.canvas, self.canvas.current_label.text())
+
+    def flip_horizontal(self):
+        if self.canvas.component_selected:
+            self.components_editor.change_scales(self.canvas, ObjScales(-1.0, 1.0))
+
+    def flip_vertical(self):
+        if self.canvas.component_selected:
+            self.components_editor.change_scales(self.canvas, ObjScales(1.0, -1.0))
 
     def rotate_clockwise(self):
         if self.canvas.component_selected:

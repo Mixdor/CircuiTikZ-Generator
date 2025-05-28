@@ -95,8 +95,6 @@ class History:
 
             self.list_undo.remove(last_event)
 
-        print(f"Undo:{self.list_undo}")
-        print(f"Redo:{self.list_redo}")
 
     def redo(self, canvas):
 
@@ -158,6 +156,3 @@ class History:
                 canvas.components[index].draws = component_after.draws
 
             self.list_redo.remove(last_event)
-
-        print(f"Undo:{self.list_undo}")
-        print(f"Redo:{self.list_redo}")

@@ -130,7 +130,7 @@ class ComponentsCreator:
 
             draw_comp = self.draw_component.transistor(
                 canvas.scene, canvas.devicePixelRatio(), canvas.end_point,
-                path_svg, 0, canvas.current_label.text()
+                path_svg, 0, canvas.current_label.text(), ObjScales(1.0, 1.0)
             )
 
             canvas.update()

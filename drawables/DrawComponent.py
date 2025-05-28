@@ -4,6 +4,7 @@ from PyQt6.QtCore import QPointF, Qt
 
 from auxiliar.Calculate import Calculate
 from drawables.Draw import Draw
+from objects.Components import ObjScales
 from objects.Tools import ObjTool
 
 
@@ -83,7 +84,8 @@ class DrawComponent:
             start_point,
             final_point,
             angle,
-            color
+            color,
+            ObjScales(1.0, 1.0)
         )
 
         item_label = self.draw.label(
@@ -99,7 +101,8 @@ class DrawComponent:
                 start_point,
                 final_point,
                 0,
-                color
+                color,
+                ObjScales(1.0, 1.0)
             )
             items_added.append(item_img_static)
 
@@ -137,7 +140,7 @@ class DrawComponent:
 
         return items_added
 
-    def transistor(self, scene, device_ratio, final_point, path_svg, rotation, label_component):
+    def transistor(self, scene, device_ratio, final_point, path_svg:str, rotation:float, label_component:str, scales:ObjScales):
 
         items_added = []
 
@@ -147,10 +150,11 @@ class DrawComponent:
             final_point,
             final_point,
             rotation,
-            Qt.GlobalColor.black
+            Qt.GlobalColor.black,
+            scales
         )
 
-        item_label = self.draw.label_transistor(final_point, label_component,rotation)
+        item_label = self.draw.label_transistor(final_point, label_component,rotation,scales)
 
         items_added.append(item_img)
         items_added.append(item_label)

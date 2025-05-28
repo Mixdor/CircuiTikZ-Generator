@@ -10,7 +10,7 @@ from components.Latex import Latex
 from drawables.Draw import Draw
 from drawables.DrawAuxiliar import DrawAuxiliar
 from drawables.DrawComponent import DrawComponent
-from objects.Components import ObjComponent
+from objects.Components import ObjComponent, ObjScales
 from objects.Tools import ObjTool
 from ui.Resources import Resources
 
@@ -255,8 +255,8 @@ class Canvas(QGraphicsView):
                     )
                 elif name_class == 'Transistor':
                     self.current_tool_shadow = self.draw.image(
-                        self.devicePixelRatio(), path_svg,
-                        QPointF(x, y), QPointF(x, y), 0, self.resources.get_color_shadow()
+                        self.devicePixelRatio(), path_svg, QPointF(x, y), QPointF(x, y),
+                        0, self.resources.get_color_shadow(), ObjScales(1, 1)
                     )
                 else:
                     self.mouse_point = self.draw_auxiliar.create_mouse_point(x, y)

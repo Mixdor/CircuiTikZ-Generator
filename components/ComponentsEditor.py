@@ -4,7 +4,7 @@ from PyQt6.QtWidgets import QGraphicsTextItem
 
 from components.Latex import Latex
 from drawables.Draw import Draw
-from objects.Components import ObjComponent
+from objects.Components import ObjComponent, ObjScales
 
 
 class ComponentsEditor:
@@ -65,7 +65,8 @@ class ComponentsEditor:
                         item_label = drawer.label_transistor(
                             pos_point=component.positions.middle_point,
                             label=input_text,
-                            rotation=component.rotation
+                            rotation=component.rotation,
+                            scales=component.scales
                         )
 
                         component.draws.remove(draw)
@@ -105,7 +106,12 @@ class ComponentsEditor:
         drawer = Draw(canvas.scene)
         component : ObjComponent = canvas.component_selected
 
-        new_rotation = component.rotation + rotation
+
+        sentido = component.scales.x_scale * component.scales.y_scale
+        if sentido > 0:
+            new_rotation = component.rotation + rotation
+        else:
+            new_rotation = component.rotation - rotation
 
         if new_rotation==360 or new_rotation==-360:
             new_rotation = 0
@@ -116,7 +122,8 @@ class ComponentsEditor:
 
             draw_comp = self.draw_component.transistor(
                 canvas.scene, canvas.devicePixelRatio(), component.positions.middle_point,
-                component.built_tool.canvas_stroke, new_rotation, canvas.current_label.text()
+                component.built_tool.canvas_stroke, new_rotation, canvas.current_label.text(),
+                component.scales
             )
 
             for draw in component.draws:
@@ -125,6 +132,36 @@ class ComponentsEditor:
             component.draws.clear()
             component.draws = draw_comp
             component.rotation = new_rotation
+
+            if component != before_component:
+                self.history.new_event_undo(2, before_component, component)
+
+
+    def change_scales(self, canvas, scales:ObjScales):
+
+        component: ObjComponent = canvas.component_selected
+
+        new_scale_x = component.scales.x_scale * scales.x_scale
+        new_scale_y = component.scales.y_scale * scales.y_scale
+
+        new_scales = ObjScales(new_scale_x, new_scale_y)
+
+        if component:
+
+            before_component = self.create_deep_copy(component)
+
+            draw_comp = self.draw_component.transistor(
+                canvas.scene, canvas.devicePixelRatio(), component.positions.middle_point,
+                component.built_tool.canvas_stroke, component.rotation, canvas.current_label.text(),
+                new_scales
+            )
+
+            for draw in component.draws:
+                canvas.scene.removeItem(draw)
+
+            component.draws.clear()
+            component.draws = draw_comp
+            component.scales = new_scales
 
             if component != before_component:
                 self.history.new_event_undo(2, before_component, component)

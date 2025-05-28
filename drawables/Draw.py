@@ -5,6 +5,8 @@ from PyQt6.QtGui import QImage, QPainter, QPixmap, QColor, QPen, QFont, QTransfo
 from PyQt6.QtSvg import QSvgRenderer
 from PyQt6.QtWidgets import QGraphicsPixmapItem, QGraphicsLineItem, QGraphicsTextItem, QGraphicsColorizeEffect
 
+from objects.Components import ObjScales
+
 
 class Draw:
 
@@ -12,7 +14,10 @@ class Draw:
         self.font = QFont("Times New Roman", 14)
         self.scene = scene
 
-    def image(self, device_ratio, path_svg, point_start, point_final, angle, color):
+    def image(self, device_ratio, path_svg:str, point_start:QPointF, point_final:QPointF,
+              angle:float, color, scales:ObjScales
+        ):
+
         renderer = QSvgRenderer(path_svg)
         image_width = 50
         aspect_ratio = renderer.defaultSize().width() / renderer.defaultSize().height()
@@ -27,12 +32,20 @@ class Draw:
 
         pixmap = QPixmap.fromImage(image)
         pixmap.setDevicePixelRatio(device_ratio)
-
         item_img = QGraphicsPixmapItem(pixmap)
+
         item_img.setPos((point_start.x() + point_final.x() - pixmap.width()) / 2,
                         (point_start.y() + point_final.y() - pixmap.height()) / 2)
-        item_img.setTransformOriginPoint(item_img.boundingRect().center())
-        item_img.setRotation(angle)
+
+        center = item_img.boundingRect().center()
+
+        transform = QTransform()
+        transform.translate(center.x(), center.y())
+        transform.scale(scales.x_scale, scales.y_scale)
+        transform.rotate(angle)
+        transform.translate(-center.x(), -center.y())
+
+        item_img.setTransform(transform)
         item_img.setTransformationMode(Qt.TransformationMode.SmoothTransformation)
 
         if color != Qt.GlobalColor.black:
@@ -205,7 +218,7 @@ class Draw:
         self.scene.addItem(item_text)
         return item_text
 
-    def label_transistor(self, pos_point:QPointF, label:str, rotation:float):
+    def label_transistor(self, pos_point:QPointF, label:str, rotation:float, scales:ObjScales):
 
         item_text = QGraphicsTextItem()
         item_text.setDefaultTextColor(QColor(0, 0, 0))
@@ -215,22 +228,31 @@ class Draw:
         new_x = 0
         new_y = 0
 
-        #item_text.setRotation(rotation)
+        if rotation < 0:
+            rotation = rotation + (90 * 4)
 
-        if rotation==0:
-            new_x = pos_point.x()
-            new_y = pos_point.y() - (item_text.boundingRect().height() / 2)
-        elif rotation==90 or rotation==-270:
-            new_x = pos_point.x() - (item_text.boundingRect().width() / 2)
-            new_y = pos_point.y()
-        elif rotation==180 or rotation==-180:
-            new_x = pos_point.x() - item_text.boundingRect().width()
-            new_y = pos_point.y() - (item_text.boundingRect().height() / 2)
-        elif rotation==270 or rotation==-90:
-            new_x = pos_point.x() - (item_text.boundingRect().width() / 2)
-            new_y = pos_point.y() - item_text.boundingRect().height()
+        cord = self.calculate_position_label(rotation, scales.x_scale, scales.y_scale)
 
-        item_text.setPos(new_x, new_y)
+        dict_transformation = {
+            "Este": QPointF(
+                pos_point.x(),
+                pos_point.y() - (item_text.boundingRect().height() / 2)
+            ),
+            "Sur": QPointF(
+                pos_point.x() - (item_text.boundingRect().width() / 2),
+                pos_point.y()
+            ),
+            "Oeste": QPointF(
+                pos_point.x() - item_text.boundingRect().width(),
+                pos_point.y() - (item_text.boundingRect().height() / 2)
+            ),
+            "Norte": QPointF(
+                pos_point.x() - (item_text.boundingRect().width() / 2),
+                pos_point.y() - item_text.boundingRect().height()
+            ),
+        }
+
+        item_text.setPos(dict_transformation[cord])
 
         self.scene.addItem(item_text)
         return item_text
@@ -246,3 +268,23 @@ class Draw:
 
         self.scene.addItem(item_text)
         return item_text
+
+    def calculate_position_label(self, rotation:float, split_x:float, split_y:float) -> str:
+
+        angle = (90 + rotation) % 360
+
+        if split_x == -1:
+            angle = (360 - angle) % 360
+        if split_y == -1:
+            angle = (180 - angle) % 360
+        if angle < 0:
+            angle = angle + (90 * 4)
+
+        dic_cord = {
+            0.0 : "Norte",
+            90.0: "Este",
+            180.0: "Sur",
+            270.0: "Oeste"
+        }
+
+        return dic_cord.get(angle, "Unknow")

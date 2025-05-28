@@ -2,6 +2,8 @@ import math
 
 from PyQt6.QtCore import QPoint, QPointF
 
+from objects.Components import ObjScales
+
 
 class Latex:
 
@@ -53,7 +55,7 @@ class Latex:
 
         return draws
 
-    def get_transistor(self, id_node:int, point:QPointF, latex:str, label:str, rotation:float):
+    def get_transistor(self, id_node:int, point:QPointF, latex:str, label:str, rotation:float, scales:ObjScales):
 
         draws = []
         node = 'Q' + str(id_node)
@@ -61,7 +63,15 @@ class Latex:
         cx = point.x() / self.cell_size
         cy = point.y() / self.cell_size
 
-        radian = rotation * (math.pi / 180)
+        angle = rotation
+        if scales.x_scale == -1:
+            angle = (360 - angle) % 360
+        if scales.y_scale == -1:
+            angle = (180 - angle) % 360
+        if angle < 0:
+            angle = angle + (90 * 4)
+
+        radian = angle * (math.pi / 180)
 
         top_x = (point.x() / self.cell_size)
         top_y = (point.y() / self.cell_size) - 0.5
@@ -85,10 +95,11 @@ class Latex:
         else:
             conf = ['E', 'B', 'C']
 
-        label_cord : str
+        #label_cord : str
         cord = {0.0:"west", 90.0:"north", -270.0:"north", 180.0:"east", -180.0:"east", 270.0:"south", -90.0:"south"}
+        label_cord = self.calculate_position_label(rotation, scales.x_scale, scales.y_scale)
 
-        draw_node = f"\\draw node[{latex},scale=0.59,xscale=1,yscale=1,rotate={rotation*-1}]({node}) at ({str(cx)},-{str(cy)}) {{}} node[anchor={cord[rotation]},scale=0.9] at ({node}.text){{{label}}};"
+        draw_node = f"\\draw node[{latex},scale=0.59,xscale={scales.x_scale},yscale={scales.y_scale},rotate={rotation*-1}]({node}) at ({str(cx)},-{str(cy)}) {{}} node[anchor={label_cord},scale=0.9] at ({node}.text){{{label}}};"
         draw_line_top = f"\\draw[short]({node}.{conf[0]})to({str(top_x_)},-{str(top_y_)});"
         draw_line_button = f"\\draw[short]({node}.{conf[2]})to({str(button_x_)},-{str(button_y_)});"
 
@@ -152,3 +163,23 @@ class Latex:
             generated = generated + "\\end{figure}" + "\n"
 
         return generated
+
+    def calculate_position_label(self, rotation:float, split_x:float, split_y:float) -> str:
+
+        angle = (90 + rotation) % 360
+
+        if split_x == -1:
+            angle = (360 - angle) % 360
+        if split_y == -1:
+            angle = (180 - angle) % 360
+        if angle < 0:
+            angle = angle + (90 * 4)
+
+        dic_cord = {
+            0.0 : "south",
+            90.0: "west",
+            180.0: "north",
+            270.0: "east"
+        }
+
+        return dic_cord.get(angle, "Unknow")

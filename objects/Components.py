@@ -33,9 +33,9 @@ class ObjPosition:
 
 class ObjScales:
 
-    def __init__(self, x_scale:int, y_scale:int):
-        self.x_scale : int = x_scale
-        self.y_scale : int = y_scale
+    def __init__(self, x_scale:float, y_scale:float):
+        self.x_scale : float = x_scale
+        self.y_scale : float = y_scale
 
 
 class ObjColors:

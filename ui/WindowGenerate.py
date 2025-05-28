@@ -45,7 +45,8 @@ class WindowGenerate(QDialog):
                     point=component.positions.middle_point,
                     latex=component.built_tool.latex,
                     label=component.label,
-                    rotation=component.rotation
+                    rotation=component.rotation,
+                    scales=component.scales
                 )
 
             elif component.built_tool.class_ == 'Amplifier':
