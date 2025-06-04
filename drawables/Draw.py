@@ -206,13 +206,14 @@ class Draw:
         self.scene.addItem(item_text)
         return item_text
 
-    def label1(self, pos_point, label):
+    def label1(self, pos_point:QPointF, label):
+
         item_text = QGraphicsTextItem()
         item_text.setDefaultTextColor(QColor(0, 0, 0))
         item_text.setFont(self.font)
         item_text.setPlainText(label)
-        new_x = pos_point.x()
-        new_y = pos_point.y() - (item_text.boundingRect().height() * 0.7)
+        new_x = pos_point.x() - (item_text.boundingRect().width() / 2)
+        new_y = pos_point.y()
         item_text.setPos(new_x, new_y)
 
         self.scene.addItem(item_text)
@@ -224,9 +225,6 @@ class Draw:
         item_text.setDefaultTextColor(QColor(0, 0, 0))
         item_text.setFont(self.font)
         item_text.setPlainText(label)
-
-        new_x = 0
-        new_y = 0
 
         if rotation < 0:
             rotation = rotation + (90 * 4)

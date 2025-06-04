@@ -13,32 +13,32 @@
             <canvas_stroke>images/components/basic/Crossings.svg</canvas_stroke>
         </tool>
     </group>
-    <group name="Terminal Shapes" class="Traceable_Final">
-        <tool name="Connected" latex="node[circ]">
+    <group name="Terminal Shapes" class="Simple_Node">
+        <tool name="Connected" latex="circ">
             <img_cover>images/components/terminal_shapes/Circle.svg</img_cover>
             <canvas_stroke>images/components/terminal_shapes/Circle.svg</canvas_stroke>
         </tool>
-        <tool name="Unconnected" latex="node[ocirc]">
+        <tool name="Unconnected" latex="ocirc">
             <img_cover>images/components/terminal_shapes/cover/Circle_Open.svg</img_cover>
             <canvas_stroke>images/components/terminal_shapes/Circle_Open.svg</canvas_stroke>
         </tool>
-        <tool name="Diamond" latex="node[diamondpole]">
+        <tool name="Diamond" latex="diamondpole">
             <img_cover>images/components/terminal_shapes/Diamond.svg</img_cover>
             <canvas_stroke>images/components/terminal_shapes/Diamond.svg</canvas_stroke>
         </tool>
-        <tool name="Open Diamond" latex="node[odiamondpole]">
+        <tool name="Open Diamond" latex="odiamondpole">
             <img_cover>images/components/terminal_shapes/cover/Diamond_Open.svg</img_cover>
             <canvas_stroke>images/components/terminal_shapes/Diamond_Open.svg</canvas_stroke>
         </tool>
-        <tool name="Square" latex="node[squarepole]">
+        <tool name="Square" latex="squarepole">
             <img_cover>images/components/terminal_shapes/Square.svg</img_cover>
             <canvas_stroke>images/components/terminal_shapes/Square.svg</canvas_stroke>
         </tool>
-        <tool name="Open Square" latex="node[osquarepole]">
+        <tool name="Open Square" latex="osquarepole">
             <img_cover>images/components/terminal_shapes/cover/Square_Open.svg</img_cover>
             <canvas_stroke>images/components/terminal_shapes/Square_Open.svg</canvas_stroke>
         </tool>
-        <tool name="Arrow" latex="node[currarrow]">
+        <tool name="Arrow" latex="currarrow">
             <img_cover>images/components/terminal_shapes/Arrow.svg</img_cover>
             <canvas_stroke>images/components/terminal_shapes/Arrow.svg</canvas_stroke>
         </tool>
@@ -333,42 +333,42 @@
             <canvas_stroke>images/components/transistors/Pfet_Depletion.svg</canvas_stroke>
         </tool>
     </group>
-    <group name="Grounds" class="Traceable_Final">
-        <tool name="Ground" latex="node[ground]">
+    <group name="Grounds" class="Simple_Node">
+        <tool name="Ground" latex="ground">
             <img_cover>images/components/grounds/cover/Ground_Earth.svg</img_cover>
             <canvas_stroke>images/components/grounds/Ground_Earth.svg</canvas_stroke>
         </tool>
-        <tool name="Tailless" latex="node[tlground]">
+        <tool name="Tailless" latex="tlground">
             <img_cover>images/components/grounds/cover/Ground_Tailless.svg</img_cover>
             <canvas_stroke>images/components/grounds/Ground_Tailless.svg</canvas_stroke>
         </tool>
-        <tool name="Reference" latex="node[rground]">
+        <tool name="Reference" latex="rground">
             <img_cover>images/components/grounds/cover/Ground_Reference.svg</img_cover>
             <canvas_stroke>images/components/grounds/Ground_Reference.svg</canvas_stroke>
         </tool>
-        <tool name="Signal" latex="node[sground]">
+        <tool name="Signal" latex="sground">
             <img_cover>images/components/grounds/cover/Ground_Signal.svg</img_cover>
             <canvas_stroke>images/components/grounds/Ground_Signal.svg</canvas_stroke>
         </tool>
-        <tool name="Noiseless" latex="node[nground]">
+        <tool name="Noiseless" latex="nground">
             <img_cover>images/components/grounds/cover/Ground_Noiseles.svg</img_cover>
             <canvas_stroke>images/components/grounds/Ground_Noiseles.svg</canvas_stroke>
         </tool>
-        <tool name="Protective" latex="node[pground]">
+        <tool name="Protective" latex="pground">
             <img_cover>images/components/grounds/cover/Ground_Protective.svg</img_cover>
             <canvas_stroke>images/components/grounds/Ground_Protective.svg</canvas_stroke>
         </tool>
-        <tool name="Chassis" latex="node[cground]">
+        <tool name="Chassis" latex="cground">
             <img_cover>images/components/grounds/cover/Ground_Chassis.svg</img_cover>
             <canvas_stroke>images/components/grounds/Ground_Chassis.svg</canvas_stroke>
         </tool>
     </group>
-    <group name="Power Supplies" class="Traceable_Final">
-        <tool name="VCC" latex="node[vcc]">
+    <group name="Power Supplies" class="Simple_Node">
+        <tool name="VCC" latex="vcc">
             <img_cover>images/components/power_supplies/cover/Supplies_VCC.svg</img_cover>
             <canvas_stroke>images/components/power_supplies/Supplies_VCC.svg</canvas_stroke>
         </tool>
-        <tool name="VEE" latex="node[vee]">
+        <tool name="VEE" latex="vee">
             <img_cover>images/components/power_supplies/cover/Supplies_VEE.svg</img_cover>
             <canvas_stroke>images/components/power_supplies/Supplies_VEE.svg</canvas_stroke>
         </tool>

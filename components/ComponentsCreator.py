@@ -19,43 +19,43 @@ class ComponentsCreator:
         self.calculate = Calculate()
         self.history = history
 
-    def create_traceable_final(self, canvas, path_svg):
+    def create_simple_node(self, canvas, path_svg):
 
         tool = canvas.tool
-        start_point = canvas.start_point
         end_point = canvas.end_point
         current_label = canvas.current_label.text()
+        draw_comp = None
 
         if os.path.exists(path_svg):
+
             draw_comp = self.draw_component.one_pins(
                 canvas.devicePixelRatio(),
-                start_point, end_point,
+                end_point,
                 tool,
                 canvas.current_label.text(),
                 Qt.GlobalColor.black
             )
-        else:
-            draw_comp = self.draw_component.line(start_point, end_point, Qt.GlobalColor.black)
-        canvas.update()
+
+            canvas.update()
 
 
-        obj_position = ObjPosition(
-            start_point=start_point,
-            middle_point=self.calculate.middle_point(start_point, end_point),
-            end_point=end_point
-        )
+        # obj_position = ObjPosition(
+        #     start_point=start_point,
+        #     middle_point=self.calculate.middle_point(start_point, end_point),
+        #     end_point=end_point
+        # )
 
-        angle = self.calculate.angle(
-            magnitude=self.calculate.magnitude(start_point, end_point),
-            start_point=start_point,
-            final_point=end_point
-        )
+        # angle = self.calculate.angle(
+        #     magnitude=self.calculate.magnitude(start_point, end_point),
+        #     start_point=start_point,
+        #     final_point=end_point
+        # )
 
         new_comp = ObjComponent(
             num=len(canvas.components) + 1,
             built_tool=tool,
-            positions=obj_position,
-            rotation=angle,
+            positions=ObjPosition(None, end_point, None),
+            rotation=0,
             scales=ObjScales(1, 1),
             label=current_label,
             colors=ObjColors("black", ""),

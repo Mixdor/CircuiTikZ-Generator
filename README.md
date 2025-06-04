@@ -5,9 +5,10 @@
 
 ### Download
 
-You can get a compiled, portable and ready to use file on [Sourceforge](https://sourceforge.net/projects/circuitikz-generator/), available for both Linux and Windows.
+You can get a compiled, portable and ready to use file on [Circuitikz Web](https://www.circuitikz-generator.xyz/), available for both Linux and Windows.
 
 ### Use
+
 On Linux remember to give execute permissions to the .AppImage file.
 
 On Windows the software can be blocked by reputation by Windows Defender, if so temporarily disable this protection.

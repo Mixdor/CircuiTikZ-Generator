@@ -11,14 +11,40 @@ class Latex:
         super().__init__()
         self.cell_size = 50
 
-    def get_one_pin(self, start_point:QPointF, final_point:QPointF, latex:str, label:str):
-        draws = []
-        x1 = str(start_point.x() / self.cell_size)
-        y1 = str(start_point.y() / self.cell_size)
-        x2 = str(final_point.x() / self.cell_size)
-        y2 = str(final_point.y() / self.cell_size)
+    def get_one_pin(self, point:QPointF, latex:str, label:str):
 
-        draw_text = '\\draw(' + x1 + ",-" + y1 + ')to(' + x2 + ',-' + y2 + ') ' + latex + '{' + label + '}' + ';'
+        draws = []
+
+        x2 = str(point.x() / self.cell_size)
+        y2 = str(point.y() / self.cell_size)
+
+        draw_text = f'\\draw({x2},-{y2})to({x2},-{y2}) node[{latex}] {{{label}}};'
+        draws.append(draw_text)
+
+        return draws
+
+    def get_terminal_shapes(self, id_node:int, point:QPointF, latex:str, label:str):
+
+        draws = []
+        node = 'S' + str(id_node)
+
+        x2 = str(point.x() / self.cell_size)
+        y2 = str(point.y() / self.cell_size)
+
+        draw_text = f'\\draw node[{latex}] ({node}) at ({x2}, -{y2}) {{}} node[anchor=south] at ([yshift=-0.6cm]{node}.text){{{label}}};'
+        draws.append(draw_text)
+
+        return draws
+
+    def get_grounds(self, id_node:int, point:QPointF, latex:str, label:str):
+
+        draws = []
+        node = 'G' + str(id_node)
+
+        x2 = str(point.x() / self.cell_size)
+        y2 = str(point.y() / self.cell_size)
+
+        draw_text = f'\\draw node[{latex}] ({node}) at ({x2}, -{y2}) {{}} node[anchor=north] at ([yshift=-0.6cm]{node}.text){{{label}}};'
         draws.append(draw_text)
 
         return draws

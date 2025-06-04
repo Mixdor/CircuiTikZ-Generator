@@ -15,15 +15,9 @@ class DrawComponent:
         self.draw = Draw(self.scene)
         self.calculate = Calculate()
 
-    def one_pins(self, device_ratio, start_point, final_point, tool:ObjTool, label_component, color):
+    def one_pins(self, device_ratio, final_point, tool:ObjTool, label_component, color):
 
         items_added = []
-
-        item_line = self.draw.line(
-            start_point.x(), start_point.y(),
-            final_point.x(), final_point.y(),
-            color
-        )
 
         item_img = self.draw.image_1(
             device_ratio,
@@ -34,7 +28,7 @@ class DrawComponent:
             color
         )
 
-        if tool.group == 'Power Supplies':
+        if tool.group == 'Power Supplies' or tool.group == 'Grounds':
             item_label = self.draw.label_center_horizontal(
                 tool.name,
                 final_point,
@@ -48,7 +42,6 @@ class DrawComponent:
             )
             items_added.append(item_label)
 
-        items_added.append(item_line)
         items_added.append(item_img)
 
         return items_added

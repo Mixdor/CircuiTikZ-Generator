@@ -19,14 +19,32 @@ class WindowGenerate(QDialog):
 
             latex = None
 
-            if component.built_tool.class_ == 'Traceable_Final':
+            if component.built_tool.class_ == 'Simple_Node':
 
-                latex = self.latexGen.get_one_pin(
-                    start_point=component.positions.start_point,
-                    final_point=component.positions.end_point,
-                    latex=component.built_tool.latex,
-                    label=component.label
-                )
+                if component.built_tool.group == 'Terminal Shapes':
+
+                    latex = self.latexGen.get_terminal_shapes(
+                        id_node=component.num,
+                        point=component.positions.middle_point,
+                        latex=component.built_tool.latex,
+                        label=component.label
+                    )
+
+                elif component.built_tool.group == 'Grounds':
+
+                    latex = self.latexGen.get_grounds(
+                        id_node=component.num,
+                        point=component.positions.middle_point,
+                        latex=component.built_tool.latex,
+                        label=component.label
+                    )
+
+                else:
+                    latex = self.latexGen.get_one_pin(
+                        point=component.positions.middle_point,
+                        latex=component.built_tool.latex,
+                        label=component.label
+                    )
 
             elif component.built_tool.class_ == 'Traceable':
 

@@ -166,9 +166,9 @@ class Canvas(QGraphicsView):
 
             if self.start_point:
 
-                if name_class == 'Traceable_Final':
+                if name_class == 'Simple_Node':
                     path_svg = self.tool.canvas_stroke
-                    self.manager_components.create_traceable_final(self, path_svg)
+                    self.manager_components.create_simple_node(self, path_svg)
 
                 if name_class == 'Traceable':
                     self.manager_components.create_traceable(self)
@@ -235,13 +235,13 @@ class Canvas(QGraphicsView):
                                     '', self.resources.get_color_shadow()
                                 )
 
-                    elif name_class == 'Traceable_Final':
-                        self.current_tool_shadow = self.draw_component.one_pins(
-                            self.devicePixelRatio(),
-                            self.start_point, QPointF(x, y),
-                            self.tool, '',
-                            self.resources.get_color_shadow()
-                        )
+                elif name_class == 'Simple_Node':
+                    self.current_tool_shadow = self.draw_component.one_pins(
+                        self.devicePixelRatio(),
+                        QPointF(x, y),
+                        self.tool, '',
+                        self.resources.get_color_shadow()
+                    )
 
                 elif name_class == 'Amplifier':
                     self.current_tool_shadow = self.draw.image_with_height(

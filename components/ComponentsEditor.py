@@ -30,17 +30,17 @@ class ComponentsEditor:
 
                     component.label = input_text
 
-                    if component.built_tool.class_ == 'Traceable_Final':
+                    if component.built_tool.class_ == 'Simple_Node':
 
-                        if component.built_tool.group == 'Power Supplies':
+                        if component.built_tool.group == 'Power Supplies' or component.built_tool.group == 'Grounds':
                             item_label = drawer.label_center_horizontal(
                                 name_tool=component.built_tool.name,
-                                pos_point=component.positions.end_point,
+                                pos_point=component.positions.middle_point,
                                 label=input_text
                             )
                         else:
                             item_label = drawer.label1(
-                                pos_point=component.positions.end_point,
+                                pos_point=component.positions.middle_point,
                                 label=input_text
                             )
 

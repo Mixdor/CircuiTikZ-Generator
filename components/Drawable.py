@@ -5,6 +5,8 @@ from PyQt6.QtGui import QColor, QPen, QPixmap, QPainter, QImage
 from PyQt6.QtSvg import QSvgRenderer
 from PyQt6.QtWidgets import QGraphicsEllipseItem, QGraphicsLineItem, QGraphicsPixmapItem, QGraphicsTextItem
 
+from objects.Tools import ObjTool
+
 pen = QPen(Qt.GlobalColor.black, 1.5, Qt.PenStyle.SolidLine)
 
 
@@ -29,7 +31,7 @@ class Drawable:
 
         return point_mouse
 
-    def canvas_one_pins(self, scene, device_ratio, start_point, final_point, tool, label_component):
+    def canvas_one_pins(self, scene, device_ratio, start_point, final_point, tool:ObjTool, label_component):
 
         items_added = []
 
@@ -50,7 +52,7 @@ class Drawable:
             90
         )
 
-        if tool.group_name == "Power Supplies":
+        if tool.group == "Power Supplies" or tool.group == 'Grounds':
             item_label = self.get_label1_center(
                 scene,
                 tool.name,
