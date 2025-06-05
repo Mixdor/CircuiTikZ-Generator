@@ -34,7 +34,7 @@ class MainWindow(QMainWindow):
 
         self.components = []
 
-        xml_to_tools = TxtToComponents(self.base_path)
+        xml_to_tools = TxtToComponents(self.base_path, self.resources.main_path)
         list_groups_tools = xml_to_tools.parse_xml_to_objects()
         self.tool_selected = list_groups_tools.get_tool("Select")
 

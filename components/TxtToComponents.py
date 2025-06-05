@@ -3,13 +3,15 @@ import os
 import re
 
 from objects.Tools import ObjTool, GroupTools, ListGroupTools
+from ui.Resources import Resources
 
 
 class TxtToComponents:
 
-    def __init__(self, base_path):
+    def __init__(self, base_path, main_path):
 
         self.base_path = base_path
+        self.main_path = main_path
 
     def parse_xml_to_objects(self):
 
@@ -36,6 +38,13 @@ class TxtToComponents:
                 class_ = class_group
                 if class_tool:
                     class_ = class_tool
+
+                if cover:
+                    cover = f'{self.main_path}/{cover}'
+                if stroke:
+                    stroke = f'{self.main_path}/{stroke}'
+                if stroke_static:
+                    stroke_static = f'{self.main_path}/{stroke_static}'
 
                 component = ObjTool(
                     name=name,
