@@ -296,7 +296,7 @@ class MainWindow(QMainWindow):
                 for tool in self.obj_tools:
                     if tool.name == button.toolTip():
                         for label in self.group_buttons:
-                            if label.text() == tool.group_name:
+                            if label.text() == tool.group:
                                 label.setVisible(True)
 
     def clear_search(self):
