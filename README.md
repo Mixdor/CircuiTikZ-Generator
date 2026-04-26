@@ -5,7 +5,7 @@
 
 ### Download
 
-You can get a compiled, portable and ready to use file on [Circuitikz Web](https://www.circuitikz-generator.xyz/), available for both Linux and Windows.
+You can get a compiled, portable and ready to use file on [Circuitikz Web](https://mixdor.github.io/circuitikz-generator.github.io/), available for both Linux and Windows.
 
 ### Use
 
